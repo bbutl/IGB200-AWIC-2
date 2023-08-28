@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Dialogue;
 
-public class Sarah : MonoBehaviour
+public class Sarah : Character
 {
     public CameraPan cam;
     private void Start()
@@ -14,7 +14,7 @@ public class Sarah : MonoBehaviour
         
     }
 
-    private DialogueSection Conversation()
+    public DialogueSection Conversation()
     {
         string localName = "Sarah";
         string playerName = "Player";

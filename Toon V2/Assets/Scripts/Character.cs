@@ -6,6 +6,7 @@ public class Character : MonoBehaviour
 {
     private string name;
     private string occupation;
+    public GameObject dialogue;
     public string Name
     {
         get
@@ -31,11 +32,15 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+    public void StartConvo()
     {
         
     }
