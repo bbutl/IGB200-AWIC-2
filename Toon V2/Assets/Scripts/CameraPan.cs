@@ -28,7 +28,7 @@ public class CameraPan : MonoBehaviour
                 cam.transform.Rotate(direction, angle * Time.deltaTime);
 
             }
-        if(start == true && cam.transform.localEulerAngles.x < 0)
+        if(start == true && cam.transform.position.y > 4)
         {
             cam.transform.position -= new Vector3(0, 0.5f * Time.deltaTime, 0);
             cam.transform.Rotate((direction * -1), angle * Time.deltaTime);

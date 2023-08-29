@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class PipeBurst : Event
 {
+    Vector3 direction = new Vector3(1, 0, 0);
     // Start is called before the first frame update
     void Start()
     {
         
-        occupationList = eventManager.avaliableOccupations;
-        if (ContainsOccupation(occupationList))
+        this.occupationList = eventManager.avaliableOccupations;
+        //If conditions for event to occur are met
+        if (InitialiseEvent())
         {
-            Debug.Log("contains");
+            this.gameObject.transform.Rotate(direction, 25);
         }
         
+
+
     }
 
     // Update is called once per frame
@@ -21,24 +25,6 @@ public class PipeBurst : Event
     {
         
     }
-    public bool ContainsOccupation(List<string> list)
-    {
-        if (list.Contains(associatedOccupation))
-        {
-            return true;
-        }
-        else return false;
-    }
-    public void InitialiseEvent()
-    {
-        // Add check for current day and target day number
-        if (ContainsOccupation(occupationList))
-        {
-
-        }
-        else
-        {
-            return;
-        }
-    }
+    
+    
 }

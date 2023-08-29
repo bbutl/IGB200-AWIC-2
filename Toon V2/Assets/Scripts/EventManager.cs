@@ -14,7 +14,7 @@ public class EventManager : MonoBehaviour
     public Character c;
 
 
-    public int maxCharacters = 5;
+    public int maxCharacters = 3;
     
     // Start is called before the first frame update
     void Start()
@@ -43,12 +43,7 @@ public class EventManager : MonoBehaviour
             
         }
         return allCharacters;
-       /* foreach (Character c in allCharacters)
-        {
-            selectedCharacters = allCharacters.Sort((a, b)=> 1 - 2 * Random.Range(0, 1));
-        }
-        return selectedCharacters;
-       */
+       
 
     } 
     //Shuffle list of characters in a random order
@@ -79,9 +74,9 @@ public class EventManager : MonoBehaviour
             c = charList[index].GetComponent<Character>();
             occupation = c.Occupation;
             list.Add(occupation);
-            //list.Add(charList[index].GetComponent<Character>().Occupation);
             index++;
         }
+        list = list.GetRange(0, maxCharacters);
         return list;
     }
 
