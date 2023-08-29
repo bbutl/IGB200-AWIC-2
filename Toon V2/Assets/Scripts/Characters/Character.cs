@@ -5,7 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     private string name;
-    private string occupation;
+    public string occupation;
     public GameObject dialogue;
     public string Name
     {

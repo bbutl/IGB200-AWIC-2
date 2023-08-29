@@ -6,9 +6,9 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     [Header("Character Lists")]
-    public List<Character> allCharacters;
-    public List<Character> selectedCharacters = new List<Character>();
-
+    public List<GameObject> allCharacters;
+    public List<GameObject> selectedCharacters = new List<GameObject>();
+    public List<string> avaliableOccupations = new List<string>();
     [Header("Character")]
     public GameObject person;
     public Character c;
@@ -21,7 +21,7 @@ public class EventManager : MonoBehaviour
     {
         
         selectedCharacters = ShuffleList(allCharacters);
-
+        avaliableOccupations = CheckAvaliableOccupations(selectedCharacters);
         
         //GenerateChars();
 
@@ -34,7 +34,7 @@ public class EventManager : MonoBehaviour
         
     }
     // Return a list containing a randomised selecction of characters from allCharacters list
-    private List<Character> GenerateChars()
+    private List<GameObject> GenerateChars()
     {
         c = person.GetComponent<Character>();
         for (int i = 0; i <maxCharacters; i++)
@@ -53,7 +53,7 @@ public class EventManager : MonoBehaviour
     } 
     //Shuffle list of characters in a random order
     //First x characters are chosen to be instantiated from shuffled list
-    private List<Character> ShuffleList(List<Character> listToShuffle)
+    private List<GameObject> ShuffleList(List<GameObject> listToShuffle)
     {
         System.Random rand = new System.Random();
         for (int i = listToShuffle.Count - 1; i > 0; i--)
@@ -65,4 +65,27 @@ public class EventManager : MonoBehaviour
         }
         return listToShuffle;
     }
+
+    //Return list containing the occupations of chosen characters
+
+    public List<string> CheckAvaliableOccupations(List<GameObject> charList)
+    {
+        List<string> list = new List<string>();
+        int index = 0;
+        Character c;
+        string occupation;
+        foreach(GameObject character in charList)
+        {
+            c = charList[index].GetComponent<Character>();
+            occupation = c.Occupation;
+            list.Add(occupation);
+            //list.Add(charList[index].GetComponent<Character>().Occupation);
+            index++;
+        }
+        return list;
+    }
+
+    
+
+
 }

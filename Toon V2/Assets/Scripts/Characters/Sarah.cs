@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Dialogue;
 
-public class Sarah : Character
+public class Sarah : MonoBehaviour
 {
+
     public CameraPan cam;
     private void Start()
     {
@@ -19,7 +20,7 @@ public class Sarah : Character
         string localName = "Sarah";
         string playerName = "Player";
         // Occupation tied to possible events.
-        string occupation = "Plumber";
+        
         Monologue sure = new Monologue(localName, "");
         Choices d = new Choices(localName, "Can I get an X Pie?", ChoiceList(Choice("Sure thing", sure)));
         Monologue fine = new Monologue(localName, "That's nice to hear.", d);

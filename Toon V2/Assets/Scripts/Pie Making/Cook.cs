@@ -5,17 +5,21 @@ using static UnityEditorInternal.ReorderableList;
 
 public class Cook : MonoBehaviour
 {
-    public Ingredient ingredient;
-    public Pie pie;
-    public GameObject pieObject;
-    public GameObject cookingArea;
+
+    [Header("Ingredients")]
     public GameObject pieBase;
     public GameObject pieFilling;
     public GameObject pieTop;
+
+    [Header("Current Ingredients")]
     private GameObject currBase;
     private GameObject currFilling;
     private GameObject currTop;
 
+    public Ingredient ingredient;
+    public Pie pie;
+    public GameObject pieObject;
+    public GameObject cookingArea;
     private Vector3 offset = new Vector3(0f, 1f, 0f);
     // Start is called before the first frame update
     void Start()
