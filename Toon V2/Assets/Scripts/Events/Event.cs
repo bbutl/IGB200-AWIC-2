@@ -13,11 +13,8 @@ public class Event : MonoBehaviour
     public List<string> occupationList;
 
 
-    void Start()
-    {
-        
-    }
     
+
     public bool ContainsOccupation(List<string> list)
     {
         if (list.Contains(associatedOccupation))

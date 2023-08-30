@@ -13,6 +13,7 @@ public class PipeBurst : Event
         //If conditions for event to occur are met
         if (InitialiseEvent())
         {
+            Debug.Log("Event Started");
             this.gameObject.transform.Rotate(direction, 25);
         }
         
