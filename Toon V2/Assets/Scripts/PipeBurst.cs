@@ -9,7 +9,7 @@ public class PipeBurst : Event
     void Start()
     {
         
-        this.occupationList = eventManager.avaliableOccupations;
+        occupationList = eventManager.avaliableOccupations;
         //If conditions for event to occur are met
         if (InitialiseEvent())
         {
