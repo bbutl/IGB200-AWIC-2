@@ -11,7 +11,7 @@ public class Event : Day
 
     public EventManager eventManager;
     public List<string> occupationList;
-
+    
     public bool ContainsOccupation(List<string> list)
     {
         if (list.Contains(associatedOccupation))

@@ -48,13 +48,13 @@ public class CameraPan : MonoBehaviour
         { 
             start = false;
             //Change button sprite on click
-            //targetButton.sprite = buttonSprites[1];
+            targetButton.sprite = buttonSprites[1];
         }
         else
         {
             start = true;
             //Change button sprite on click
-            //targetButton.sprite = buttonSprites[0];
+            targetButton.sprite = buttonSprites[0];
             
         }
     }

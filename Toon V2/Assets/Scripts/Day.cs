@@ -24,7 +24,8 @@ public class Day : MonoBehaviour
     public int NextDay()
     {
         currentDay += 1;
-        return currentDay;
         nextDay = false;
+        return currentDay;
+        
     }
 }

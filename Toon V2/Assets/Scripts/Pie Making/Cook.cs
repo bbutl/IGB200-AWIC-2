@@ -32,7 +32,7 @@ public class Cook : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         // If pie is complete, instantiate the pie & reset values of prefab
        if(PieCompleted())
