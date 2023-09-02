@@ -12,6 +12,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Text Components")]
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI contentsText;
+    public char[] contentsArray;
 
     [Header("Dialogue Choice")]
     public GameObject proceedConverstaionObject;
@@ -107,6 +108,8 @@ public class DialogueManager : MonoBehaviour
         optionsBeenDisplayed = false;
 
         nameText.text = $"{currentSection.GetSpeakerName()}:";
+        contentsArray = currentSection.GetSpeechContents().ToCharArray();
+        
         
         contentsText.text = currentSection.GetSpeechContents();
     }

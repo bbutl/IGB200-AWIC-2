@@ -11,17 +11,6 @@ public class Ingredient : MonoBehaviour
     public string category;
     public string name;
     
-
-    void Start()
-    {
-        
-    }
-
-    public void Print()
-    {
-        Debug.Log($"{category}, {name}");
-    }
-    
 }
 
 

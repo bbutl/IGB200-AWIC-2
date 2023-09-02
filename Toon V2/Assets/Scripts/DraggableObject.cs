@@ -27,7 +27,7 @@ public class DraggableObject : MonoBehaviour
             transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
         }
     }
-    
+
     Vector3 GetMousePos()
     {
         return Camera.main.WorldToScreenPoint(transform.position);
@@ -35,6 +35,7 @@ public class DraggableObject : MonoBehaviour
     private void OnMouseDown()
     {
         mousePosition = Input.mousePosition - GetMousePos();
+        //If the object is an ingredient, instantiate a clone of the object on click
         if (this.gameObject.tag == "Ingredient")
         {
             duplicateObject = this.gameObject;
@@ -48,17 +49,15 @@ public class DraggableObject : MonoBehaviour
     }
     private void OnMouseDrag()
     {
+        //Object transform is equal to cursor position
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
     }
     public void OnMouseUp()
     {
+        //If the object is an ingredient, destroy game object on mouse button up
         if (this.gameObject.tag == "Ingredient")
         {
             Destroy(gameObject);
-        }
-        else
-        {
-
         }
     }
 }

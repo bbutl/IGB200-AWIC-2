@@ -19,9 +19,6 @@ public class Pie : MonoBehaviour
         this.filling = filling;
         this.top = top;
     }
-    public void Start()
-    {
-        
-    }
+    
 
 }
