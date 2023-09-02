@@ -11,13 +11,11 @@ public class EventManager : MonoBehaviour
     public List<string> avaliableOccupations = new List<string>();
 
     [Header("Character")]
-    public GameObject person;
+    
     public Character c;
-
-
     public int maxCharacters = 3;
 
-    // Start is called before the first frame update
+    // Generate randomly selected characters on start && their assigned occupations
     void Start()
     {
 
@@ -29,7 +27,7 @@ public class EventManager : MonoBehaviour
 
 
     //Shuffle list of characters in a random order
-    //First x characters are chosen to be instantiated from shuffled list
+    //First x characters are chosen to be instantiated from shuffled list 
     private List<GameObject> ShuffleList(List<GameObject> listToShuffle)
     {
         System.Random rand = new System.Random();
@@ -43,7 +41,7 @@ public class EventManager : MonoBehaviour
         return listToShuffle;
     }
 
-    //Return list containing the occupations of chosen characters
+    //Return list containing the occupations of the selected characters
 
     public List<string> CheckAvaliableOccupations(List<GameObject> charList)
     {

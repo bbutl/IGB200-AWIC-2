@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Event class which all events will inherit from
-public class Event : MonoBehaviour
+public class Event : Day
 {
-    public int currDay;
+    
     public int eventDay;
     public string associatedOccupation;
 
     public EventManager eventManager;
     public List<string> occupationList;
-
-
-    
 
     public bool ContainsOccupation(List<string> list)
     {
@@ -26,9 +23,10 @@ public class Event : MonoBehaviour
     public bool InitialiseEvent()
     {
         // Add check for current day and target day number
-        if (ContainsOccupation(occupationList))
+        if (ContainsOccupation(occupationList) && currentDay == eventDay)
         {
             return true;
+
         }
         else
         {

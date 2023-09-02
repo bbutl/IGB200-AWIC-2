@@ -6,12 +6,15 @@ using static Dialogue;
 
 public class Sarah : MonoBehaviour
 {
+    public GameObject eventObject;
+    public PipeBurst pBurst;
+    
 
     public CameraPan cam;
     private void Start()
     {
-        
-        FindObjectOfType<DialogueManager>().StartDialogue(Conversation());
+        pBurst = eventObject.GetComponent<PipeBurst>();
+        //FindObjectOfType<DialogueManager>().StartDialogue(Conversation());
         
     }
 
@@ -19,7 +22,7 @@ public class Sarah : MonoBehaviour
     {
         string localName = "Sarah";
         string playerName = "Player";
-        // Occupation tied to possible events.
+
         
         Monologue sure = new Monologue(localName, "");
         Choices d = new Choices(localName, "Can I get an X Pie?", ChoiceList(Choice("Sure thing", sure)));
@@ -31,7 +34,7 @@ public class Sarah : MonoBehaviour
         Choices b = new Choices(localName, "How are you today?", ChoiceList(Choice("Fine", fine), Choice("Not so fine...", not_fine), Choice("Bad", bad)));
         
         Monologue a = new Monologue(localName, $"Good morning, I'm {localName}.", b);
-        
+        //pBurst.StartEvent();
         return a;
 
     }

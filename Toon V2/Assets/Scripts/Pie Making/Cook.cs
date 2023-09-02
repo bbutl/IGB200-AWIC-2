@@ -16,10 +16,14 @@ public class Cook : MonoBehaviour
     private GameObject currFilling;
     private GameObject currTop;
 
+    [Header("Classes")]
     public Ingredient ingredient;
     public Pie pie;
+
+    [Header("GameObjects")]
     public GameObject pieObject;
     public GameObject cookingArea;
+
     private Vector3 offset = new Vector3(0f, 1f, 0f);
     // Start is called before the first frame update
     void Start()
@@ -33,14 +37,13 @@ public class Cook : MonoBehaviour
         // If pie is complete, instantiate the pie & reset values of prefab
        if(PieCompleted())
         {
-            Debug.Log("Complete");
             Destroy(currBase);
             Destroy(currFilling);
             Instantiate(pieObject, cookingArea.transform.position + offset, Quaternion.identity);
             pie.pbase = "Default";
             pie.filling = "Default"; 
             pie.top = "Default";
-            
+            Debug.Log("Complete");
         } 
     }
     

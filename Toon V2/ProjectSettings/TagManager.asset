@@ -8,6 +8,7 @@ TagManager:
   - Cooking
   - DialogueChoice
   - Character
+  - Holder
   layers:
   - Default
   - TransparentFX

@@ -4,27 +4,48 @@ using UnityEngine;
 
 public class DraggableObject : MonoBehaviour
 {
+    [Header("Mouse Position")]
     private Vector3 mousePosOffset;
     Vector3 mousePosition;
-    private GameObject duplicateObject;
     float yPos;
+    float xPos;
+    public bool lockY = true;
+    private GameObject duplicateObject;
+    
     // Start is called before the first frame update
     void Start()
     {
         yPos = gameObject.transform.position.y;
+        xPos = gameObject.transform.position.x;
     }
 
-    // Update is called once per frame
     void Update()
     {
         LockY();
+        LockX();
+    }
+
+    private void LockX()
+    {
+        if (lockY == false)
+        {
+
+
+            if (transform.position.x != xPos)
+            {
+                transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
+            }
+        }
     }
     //Stop object from moving on the y axis
     private void LockY()
     {
-        if (transform.position.y != yPos)
+        if (lockY)
         {
-            transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
+            if (transform.position.y != yPos)
+            {
+                transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
+            }
         }
     }
 
@@ -49,7 +70,7 @@ public class DraggableObject : MonoBehaviour
     }
     private void OnMouseDrag()
     {
-        //Object transform is equal to cursor position
+        //Object transform position is equal to cursor position
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
     }
     public void OnMouseUp()
