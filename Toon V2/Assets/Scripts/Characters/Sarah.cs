@@ -10,6 +10,7 @@ public class Sarah : MonoBehaviour
 
     public Button eventButton;
     public Cook cook;
+    public CameraPan pan;
     string localName = "Sarah";
     string playerName = "Player";
 
@@ -25,7 +26,7 @@ public class Sarah : MonoBehaviour
     {
         if (cook.PieCompleted() == true)
         {
-           
+            pan.start = true;
             FindObjectOfType<DialogueManager>().StartDialogue(Conversation2());
         }
         

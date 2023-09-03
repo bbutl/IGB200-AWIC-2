@@ -9,6 +9,7 @@ public class PipeBurst : Event
 
     public bool stepComplete = false;
     public int stepNumber = 1;
+    public Water water;
     public DialogueManager d;
     public Camera cam;
     public Camera mainCam;
@@ -42,10 +43,16 @@ public class PipeBurst : Event
     }
     void Update()
     {
+        
         StartEvent();
         if (stepNumber < 2) { gameObject.transform.position = stopMove; }
         
         StepCompleted();
+        if (water.hasClicked && waterOn)
+        {
+            waterOn = false;
+            d.ProceedToNext();
+        }
     }
    
     
@@ -53,10 +60,10 @@ public class PipeBurst : Event
     {
         string localName = "Sarah";
         string playerName = "Player";
-        Monologue guide4 = new Monologue(localName, $"Now we just need to fit the new pipe in and solder it with the welder.");
-        Monologue guide3 = new Monologue(localName,$"Now that we have cut the pipe, remove the pipe.", guide4 );
-        Monologue guide2 = new Monologue(localName, $" Secondly, you will need to fit the pipe cutter to the pipe.", guide3);
-
+        Monologue guide5 = new Monologue(localName, $"Now we just need to fit the new pipe in and solder it with the welder.");
+        Monologue guide4 = new Monologue(localName,$"Now that we have cut the pipe, remove the pipe.", guide5 );
+        Monologue guide3 = new Monologue(localName, $"Secondly, you will need to fit the pipe cutter to the pipe.", guide4);
+        Monologue guide2 = new Monologue(localName, "", guide3);
         Monologue guide1 = new Monologue(localName, $"Firstly, {playerName} make sure the water supply is switched off.", guide2);
         return guide1;
     }
