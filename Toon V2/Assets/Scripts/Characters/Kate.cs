@@ -7,6 +7,8 @@ using static Dialogue;
 public class Kate : MonoBehaviour
 {
     public CameraPan cam;
+    public QueueController queue;
+
     private void Start()
     {
 
@@ -34,6 +36,8 @@ public class Kate : MonoBehaviour
         Choices b = new Choices(localName, "How are you today?", ChoiceList(Choice("Fine", fine), Choice("Not so fine...", not_fine), Choice("Bad", bad)));
         
         Monologue a = new Monologue(localName, $"Good morning, I'm {localName}.", b);
+
+        queue.Next();
         
         return a;
 

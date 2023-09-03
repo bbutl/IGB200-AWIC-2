@@ -27,6 +27,14 @@ public class CharacterRandomisation : MonoBehaviour
     private SkinnedMeshRenderer[] meshClothesOuter;
     private SkinnedMeshRenderer[] meshClothesInner;
 
+    //Body part meshes
+    private MeshRenderer[] meshHeadMR;
+    private MeshRenderer[] meshHandsMR;
+    private MeshRenderer[] meshHairMR;
+    private MeshRenderer[] meshEyesMR;
+    private MeshRenderer[] meshClothesOuterMR;
+    private MeshRenderer[] meshClothesInnerMR;
+
     //Random body parts
     private int randomPhyscialHead;
     private int randomPhyscialHands;
@@ -52,7 +60,7 @@ public class CharacterRandomisation : MonoBehaviour
     {
         if (Input.GetKeyDown("z"))
         {
-            RandomiseCharacter();
+            //RandomiseCharacter();
         }
     }
 
@@ -84,12 +92,30 @@ public class CharacterRandomisation : MonoBehaviour
         physicalClothesInner[randomPhyscialClothesInner].SetActive(true);
         
         //Set the random colour for each part
-        meshHead[randomPhyscialHead].material = colourSkin[randomColourSkin];
-        meshHands[randomPhyscialHands].material = colourSkin[randomColourSkin];
-        meshHair[randomPhyscialHair].material = colourHair[randomColourHair];
-        meshEyes[randomPhyscialEyes].material = colourEyes[randomColourEyes];
-        meshClothesOuter[randomPhyscialClothesOuter].material = colourClothesOuter[randomColourClothesOuter];
-        meshClothesInner[randomPhyscialClothesInner].material = colourClothesInner[randomColourClothesInner];
+        if (meshHead[randomPhyscialHead] != null)
+            meshHead[randomPhyscialHead].material = colourSkin[randomColourSkin];
+        else
+            meshHeadMR[randomPhyscialHead].material = colourSkin[randomColourSkin];
+        if (meshHands[randomPhyscialHands] != null)
+            meshHands[randomPhyscialHands].material = colourSkin[randomColourSkin];
+        else
+            meshHandsMR[randomPhyscialHands].material = colourSkin[randomColourSkin];
+        if (meshHair[randomPhyscialHair] != null)
+            meshHair[randomPhyscialHair].material = colourHair[randomColourHair];
+        else
+            meshHairMR[randomPhyscialHair].material = colourHair[randomColourHair];
+        if (meshEyes[randomPhyscialEyes] != null)
+            meshEyes[randomPhyscialEyes].material = colourEyes[randomColourEyes];
+        else
+            meshEyesMR[randomPhyscialEyes].material = colourEyes[randomColourEyes];
+        if (meshClothesOuter[randomPhyscialClothesOuter] != null)
+            meshClothesOuter[randomPhyscialClothesOuter].material = colourClothesOuter[randomColourClothesOuter];
+        else
+            meshClothesOuterMR[randomPhyscialClothesOuter].material = colourClothesOuter[randomColourClothesOuter];
+        if (meshClothesInner[randomPhyscialClothesInner] != null)
+            meshClothesInner[randomPhyscialClothesInner].material = colourClothesInner[randomColourClothesInner];
+        else
+            meshClothesInnerMR[randomPhyscialClothesInner].material = colourClothesInner[randomColourClothesInner];
     }
 
     private void ResetBodyParts()
@@ -129,29 +155,55 @@ public class CharacterRandomisation : MonoBehaviour
         meshClothesOuter = new SkinnedMeshRenderer[physicalClothesOuter.Length];
         meshClothesInner = new SkinnedMeshRenderer[physicalClothesInner.Length];
 
+        meshHeadMR = new MeshRenderer[physcialHead.Length];
+        meshHandsMR = new MeshRenderer[physicalHands.Length];
+        meshHairMR = new MeshRenderer[physicalHair.Length];
+        meshEyesMR = new MeshRenderer[physicalEyes.Length];
+        meshClothesOuterMR = new MeshRenderer[physicalClothesOuter.Length];
+        meshClothesInnerMR = new MeshRenderer[physicalClothesInner.Length];
+
         for (int i = 0; i < physcialHead.Length; i++)
         {
-            meshHead[i] = physcialHead[i].GetComponent<SkinnedMeshRenderer>();
+            if (physcialHead[i].GetComponent<SkinnedMeshRenderer>() != null)
+                meshHead[i] = physcialHead[i].GetComponent<SkinnedMeshRenderer>();
+            else
+                meshHeadMR[i] = physcialHead[i].GetComponent<MeshRenderer>();
+
         }
         for (int i = 0; i < physicalHands.Length; i++)
         {
-            meshHands[i] = physicalHands[i].GetComponent<SkinnedMeshRenderer>();
+            if (physicalHands[i].GetComponent<SkinnedMeshRenderer>() != null)
+                meshHands[i] = physicalHands[i].GetComponent<SkinnedMeshRenderer>();
+            else
+                meshHandsMR[i] = physicalHands[i].GetComponent<MeshRenderer>();
         }
         for (int i = 0; i < physicalHair.Length; i++)
         {
-            meshHair[i] = physicalHair[i].GetComponent<SkinnedMeshRenderer>();
+            if (physicalHair[i].GetComponent<SkinnedMeshRenderer>() != null)
+                meshHair[i] = physicalHair[i].GetComponent<SkinnedMeshRenderer>();
+            else
+                meshHairMR[i] = physicalHair[i].GetComponent<MeshRenderer>();
         }
         for (int i = 0; i < physicalEyes.Length; i++)
         {
-            meshEyes[i] = physicalEyes[i].GetComponent<SkinnedMeshRenderer>();
+            if (physicalEyes[i].GetComponent<SkinnedMeshRenderer>() != null)
+                meshEyes[i] = physicalEyes[i].GetComponent<SkinnedMeshRenderer>();
+            else
+                meshEyesMR[i] = physicalEyes[i].GetComponent<MeshRenderer>();
         }
         for (int i = 0; i < physicalClothesOuter.Length; i++)
         {
-            meshClothesOuter[i] = physicalClothesOuter[i].GetComponent<SkinnedMeshRenderer>();
+            if (physicalClothesOuter[i].GetComponent<SkinnedMeshRenderer>() != null)
+                meshClothesOuter[i] = physicalClothesOuter[i].GetComponent<SkinnedMeshRenderer>();
+            else
+                meshClothesOuterMR[i] = physicalClothesOuter[i].GetComponent<MeshRenderer>();
         }
         for (int i = 0; i < physicalClothesInner.Length; i++)
         {
-            meshClothesInner[i] = physicalClothesInner[i].GetComponent<SkinnedMeshRenderer>();
+            if (physicalClothesInner[i].GetComponent<SkinnedMeshRenderer>() != null)
+                meshClothesInner[i] = physicalClothesInner[i].GetComponent<SkinnedMeshRenderer>();
+            else
+                meshClothesInnerMR[i] = physicalClothesInner[i].GetComponent<MeshRenderer>();
         }
     }
 }

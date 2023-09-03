@@ -8,7 +8,7 @@ public class QueueController : MonoBehaviour
     [SerializeField] Kate kate;
     [SerializeField] Lily lily;
     
-    private int currentCharacter = 0;
+    private int currentCharacter = -1;
 
     void Start()
     {
@@ -19,16 +19,21 @@ public class QueueController : MonoBehaviour
     {
         if (Input.GetKeyDown("x"))
         {
-            currentCharacter += 1;
-            if (currentCharacter < characters.Length)
-            {
-                StartNextCharacter(currentCharacter);
-            }
-            characters[currentCharacter - 1].LeaveShop();
+            Next();
         }
     }
 
-    private void StartNextCharacter(int next)
+    public void Next()
+    {
+        currentCharacter += 1;
+        if (currentCharacter < characters.Length)
+        {
+            StartNextCharacter(currentCharacter);
+        }
+        characters[currentCharacter - 1].LeaveShop();
+    }
+
+    public void StartNextCharacter(int next)
     {
         characters[next].GoToTarget(0);
         switch (next)
@@ -37,9 +42,12 @@ public class QueueController : MonoBehaviour
                 lucy.StartConversation();
                 break;
             case 1:
-                kate.StartConversation();
+                sarah.StartConversation();
                 break;
             case 2:
+                kate.StartConversation();
+                break;
+            case 3:
                 lily.StartConversation();
                 break;
             default:

@@ -29,9 +29,14 @@ public class Sarah : MonoBehaviour
             pan.start = true;
             FindObjectOfType<DialogueManager>().StartDialogue(Conversation2());
         }
-        
+
     }
-    
+
+    public void StartConversation()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(Conversation());
+    }
+
     public DialogueSection Conversation()
     {
         

@@ -52,4 +52,9 @@ public class MenuController : MonoBehaviour
     {
         SceneManager.LoadScene("TitleScreen");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
