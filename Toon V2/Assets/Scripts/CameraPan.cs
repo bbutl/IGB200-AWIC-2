@@ -4,16 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 public class CameraPan : MonoBehaviour
 {
+    [Header("Button attributes")]
     [SerializeField] private SpriteState _state;
     [SerializeField] private Button button;
     [SerializeField] private Sprite[] buttonSprites;
     [SerializeField] private Image targetButton;
-
-
-   public Camera cam;
-   
     public bool start = true;
 
+    [Header("Camera components")]
+    public Camera cam;
     Vector3 direction = new Vector3(1, 0, 0);
     public float rGoal = 5f;
     public float rotationGoal = 80f;
@@ -25,7 +24,7 @@ public class CameraPan : MonoBehaviour
     void Update()
     {
         
-
+        // Pans the camera down to cooking view
         if (start == false && cam.transform.localEulerAngles.x <= rotationGoal)
         {
             cam.transform.position += new Vector3(0, 0.5f * Time.deltaTime, 0);
@@ -33,6 +32,7 @@ public class CameraPan : MonoBehaviour
             
         }
 
+        // Pans the camera up to customer view
         if (start == true && cam.transform.localEulerAngles.x > rGoal)
         {
             cam.transform.position -= new Vector3(0, 0.5f * Time.deltaTime, 0);
@@ -47,11 +47,13 @@ public class CameraPan : MonoBehaviour
         if (start == true)
         { 
             start = false;
+            //Change button sprite on click
             targetButton.sprite = buttonSprites[1];
         }
         else
         {
             start = true;
+            //Change button sprite on click
             targetButton.sprite = buttonSprites[0];
             
         }
