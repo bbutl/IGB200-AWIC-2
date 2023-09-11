@@ -1,18 +1,24 @@
 using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 public class QueueController : MonoBehaviour
 {
     [SerializeField] MovementController[] characters;
-    [SerializeField] Sarah sarah;
     [SerializeField] Lucy lucy;
+    [SerializeField] Sarah sarah;
     [SerializeField] Kate kate;
     [SerializeField] Lily lily;
-    
+    [SerializeField] Steve steve;
+
+    private List<int> order = new List<int>();
     private int currentCharacter = -1;
 
     void Start()
     {
-        StartNextCharacter(0);
+        order = GenerateOrder();
+        Next();
     }
 
     void Update()
@@ -28,9 +34,12 @@ public class QueueController : MonoBehaviour
         currentCharacter += 1;
         if (currentCharacter < characters.Length)
         {
-            StartNextCharacter(currentCharacter);
+            StartNextCharacter(order[currentCharacter]);
         }
-        characters[currentCharacter - 1].LeaveShop();
+        if (currentCharacter > 0 && currentCharacter < characters.Length)
+        {
+            characters[order[currentCharacter - 1]].LeaveShop();
+        }
     }
 
     public void StartNextCharacter(int next)
@@ -50,10 +59,28 @@ public class QueueController : MonoBehaviour
             case 3:
                 lily.StartConversation();
                 break;
+            case 4:
+                steve.StartConversation();
+                break;
             default:
                 Debug.Log("Oopsie!");
                 break;
+        }            
+    }
+
+    private List<int> GenerateOrder()
+    {
+
+        order.Add(0);
+        order.Add(4);
+        order.Add(1);
+        order.Add(2);
+        order.Add(3);
+        for (int i = 0; i < characters.Length; i++)
+        {
+            order.Add(i);
         }
-            
+        //List<int> newList = order.OrderBy(_ => _rand.Next()).ToList();
+        return order;
     }
 }

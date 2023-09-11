@@ -13,6 +13,7 @@ public class MovementController : MonoBehaviour
 
     public void LeaveShop()
     {
+        GoToTarget(1);
         self.SetActive(false);
     }
 }

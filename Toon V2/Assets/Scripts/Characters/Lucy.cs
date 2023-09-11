@@ -37,7 +37,7 @@ public class Lucy : MonoBehaviour
         
         Monologue a = new Monologue(localName, $"Good morning, I'm {localName}.", b);
 
-        queue.Next();
+        //queue.Next();
 
         return a;
 
