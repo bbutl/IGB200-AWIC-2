@@ -9,6 +9,7 @@ TagManager:
   - DialogueChoice
   - Character
   - Holder
+  - Pie
   layers:
   - Default
   - TransparentFX

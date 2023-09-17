@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,16 +19,24 @@ public class Cook : MonoBehaviour
     [Header("Classes")]
     public Ingredient ingredient;
     public Pie pie;
+    public CameraPan cameraPan;
 
     [Header("GameObjects")]
     public GameObject pieObject;
     public GameObject cookingArea;
 
-    private Vector3 offset = new Vector3(0f, 1f, 0f);
+
+    private Vector3 pieSpawn = new Vector3 (0, 0.5f, 0);
+    private Vector3 offset = new Vector3(0f, 0.75f, 0f);
+    //change to false
+    private bool isCooked = true;
     // Start is called before the first frame update
     void Start()
     {
         pie = pieObject.GetComponent<Pie>();
+        pie.pbase = "Default";
+        pie.filling = "Default";
+        pie.top = "Default";
     }
 
     // Update is called once per frame
@@ -36,12 +45,16 @@ public class Cook : MonoBehaviour
         // If pie is complete, instantiate the pie & reset values of prefab
        if(PieCompleted())
         {
+            
             Destroy(currBase);
             Destroy(currFilling);
-            Instantiate(pieObject, cookingArea.transform.position + offset, Quaternion.identity);
+            GameObject p = Instantiate(pieObject, cookingArea.transform.position + pieSpawn, Quaternion.identity);
+            p.transform.position -= new Vector3(2.7f,-1,2f);
             pie.pbase = "Default";
             pie.filling = "Default"; 
             pie.top = "Default";
+            cameraPan.start = true;
+            cameraPan.Invoke("StartRotate", 5);
             Debug.Log("Complete");
         } 
     }
@@ -127,7 +140,12 @@ public class Cook : MonoBehaviour
     {
         if(pie.pbase != "Default" && pie.filling != "Default" && pie.top != "Default")
         {
-            return true;
+            if (isCooked)
+            {
+                return true;
+            }
+            else { return false; }
+            
         }
         else { return false; }
     }

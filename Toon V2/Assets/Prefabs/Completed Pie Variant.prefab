@@ -78,6 +78,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Completed Pie Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dae6784a2b667ea45be675bb91705cc0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pie
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -128,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481f2ccf210ec9d4c8a0164932000dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockY: 1
 --- !u!135 &7277756284875244256
 SphereCollider:
   m_ObjectHideFlags: 0

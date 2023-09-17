@@ -1,33 +1,52 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 using static Dialogue;
 
 public class Steve : MonoBehaviour
 {
-    public CameraPan cam;
+    public Cook cook;
+    public CameraPan pan;
+    string localName = "Steve";
+    string playerName = "Player";
+    public CustomerOrder order;
     public QueueController queue;
+    GameObject Sarah;
+    
 
     private void Start()
     {
-
+        order.CreateOrder();
+        Sarah = GameObject.Find("Sarah");
+        
+    }
+    public void Update()
+    {
+        if (cook.PieCompleted() == true && queue.currentCharacter == 1)
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(Conversation2());
+        }
 
     }
-
     public void StartConversation()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(Conversation());
     }
-
+    private DialogueSection Conversation2()
+    {
+        Monologue b = new Monologue(localName, $"Next");
+        Monologue a = new Monologue(localName, $"Thanks for the pie", b);
+        return a;
+    }
     private DialogueSection Conversation()
     {
-        string localName = "Steve";
-        string playerName = "Player";
+        
         // Occupation tied to possible events.
         string occupation = "Plumber";
-        Monologue sure = new Monologue(localName, "");
-        Choices d = new Choices(localName, "Can I get an X Pie?", ChoiceList(Choice("Sure thing", sure)));
+        Monologue sure = new Monologue(localName, "Thanks");
+        Choices d = new Choices(localName, $"Can I get a Pie with {order.orderFilling}?", ChoiceList(Choice("Sure thing", sure)));
         Monologue fine = new Monologue(localName, "That's nice to hear.", d);
         Monologue not_fine = new Monologue(localName, "That's too bad... hope it improves!", d);
         Monologue bad = new Monologue(localName, "Sorry to hear that.", d);
@@ -37,7 +56,7 @@ public class Steve : MonoBehaviour
 
         Monologue a = new Monologue(localName, $"Good morning, I'm {localName}.", b);
 
-        //queue.Next();
+      
 
         return a;
 

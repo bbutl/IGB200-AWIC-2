@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using static Dialogue;
+using Unity.VisualScripting;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -23,7 +24,12 @@ public class DialogueManager : MonoBehaviour
     public float canvasGroupFadeTime = 5F;
     bool canvasGroupDisplaying;
     public CanvasGroup dialogueCanvasGroup;
-
+    public QueueController queue;
+    public PipeBurst pipeBurst;
+    public Sarah sarah;
+    public CameraPan cameraPan;
+    public CustomerOrder customerOrder;
+    
     private void Start()
     {
         InitalizePanel();
@@ -39,8 +45,22 @@ public class DialogueManager : MonoBehaviour
         UpdateCanvasOpacity();
         PrepareForOptionDisplay();
         DisplayDialogueOptions();
+        NextCustomer();
     }
 
+    public void NextCustomer()
+    {
+        if (contentsText.text == "Next")
+        {
+            EndDialogue();
+            queue.Next();
+        }
+        if (contentsText.text == "Start")
+        {
+            sarah.startGuide = true;
+            pipeBurst.eventStarted = false;
+        }
+    }
     private void UpdateCanvasOpacity()
     {
         dialogueCanvasGroup.alpha = Mathf.Lerp(dialogueCanvasGroup.alpha, canvasGroupDisplaying ? 1F : 0F, Time.deltaTime * canvasGroupFadeTime);
@@ -118,8 +138,14 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
+        customerOrder.CreateOrder();
+        if(cameraPan.start == true)
+        {
+            //cameraPan.start = false;
+        }
         canvasGroupDisplaying = false;
         ClearAllOptions();
+        
     }
 
     private void ClearAllOptions()

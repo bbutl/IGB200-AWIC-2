@@ -19,7 +19,7 @@ public class PipeBurst : Event
     public bool pipeRemoved = false;
     public Transform originalPos;
     Vector3 stopMove;
-    private bool eventStarted = false;
+    public bool eventStarted = true;
     
 
 
@@ -43,8 +43,11 @@ public class PipeBurst : Event
     }
     void Update()
     {
-        
-        StartEvent();
+        if(eventStarted == false)
+        {
+            StartEvent();
+            
+        }
         if (stepNumber < 2) { gameObject.transform.position = stopMove; }
         
         StepCompleted();
@@ -106,6 +109,7 @@ public class PipeBurst : Event
         if (InitialiseEvent() && eventStarted == false)
         {
             eventStarted = true;
+
             cam.transform.position -= new Vector3(0, 1, 0);
             
             mainCam.transform.position = cam.transform.position;
@@ -115,7 +119,7 @@ public class PipeBurst : Event
             Debug.Log("Event Started");
             InstantiateEventObjects();
             panButton.gameObject.SetActive(false);
-            FindObjectOfType<DialogueManager>().StartDialogue(Guide());
+            //FindObjectOfType<DialogueManager>().StartDialogue(Guide());
 
 
         }
