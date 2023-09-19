@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public class EventManagerOld : MonoBehaviour
 {
     [Header("Character Lists")]
     public List<GameObject> allCharacters;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Dialogue;
 
-public class Lily : Character
+public class LilyOld : Character
 {
     public CameraPan cam;
     public CharacterRandomisation characterRandomisation;

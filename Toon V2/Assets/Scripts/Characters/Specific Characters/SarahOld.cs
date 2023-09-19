@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Dialogue;
 
-public class Sarah : MonoBehaviour
+public class SarahOld : MonoBehaviour
 {
 
     public Button eventButton;
