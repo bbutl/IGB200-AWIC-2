@@ -12,8 +12,8 @@ public class QueueController : MonoBehaviour
     [SerializeField] Lily lily;
     [SerializeField] Steve steve;
 
-    private List<int> order = new List<int>();
-    private int currentCharacter = -1;
+    public List<int> order = new List<int>();
+    public int currentCharacter = -1;
 
     void Start()
     {

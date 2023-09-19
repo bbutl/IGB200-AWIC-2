@@ -1,6 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class CharacterRandomisation : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class CharacterRandomisation : MonoBehaviour
     [SerializeField] Material[] colourEyes;
     [SerializeField] Material[] colourClothesOuter;
     [SerializeField] Material[] colourClothesInner;
+
+    //Character gender
+    [SerializeField] char gender;
 
     //Body part meshes
     private SkinnedMeshRenderer[] meshHead;
@@ -50,17 +54,25 @@ public class CharacterRandomisation : MonoBehaviour
     private int randomColourClothesOuter;
     private int randomColourClothesInner;
 
+    //Random name
+    public string name;
+
     void Start()
     {
         GetMeshes();
         RandomiseCharacter();
+
+        //SetPaths();
+        //LoadFromText();
+        //Debug.Log(listOfNames);
+        //Debug.Log(listOfNames[0]);
     }
 
     void Update()
     {
         if (Input.GetKeyDown("z"))
         {
-            //RandomiseCharacter();
+            RandomiseCharacter();
         }
     }
 
@@ -91,6 +103,22 @@ public class CharacterRandomisation : MonoBehaviour
         physicalClothesOuter[randomPhyscialClothesOuter].SetActive(true);
         physicalClothesInner[randomPhyscialClothesInner].SetActive(true);
         
+        //Set random name
+        switch (gender)
+        {
+            case 'F':
+                name = ListOfNames.girlNames[Random.Range(0, ListOfNames.girlNames.Length)];
+                return;
+            case 'M':
+                name = ListOfNames.boyNames[Random.Range(0, ListOfNames.boyNames.Length)];
+                return;
+            case 'X':
+                Debug.Log("Unimplemented...");
+                return;
+            default:
+                return;
+        }
+
         //Set the random colour for each part
         if (meshHead[randomPhyscialHead] != null)
             meshHead[randomPhyscialHead].material = colourSkin[randomColourSkin];
@@ -204,6 +232,66 @@ public class CharacterRandomisation : MonoBehaviour
                 meshClothesInner[i] = physicalClothesInner[i].GetComponent<SkinnedMeshRenderer>();
             else
                 meshClothesInnerMR[i] = physicalClothesInner[i].GetComponent<MeshRenderer>();
+        }
+    }
+
+    public void ChangeValue(int toChange, int value)
+    {
+        switch (toChange)
+        {
+            case 1:
+                randomPhyscialHead = value;
+                return;
+            case 2:
+                randomPhyscialHands = value;
+                return;
+            case 3:
+                randomPhyscialHair = value;
+                return;
+            case 4:
+                randomPhyscialEyes = value;
+                return;
+            case 5:
+                randomPhyscialClothesOuter = value;
+                return;
+            case 6:
+                randomPhyscialClothesInner = value;
+                return;
+            case 9:
+                randomColourSkin = value;
+                return;
+            case 10:
+                randomColourHair = value;
+                return;
+            case 11:
+                randomColourEyes = value;
+                return;
+            case 12:
+                randomColourClothesOuter = value;
+                return;
+            case 13:
+                randomColourClothesInner = value;
+                return;
+            default:
+                return;
+        }
+    }
+
+    public void ChangeName(int nameID)
+    {
+        switch (gender)
+        {
+            case 'F':
+                name = ListOfNames.girlNames[nameID];
+                return;
+            case 'M':
+                name = ListOfNames.boyNames[nameID];
+                return;
+            case 'X':
+                Debug.Log("Unimplemented...");
+                return;
+            default:
+                return;
         }
     }
 }

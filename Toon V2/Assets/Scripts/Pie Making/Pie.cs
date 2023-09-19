@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Pie : MonoBehaviour
 {
-    
     public string pbase;
     
     public string filling;
@@ -19,6 +18,5 @@ public class Pie : MonoBehaviour
         this.filling = filling;
         this.top = top;
     }
-    
 
 }

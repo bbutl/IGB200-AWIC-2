@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a6e2218f573124784977d324571a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisObject: {fileID: 6383236377680965835}
   pbase: Default
   filling: Default
   top: Default
@@ -128,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481f2ccf210ec9d4c8a0164932000dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockY: 1
 --- !u!135 &7277756284875244256
 SphereCollider:
   m_ObjectHideFlags: 0
