@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Text Components")]
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI contentsText;
+    public TextMeshProUGUI playerName;
     public char[] contentsArray;
 
     [Header("Dialogue Choice")]
@@ -23,6 +24,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Fade")]
     public float canvasGroupFadeTime = 5F;
     bool canvasGroupDisplaying;
+    
     public CanvasGroup dialogueCanvasGroup;
     public QueueController queue;
     public PipeBurst pipeBurst;
@@ -46,6 +48,11 @@ public class DialogueManager : MonoBehaviour
         PrepareForOptionDisplay();
         DisplayDialogueOptions();
         NextCustomer();
+        if(cameraPan.hasOrderded == true)
+        {
+            cameraPan.hasOrderded = false;
+        }
+        
     }
 
     public void NextCustomer()
@@ -59,6 +66,11 @@ public class DialogueManager : MonoBehaviour
         {
             sarah.startGuide = true;
             pipeBurst.eventStarted = false;
+        }
+        if (contentsText.text == "Order")
+        {
+            cameraPan.hasOrderded = true;
+            EndDialogue();
         }
     }
     private void UpdateCanvasOpacity()
@@ -81,6 +93,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(DialogueSection start)
     {
+        
         canvasGroupDisplaying = true;
         ClearAllOptions();
         currentSection = start;
@@ -128,6 +141,7 @@ public class DialogueManager : MonoBehaviour
         optionsBeenDisplayed = false;
 
         nameText.text = $"{currentSection.GetSpeakerName()}:";
+        
         contentsArray = currentSection.GetSpeechContents().ToCharArray();
         
         
@@ -139,9 +153,10 @@ public class DialogueManager : MonoBehaviour
     private void EndDialogue()
     {
         customerOrder.CreateOrder();
-        if(cameraPan.start == true)
+        if (cameraPan.start == true && cameraPan.hasOrderded == true )
         {
-            //cameraPan.start = false;
+            
+            cameraPan.start = false;
         }
         canvasGroupDisplaying = false;
         ClearAllOptions();

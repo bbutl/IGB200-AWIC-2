@@ -49,7 +49,7 @@ public class Cook : MonoBehaviour
             Destroy(currBase);
             Destroy(currFilling);
             GameObject p = Instantiate(pieObject, cookingArea.transform.position + pieSpawn, Quaternion.identity);
-            p.transform.position -= new Vector3(2.7f,-1,2f);
+            //p.transform.position -= new Vector3(2.7f,-1,2f);
             pie.pbase = "Default";
             pie.filling = "Default"; 
             pie.top = "Default";

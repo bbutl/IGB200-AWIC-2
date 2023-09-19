@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.UI;
 using static Dialogue;
 
 public class Steve : MonoBehaviour
@@ -14,6 +15,7 @@ public class Steve : MonoBehaviour
     public CustomerOrder order;
     public QueueController queue;
     GameObject Sarah;
+    
     
 
     private void Start()
@@ -45,7 +47,8 @@ public class Steve : MonoBehaviour
         
         // Occupation tied to possible events.
         string occupation = "Plumber";
-        Monologue sure = new Monologue(localName, "Thanks");
+        Monologue order1 = new Monologue(localName, "Order");
+        Monologue sure = new Monologue(localName, "Thanks", order1);
         Choices d = new Choices(localName, $"Can I get a Pie with {order.orderFilling}?", ChoiceList(Choice("Sure thing", sure)));
         Monologue fine = new Monologue(localName, "That's nice to hear.", d);
         Monologue not_fine = new Monologue(localName, "That's too bad... hope it improves!", d);

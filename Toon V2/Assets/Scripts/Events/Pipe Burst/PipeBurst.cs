@@ -13,7 +13,7 @@ public class PipeBurst : Event
     public DialogueManager d;
     public Camera cam;
     public Camera mainCam;
-    public Button panButton;
+    
     public DraggableObject drag;
     public bool waterOn = true;
     public bool pipeRemoved = false;
@@ -36,7 +36,7 @@ public class PipeBurst : Event
     }
     void Start()
     {
-        panButton = panButton.GetComponent<Button>();
+        
         
         occupationList = eventManager.avaliableOccupations;
         
@@ -118,7 +118,7 @@ public class PipeBurst : Event
             
             Debug.Log("Event Started");
             InstantiateEventObjects();
-            panButton.gameObject.SetActive(false);
+            
             //FindObjectOfType<DialogueManager>().StartDialogue(Guide());
 
 

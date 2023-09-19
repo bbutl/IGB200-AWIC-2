@@ -13,6 +13,7 @@ public class CustomerOrder : MonoBehaviour
     public string orderBase;
     public string orderFilling;
     public string orderTop;
+    public CameraPan cameraPan;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +59,7 @@ public class CustomerOrder : MonoBehaviour
         orderBase = baseIngredients[Random.Range(0, baseIngredients.Count - 1)].name;
         orderFilling = fillingIngredients[Random.Range(0, fillingIngredients.Count)].name;
         orderTop = topIngredients[Random.Range(0, topIngredients.Count - 1)].name;
+        
     }
 
 }

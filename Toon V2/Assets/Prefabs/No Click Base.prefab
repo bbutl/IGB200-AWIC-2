@@ -76,12 +76,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ba51bf3d97830484db7f89940f7ec0e1,
         type: 3}
       propertyPath: m_Name
-      value: Pie_base Variant 1
+      value: No Click Base
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ba51bf3d97830484db7f89940f7ec0e1,
         type: 3}
       propertyPath: m_TagString
-      value: Ingredient
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -91,10 +91,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 9041191917001350551}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ba51bf3d97830484db7f89940f7ec0e1,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 912380584768235113}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ba51bf3d97830484db7f89940f7ec0e1,
         type: 3}
       insertIndex: -1
@@ -120,18 +116,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: Base
   name: Base 2
---- !u!114 &912380584768235113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 32063570864028701}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 481f2ccf210ec9d4c8a0164932000dd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &3684345998057495977
 SphereCollider:
   m_ObjectHideFlags: 0

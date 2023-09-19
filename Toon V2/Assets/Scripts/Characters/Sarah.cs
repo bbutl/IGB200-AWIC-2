@@ -16,7 +16,8 @@ public class Sarah : MonoBehaviour
     string playerName = "Player";
     public PipeBurst burst;
     public bool startGuide = false;
-    
+    public Button nextButton; 
+
     public QueueController queue;
     public CustomerOrder order;
     private void Start()
@@ -26,6 +27,11 @@ public class Sarah : MonoBehaviour
     
     public void Update()
     {
+        if(startGuide == true)
+        {
+            //nextButton.gameObject.SetActive(false);
+            nextButton.gameObject.GetComponent<Button>().enabled = false;
+        }
         //Second Conversation
         if (cook.PieCompleted() == true && queue.currentCharacter == 2)
         {
@@ -48,10 +54,10 @@ public class Sarah : MonoBehaviour
 
     public DialogueSection Conversation()
     {
-        
 
-        
-        Monologue sure = new Monologue(localName, "Thank you.");
+
+        Monologue order1 = new Monologue(localName, "Order");
+        Monologue sure = new Monologue(localName, "Thank you.", order1);
         Choices d = new Choices(localName, $"Can I get a Pie with {order.orderFilling}?", ChoiceList(Choice("Sure thing", sure)));
         Monologue fine = new Monologue(localName, "That's nice to hear.", d);
         Monologue not_fine = new Monologue(localName, "That's too bad... hope it improves!", d);

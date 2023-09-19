@@ -41,7 +41,7 @@ public class InstallPipe : MonoBehaviour
             Destroy (other.gameObject);
             eventComplete = true;
             FindObjectOfType<DialogueManager>().StartDialogue(EventCompleted());
-            pBurst.panButton.gameObject.SetActive(true);
+            
             Camera.main.transform.position = orignalPos;
             Camera.main.transform.rotation = originalRotation;
         }

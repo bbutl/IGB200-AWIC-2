@@ -12,7 +12,7 @@ public class Lucy : MonoBehaviour
     public CameraPan pan;
     public QueueController queue;
     public CustomerOrder order;
-
+    
     private void Start()
     {
         order.CreateOrder();
@@ -41,7 +41,8 @@ public class Lucy : MonoBehaviour
     {
      
         string occupation = "Plumber";
-        Monologue sure = new Monologue(localName, "Thanks");
+        Monologue order1 = new Monologue(localName, "Order");
+        Monologue sure = new Monologue(localName, "Thanks", order1);
         Choices d = new Choices(localName, $"Can I get a Pie with {order.orderFilling}?", ChoiceList(Choice("Sure thing", sure)));
         Monologue fine = new Monologue(localName, "That's nice to hear.", d);
         Monologue not_fine = new Monologue(localName, "That's too bad... hope it improves!", d);

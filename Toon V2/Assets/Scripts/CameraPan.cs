@@ -12,13 +12,14 @@ public class CameraPan : MonoBehaviour
     [SerializeField] private Image targetButton;
     public bool start = true;
     public bool startRotate = false;
+    public bool hasOrderded = false;
     [Header("Camera components")]
     public Camera cam;
     Vector3 direction = new Vector3(1, 0, 0);
     Vector3 right = new Vector3(0, 1, 0);
     public float rGoal = 0f;
     public float rotationGoal = 80f;
-    public int fovGoal = 80;
+    
     public float angle = 10f;
     
     
@@ -48,7 +49,7 @@ public class CameraPan : MonoBehaviour
         {
             cam.transform.position += new Vector3(0, 0.5f * (Time.deltaTime * 1.5f), 0);
             cam.transform.Rotate(direction, angle * (Time.deltaTime * 1.5f));
-            targetButton.sprite = buttonSprites[1];
+            
         }
 
         // Pans the camera up to customer view
@@ -56,7 +57,7 @@ public class CameraPan : MonoBehaviour
         {
             cam.transform.position -= new Vector3(0, 0.5f * (Time.deltaTime * 1.5f), 0);
             cam.transform.Rotate((direction * -1), angle * (Time.deltaTime * 1.5f));
-            targetButton.sprite = buttonSprites[0];
+            
         }
         
         
