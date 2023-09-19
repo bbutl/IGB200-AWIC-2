@@ -36,12 +36,12 @@ public class InstallPipe : MonoBehaviour
             pipeInstalled = true;
             stepNumber += 1;
         }
-        if(other.gameObject.name == "Welder(Clone)" && stepNumber == 3)
+        if (other.gameObject.name == "Welder(Clone)" && pipeInstalled)
         {
             Destroy (other.gameObject);
             eventComplete = true;
             FindObjectOfType<DialogueManager>().StartDialogue(EventCompleted());
-            pBurst.panButton.gameObject.SetActive(true);
+            
             Camera.main.transform.position = orignalPos;
             Camera.main.transform.rotation = originalRotation;
         }

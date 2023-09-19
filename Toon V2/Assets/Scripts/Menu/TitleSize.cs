@@ -9,7 +9,7 @@ public class TitleSize : MonoBehaviour
     [SerializeField] private float maxSize;
     [SerializeField] private float speed;
 
-    private float currentSize = 2;
+    private float currentSize = 1;
     private int direction = 1;
 
     void Update()

@@ -15,22 +15,30 @@ public class DraggableObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         yPos = gameObject.transform.position.y;
         xPos = gameObject.transform.position.x;
     }
 
     void Update()
     {
-        LockY();
+        if (Camera.main.transform.localEulerAngles.x > 80 )
+        {
+            
+            lockY = true;
+        }
+        else
+        {
+            lockY = false;
+        }
         LockX();
+        LockY();
     }
 
     private void LockX()
     {
         if (lockY == false)
         {
-
-
             if (transform.position.x != xPos)
             {
                 transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
@@ -61,7 +69,7 @@ public class DraggableObject : MonoBehaviour
         {
             duplicateObject = this.gameObject;
             mousePosOffset = gameObject.transform.position - GetMousePos();
-            Instantiate(duplicateObject, GetMousePos() + mousePosOffset, Quaternion.identity);
+            Instantiate(duplicateObject, GetMousePos() + mousePosOffset, transform.rotation);
         }
         else
         {
@@ -81,4 +89,5 @@ public class DraggableObject : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
 }
