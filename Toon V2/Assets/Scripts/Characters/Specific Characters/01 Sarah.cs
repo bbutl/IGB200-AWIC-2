@@ -6,25 +6,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Dialogue;
 
-public class Sarah : MonoBehaviour
+public class Sarah : GenericCharacter
 {
-
-    public CameraPan cam;
-    public Button eventButton;
-    public Cook cook;
-    public CameraPan pan;
-    string localName = "Sarah";
-    string playerName = "Player";
-    public PipeBurst burst;
     public bool startGuide = false;
-    public Button nextButton; 
-
+    public Button nextButton;
+    public Cook cook;
     public QueueController queue;
+    public CharacterRandomisation characterRandomisation;
     public CustomerOrder order;
+
+    private string localName = "Sarah";
 
     private void Start()
     {
         order.CreateOrder();
+        localName = characterRandomisation.name;
     }
 
     
@@ -37,9 +33,7 @@ public class Sarah : MonoBehaviour
         }
         //Second Conversation
         if (cook.PieCompleted() == true && queue.currentCharacter == 2)
-        {
-            
-            
+        {   
             FindObjectOfType<DialogueManager>().StartDialogue(Conversation2());
         }
         //Third Conversation
@@ -50,7 +44,7 @@ public class Sarah : MonoBehaviour
         }
     }
     
-    public void StartConversation()
+    public override void StartConversation()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(Conversation());
     }
@@ -93,7 +87,7 @@ public class Sarah : MonoBehaviour
         Monologue guide4 = new Monologue(localName, $"Now that we have cut the pipe, remove the pipe.", guide5);
         Monologue guide3 = new Monologue(localName, $"Secondly, you will need to fit the pipe cutter to the pipe.", guide4);
         Monologue guide2 = new Monologue(localName, "", guide3);
-        Monologue guide1 = new Monologue(localName, $"Firstly, {playerName} make sure the water supply is switched off.", guide2);
+        Monologue guide1 = new Monologue(localName, $"Firstly, {SFM.saveDataList.playerName} make sure the water supply is switched off.", guide2);
         return guide1;
     }
 }

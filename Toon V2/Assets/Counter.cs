@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.iOS;
 
 public class Counter : MonoBehaviour
 {
@@ -18,7 +17,7 @@ public class Counter : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collide");
+        //Debug.Log("Collide");
         
         if (other.gameObject.tag == "Ingredient")
         {

@@ -19,8 +19,8 @@ public class SaveFileManagement : MonoBehaviour
         saveDataList = new GameData();
         SetPaths();
         //Whenever the save file layout is changed, run the game with the next line uncommented once
-        //SaveData(0);
-        LoadData(0);
+        //SaveData();
+        LoadData();
     }
 
     private void SetPaths()
@@ -29,7 +29,7 @@ public class SaveFileManagement : MonoBehaviour
         persistentPath = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
     }
 
-    public void SaveData(int file)
+    public void SaveData()
     {
         string savePath = path;
         string json = JsonUtility.ToJson(saveDataList);
@@ -37,7 +37,7 @@ public class SaveFileManagement : MonoBehaviour
         writer.Write(json);
     }
 
-    public void LoadData(int file)
+    public void LoadData()
     {
         using StreamReader reader = new StreamReader(path);
         string json = reader.ReadToEnd();
@@ -51,8 +51,8 @@ public class SaveFileManagement : MonoBehaviour
         {
             for (int element = 0; element < 15; element++)
             {
-                characterRandomisation[character].ChangeValue(element, saveDataList.characterRandomisations[saveDataList.currentFile * 450 + character + element]);
-                characterRandomisation[character].ChangeName(saveDataList.characterNames[saveDataList.currentFile * 30 + character]);
+                characterRandomisation[character].ChangeValue(element, saveDataList.characterRandomisations[saveDataList.currentFile * 450 + character * 15 + element]);
+                characterRandomisation[character].ChangeName(saveDataList.characterNames[saveDataList.currentFile * 30 + character * 15]);
             }
         }
     }
@@ -63,6 +63,8 @@ public class GameData
     public int currentFile = 0;
     public float[] sliderOptions = new float[] { 1f, 1f, 0.5f };
     public int[] otherOptions = new int[16];
+    public string playerName;
+    public int day;
     public int[] characterRandomisations = new int[1350];
     public int[] characterNames = new int[90];
 }
@@ -89,3 +91,8 @@ public class GameData
  * 
  * 
  */
+
+public class SFM : SaveFileManagement
+{
+    //This class is used as a shorthand for writing 'SaveFileManagement'
+}

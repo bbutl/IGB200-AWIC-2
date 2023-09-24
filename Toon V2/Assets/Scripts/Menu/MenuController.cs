@@ -5,7 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] GameObject pauseMenu;
+    /*
+     * MENU IDs
+     * 0 - Main
+     * 1 - Options
+     * 2 - Sound Options
+     * 3 - Other Options
+     * 4 - Date Management
+     */
+
+    [SerializeField] GameObject[] menus;
 
     private bool isPaused;
 
@@ -29,16 +38,30 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public void OpenMenu(int menu)
+    {
+        ClearMenus();
+        menus[menu].SetActive(true);
+    }
+
+    private void ClearMenus()
+    {
+        for (int menu = 0; menu < menus.Length; menu++)
+        {
+            menus[menu].SetActive(false);
+        }
+    }
+
     public void Pause()
     {
-        pauseMenu.SetActive(true);
+        OpenMenu(0);
         Time.timeScale = 0;
         isPaused = true;
     }
 
     public void Resume()
     {
-        pauseMenu.SetActive(false);
+        ClearMenus();
         Time.timeScale = 1;
         isPaused = false;
     }

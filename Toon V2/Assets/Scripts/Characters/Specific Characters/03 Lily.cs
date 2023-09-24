@@ -3,25 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Dialogue;
+using UnityEngine.UI;
 
-public class Kate : MonoBehaviour
+public class Lily : GenericCharacter
 {
-    public CameraPan cam;
+    public bool startGuide = false;
+    public Button nextButton;
+    public Cook cook;
+    public QueueController queue;
+    public CharacterRandomisation characterRandomisation;
+    public CustomerOrder order;
+
+    private string localName = "Lily";
+
     private void Start()
     {
 
-
+        localName = characterRandomisation.name;
     }
 
-    public void StartConversation()
+    public override void StartConversation()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(Conversation());
     }
 
     private DialogueSection Conversation()
     {
-        string localName = "Kate";
-        string playerName = "Player";
         // Occupation tied to possible events.
         string occupation = "Plumber";
         Monologue sure = new Monologue(localName, "");

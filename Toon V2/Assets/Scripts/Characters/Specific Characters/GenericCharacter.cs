@@ -9,7 +9,7 @@ public interface IGenericCharacter
 
 public abstract class GenericCharacter : MonoBehaviour, IGenericCharacter
 {
-    public void StartConversation()
+    public virtual void StartConversation()
     {
 
     }

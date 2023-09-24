@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManagerOld : MonoBehaviour
+public class EventManager : MonoBehaviour
 {
     [Header("Character Lists")]
     public List<GameObject> allCharacters;
@@ -13,7 +13,7 @@ public class EventManagerOld : MonoBehaviour
     [Header("Character")]
     
     public Character c;
-    public int maxCharacters = 3;
+    public int maxCharacters = 0;
 
     // Generate randomly selected characters on start && their assigned occupations
     void Start()

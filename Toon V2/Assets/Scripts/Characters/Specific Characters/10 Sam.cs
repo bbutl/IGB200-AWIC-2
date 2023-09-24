@@ -1,42 +1,40 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
-using UnityEngine.UI;
 using static Dialogue;
+using UnityEngine.UI;
 
-public class Steve : MonoBehaviour
+public class Sam : GenericCharacter
 {
+    public bool startGuide = false;
+    public Button nextButton;
     public Cook cook;
-    public CameraPan pan;
-    string localName = "Steve";
-    string playerName = "Player";
-    public CustomerOrder order;
     public QueueController queue;
     public CharacterRandomisation characterRandomisation;
-    GameObject Sarah;
-    
+    public CustomerOrder order;
+
+    private string localName = "Sam";
 
     private void Start()
     {
         order.CreateOrder();
-        Sarah = GameObject.Find("Sarah");
-        
+        localName = characterRandomisation.name;
     }
     public void Update()
     {
-        if (cook.PieCompleted() == true && queue.currentCharacter == 1)
+        if (cook.PieCompleted() == true && queue.currentCharacter == 0)
         {
-            FindObjectOfType<DialogueManager>().StartDialogue(Conversation2());
+            FindObjectOfType<DialogueManager>().StartDialogue(LucyThanks());
         }
 
     }
-    public void StartConversation()
+    public override void StartConversation()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(Conversation());
     }
-    private DialogueSection Conversation2()
+
+    private DialogueSection LucyThanks()
     {
         Monologue b = new Monologue(localName, $"Next");
         Monologue a = new Monologue(localName, $"Thanks for the pie", b);
@@ -44,8 +42,7 @@ public class Steve : MonoBehaviour
     }
     private DialogueSection Conversation()
     {
-        
-        // Occupation tied to possible events.
+     
         string occupation = "Plumber";
         Monologue order1 = new Monologue(localName, "Order");
         Monologue sure = new Monologue(localName, "Thanks", order1);
@@ -53,14 +50,12 @@ public class Steve : MonoBehaviour
         Monologue fine = new Monologue(localName, "That's nice to hear.", d);
         Monologue not_fine = new Monologue(localName, "That's too bad... hope it improves!", d);
         Monologue bad = new Monologue(localName, "Sorry to hear that.", d);
-
-
+        
+        
         Choices b = new Choices(localName, "How are you today?", ChoiceList(Choice("Fine", fine), Choice("Not so fine...", not_fine), Choice("Bad", bad)));
-
+        
         Monologue a = new Monologue(localName, $"Good morning, I'm {localName}.", b);
-
-      
-
+        
         return a;
 
     }

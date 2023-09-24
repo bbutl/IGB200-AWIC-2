@@ -26,7 +26,7 @@ public class SarahOld : MonoBehaviour
 
     public void Update()
     {
-        if (cook.PieCompleted() == true && queue.order[queue.currentCharacter] == 1)
+        if (cook.PieCompleted() == true && queue.order[0][queue.currentCharacter] == 1)
         {
             pan.start = true;
             FindObjectOfType<DialogueManager>().StartDialogue(Conversation2());

@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class CharacterRandomisation : MonoBehaviour
 {
+    //Character index (refer to 'QueueController'
+    [SerializeField] int characterIndex;
+
     //Physical body parts
     [SerializeField] GameObject[] physcialHead;
     [SerializeField] GameObject[] physicalHands;
@@ -56,6 +59,7 @@ public class CharacterRandomisation : MonoBehaviour
 
     //Random name
     public string name;
+    public int nameIndex;
 
     void Start()
     {
@@ -102,25 +106,29 @@ public class CharacterRandomisation : MonoBehaviour
         physicalEyes[randomPhyscialEyes].SetActive(true);
         physicalClothesOuter[randomPhyscialClothesOuter].SetActive(true);
         physicalClothesInner[randomPhyscialClothesInner].SetActive(true);
-        
+
         //Set random name
         switch (gender)
         {
             case 'F':
-                name = ListOfNames.girlNames[Random.Range(0, ListOfNames.girlNames.Length)];
-                return;
+                nameIndex = Random.Range(0, ListOfNames.girlNames.Length);
+                name = ListOfNames.girlNames[nameIndex];
+                break;
             case 'M':
-                name = ListOfNames.boyNames[Random.Range(0, ListOfNames.boyNames.Length)];
-                return;
+                nameIndex = Random.Range(0, ListOfNames.boyNames.Length);
+                name = ListOfNames.boyNames[nameIndex];
+                break;
             case 'X':
                 Debug.Log("Unimplemented...");
-                return;
+                break;
             default:
-                return;
+                name = "";
+                nameIndex = 0;
+                break;
         }
 
         //Set the random colour for each part
-        if (meshHead[randomPhyscialHead] != null)
+        if (meshHead[randomPhyscialHead] != null) //Each conditional branch checks if the body part has a 'SkinnedMeshRenderer' or a 'MeshRenderer' componant
             meshHead[randomPhyscialHead].material = colourSkin[randomColourSkin];
         else
             meshHeadMR[randomPhyscialHead].material = colourSkin[randomColourSkin];
@@ -144,10 +152,25 @@ public class CharacterRandomisation : MonoBehaviour
             meshClothesInner[randomPhyscialClothesInner].material = colourClothesInner[randomColourClothesInner];
         else
             meshClothesInnerMR[randomPhyscialClothesInner].material = colourClothesInner[randomColourClothesInner];
+
+        //Put the new character values into the save file
+        SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 1] = randomPhyscialHead;
+        SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 2] = randomPhyscialHands;
+        SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 3] = randomPhyscialHair;
+        SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 4] = randomPhyscialEyes;
+        SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 5] = randomPhyscialClothesOuter;
+        SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 6] = randomPhyscialClothesInner;
+        SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 9] = randomColourSkin;
+        SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 10] = randomColourHair;
+        SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 11] = randomColourEyes;
+        SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 12] = randomColourClothesOuter;
+        SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 13] = randomColourClothesInner;
+        SFM.saveDataList.characterNames[SFM.saveDataList.currentFile * 30 + characterIndex] = nameIndex;
     }
 
     private void ResetBodyParts()
     {
+        //Set all body part to unactive
         for (int i = 0; i < physcialHead.Length; i++)
         {
             physcialHead[i].SetActive(false);

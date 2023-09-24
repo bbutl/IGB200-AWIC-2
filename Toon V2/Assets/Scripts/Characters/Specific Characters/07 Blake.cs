@@ -3,21 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Dialogue;
+using UnityEngine.UI;
 
-public class Lucy : MonoBehaviour
+public class Blake : GenericCharacter
 {
-    public CameraPan cam;
-    string localName = "Lucy";
-    string playerName = "Player";
+    public bool startGuide = false;
+    public Button nextButton;
     public Cook cook;
-    public CameraPan pan;
     public QueueController queue;
+    public CharacterRandomisation characterRandomisation;
     public CustomerOrder order;
+
+    private string localName = "Lucy";
 
     private void Start()
     {
         order.CreateOrder();
-        
+        localName = characterRandomisation.name;
     }
     public void Update()
     {
@@ -27,7 +29,7 @@ public class Lucy : MonoBehaviour
         }
 
     }
-    public void StartConversation()
+    public override void StartConversation()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(Conversation());
     }
