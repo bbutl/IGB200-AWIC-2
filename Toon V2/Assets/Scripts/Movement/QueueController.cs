@@ -28,7 +28,7 @@ public class QueueController : MonoBehaviour
     private MovementController[] movementCharacters;
     private GenericCharacter[] individualCharacters;
 
-    public List<int>[] order;
+    public int[][] order = new int[8][];
     public int currentCharacter = -1;
 
     void Start()
@@ -49,7 +49,7 @@ public class QueueController : MonoBehaviour
     public void Next()
     {
         //Remove the current character, make the next character enter, and make them start conversation
-        if (currentCharacter < movementCharacters.Length - 1)
+        if (currentCharacter < order[dayController.day].Length - 1)
         {
             currentCharacter += 1;
             movementCharacters[order[dayController.day][currentCharacter]].GoToTarget(0);
@@ -63,7 +63,7 @@ public class QueueController : MonoBehaviour
         {
             movementCharacters[order[dayController.day][currentCharacter - 1]].LeaveShop();
         }
-        saveFileMangement.SaveData();
+        //saveFileMangement.SaveData();
     }
 
     private void DayOver()
@@ -73,28 +73,11 @@ public class QueueController : MonoBehaviour
         Next();
     }
 
-    private List<int>[] GenerateOrder()
+    private int[][] GenerateOrder()
     {
-        order = new List<int>[dayController.finalDay];
+        order[0] = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 
-        //Day 1
-        order[0].Add(0);
-        order[0].Add(4);
-        order[0].Add(1);
-        order[0].Add(2);
-        order[0].Add(3);
-        order[0].Add(5);
-        order[0].Add(6);
-        order[0].Add(7);
-        order[0].Add(8);
-        order[0].Add(9);
-        order[0].Add(10);
-        order[0].Add(11);
-
-        //Day 2
-        order[1].Add(0);
-        order[1].Add(4);
-        order[1].Add(1);
+        order[1] = new int[] { 0, 4, 1 };
 
         return order;
     }

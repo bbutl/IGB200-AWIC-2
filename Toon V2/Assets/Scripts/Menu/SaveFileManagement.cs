@@ -12,7 +12,7 @@ public class SaveFileManagement : MonoBehaviour
     private string path;
     private string persistentPath;
 
-    public static GameData saveDataList;
+    public GameData saveDataList;
 
     void Start()
     {

@@ -14,6 +14,7 @@ public class Sarah : GenericCharacter
     public QueueController queue;
     public CharacterRandomisation characterRandomisation;
     public CustomerOrder order;
+    public SaveFileManagement SFM;
 
     private string localName = "Sarah";
 
