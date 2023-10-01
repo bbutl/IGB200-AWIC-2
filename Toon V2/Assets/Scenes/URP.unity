@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -796,6 +796,51 @@ Transform:
   - {fileID: 604770979}
   m_Father: {fileID: 1750244805}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &40381520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 40381522}
+  - component: {fileID: 40381521}
+  m_Layer: 0
+  m_Name: Outline Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &40381521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40381520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21bb1bc475818b4991b945bfbb1a5fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!4 &40381522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40381520}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -57.500324, y: 3.7000027, z: 5.932027}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43878582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,15 +1058,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7dc6228d3aaf37540ad147b7332f39db,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 608406187}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7dc6228d3aaf37540ad147b7332f39db,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 608406185}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7dc6228d3aaf37540ad147b7332f39db,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 608406189}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7dc6228d3aaf37540ad147b7332f39db,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 608406195}
   m_SourcePrefab: {fileID: 100100000, guid: 7dc6228d3aaf37540ad147b7332f39db, type: 3}
 --- !u!1 &50670339
 GameObject:
@@ -1913,7 +1958,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481f2ccf210ec9d4c8a0164932000dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goTransform: {x: 0, y: 0, z: 0}
   lockY: 1
+  isDraggable: 1
 --- !u!4 &92601926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 69be26b85ccac0942b6da23de56a0768,
@@ -12221,7 +12268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481f2ccf210ec9d4c8a0164932000dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goTransform: {x: 0, y: 0, z: 0}
   lockY: 0
+  isDraggable: 1
 --- !u!65 &608406186
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12243,24 +12292,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.072651714, y: 0.040372215, z: 0.011443896}
   m_Center: {x: 0.03153461, y: 1.998714e-18, z: -0.00089706905}
---- !u!114 &608406187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608406181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e0cfbb065b092140872e2a6d96051dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentDay: 0
-  nextDay: 0
-  eventDay: 1
-  associatedOccupation: Electrician
-  eventManager: {fileID: 55976798}
-  occupationList: []
 --- !u!54 &608406189
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12294,30 +12325,45 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 48219357}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &608406195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608406181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cdaedf27a2b1f74ab3084211bd7c087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentDay: 1
+  nextDay: 0
+  eventDay: 1
+  associatedOccupation: Plumber
+  eventManager: {fileID: 55976798}
+  occupationList: []
+  stepComplete: 0
+  stepNumber: 1
+  water: {fileID: 640873256}
+  d: {fileID: 4408890809175129185}
+  cam: {fileID: 745866009}
+  mainCam: {fileID: 465538744}
+  drag: {fileID: 0}
+  waterOn: 1
+  pipeRemoved: 0
+  originalPos: {fileID: 0}
+  eventStarted: 1
+  welder: {fileID: 2090970685490366132, guid: 977181684e09e40479663ac388c35a3b, type: 3}
+  holder: {fileID: 2101017324555453552, guid: 5f5b1937cd6dcff45bd1fd351540744f, type: 3}
+  waterSupply: {fileID: 0}
+  newPipe: {fileID: 3575745910613170594, guid: d6cabe7cd1b52644186338bf26d49cc0, type: 3}
 --- !u!1 &611116796 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5262268463931566963, guid: f1d167fe02385c949b5ffa3e1cfedf22,
     type: 3}
   m_PrefabInstance: {fileID: 6802504982416975886}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &611116801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611116796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0.754717, g: 0.18867925, b: 0.67067474, a: 1}
-  outlineWidth: 7.02
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &611116804 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2321277403212687188, guid: f1d167fe02385c949b5ffa3e1cfedf22,
@@ -23236,7 +23282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481f2ccf210ec9d4c8a0164932000dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goTransform: {x: 0, y: 0, z: 0}
   lockY: 1
+  isDraggable: 1
 --- !u!114 &1195083209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25346,10 +25394,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startGuide: 0
   nextButton: {fileID: 4408890808312317503}
-  cook: {fileID: 0}
-  queue: {fileID: 0}
+  cook: {fileID: 305435818}
+  queue: {fileID: 2138351436}
   characterRandomisation: {fileID: 1303487992}
-  order: {fileID: 0}
+  order: {fileID: 55976797}
 --- !u!1 &1305938309 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3575745910613170594, guid: d6cabe7cd1b52644186338bf26d49cc0,
@@ -25416,7 +25464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d49d1ba1075fa7e40b480bd2ff341087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pBurst: {fileID: 1778627888}
+  pBurst: {fileID: 608406195}
   eventComplete: 0
   d: {fileID: 4408890809175129185}
 --- !u!4 &1305938320 stripped
@@ -26113,7 +26161,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481f2ccf210ec9d4c8a0164932000dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goTransform: {x: 0, y: 0, z: 0}
   lockY: 1
+  isDraggable: 1
 --- !u!114 &1338004873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27698,6 +27748,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 21a733a5ad8216b4b83faa7a40e5c896,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e196fa46a3222f45a46de38c5d91c63, type: 2}
     - target: {fileID: 919132149155446097, guid: 21a733a5ad8216b4b83faa7a40e5c896,
         type: 3}
       propertyPath: m_Name
@@ -33958,7 +34013,7 @@ Transform:
   m_GameObject: {fileID: 1778627881}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -48.89, y: 6.75, z: 7.55}
+  m_LocalPosition: {x: -48.89, y: 46.6, z: 7.55}
   m_LocalScale: {x: 1, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33994,7 +34049,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481f2ccf210ec9d4c8a0164932000dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goTransform: {x: 0, y: 0, z: 0}
   lockY: 0
+  isDraggable: 1
 --- !u!114 &1778627888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34024,8 +34081,8 @@ MonoBehaviour:
   pipeRemoved: 0
   originalPos: {fileID: 0}
   eventStarted: 1
-  welder: {fileID: 0}
-  holder: {fileID: 0}
+  welder: {fileID: 2090970685490366132, guid: 977181684e09e40479663ac388c35a3b, type: 3}
+  holder: {fileID: 2101017324555453552, guid: 5f5b1937cd6dcff45bd1fd351540744f, type: 3}
   waterSupply: {fileID: 0}
   newPipe: {fileID: 0}
 --- !u!1 &1782835765
@@ -37042,7 +37099,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481f2ccf210ec9d4c8a0164932000dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goTransform: {x: 0, y: 0, z: 0}
   lockY: 0
+  isDraggable: 1
 --- !u!114 &2020840996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37141,7 +37200,7 @@ Transform:
   m_GameObject: {fileID: 2020840994}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -48.89, y: 6.75, z: 7.55}
+  m_LocalPosition: {x: -48.89, y: -294.3, z: 7.55}
   m_LocalScale: {x: 1, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43188,7 +43247,7 @@ MonoBehaviour:
   dialogueCanvasGroup: {fileID: 4408890808859863997}
   queue: {fileID: 2138351436}
   pipeBurst: {fileID: 1778627888}
-  sarah: {fileID: 1727513347}
+  kate: {fileID: 1303487993}
   cameraPan: {fileID: 465538746}
   customerOrder: {fileID: 55976797}
   displayingChoices: 0
@@ -44841,11 +44900,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5262268463931566963, guid: f1d167fe02385c949b5ffa3e1cfedf22,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 611116801}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1d167fe02385c949b5ffa3e1cfedf22, type: 3}
 --- !u!114 &6810414264760833699
 MonoBehaviour:
@@ -46434,3 +46489,4 @@ SceneRoots:
   - {fileID: 745866010}
   - {fileID: 871048811}
   - {fileID: 872291359}
+  - {fileID: 40381522}

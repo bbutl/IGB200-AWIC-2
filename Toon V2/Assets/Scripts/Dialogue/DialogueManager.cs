@@ -28,7 +28,7 @@ public class DialogueManager : MonoBehaviour
     public CanvasGroup dialogueCanvasGroup;
     public QueueController queue;
     public PipeBurst pipeBurst;
-    public Sarah sarah;
+    public Kate kate;
     public CameraPan cameraPan;
     public CustomerOrder customerOrder;
     
@@ -64,7 +64,7 @@ public class DialogueManager : MonoBehaviour
         }
         if (contentsText.text == "Start")
         {
-            sarah.startGuide = true;
+            kate.startGuide = true;
             pipeBurst.eventStarted = false;
         }
         if (contentsText.text == "Order")

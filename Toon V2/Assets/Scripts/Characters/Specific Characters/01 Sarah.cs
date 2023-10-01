@@ -53,7 +53,6 @@ public class Sarah : GenericCharacter
     public DialogueSection Conversation()
     {
 
-
         Monologue order1 = new Monologue(localName, "Order");
         Monologue sure = new Monologue(localName, "Thank you.", order1);
         Choices d = new Choices(localName, $"Can I get a Pie with {order.orderFilling}?", ChoiceList(Choice("Sure thing", sure)));

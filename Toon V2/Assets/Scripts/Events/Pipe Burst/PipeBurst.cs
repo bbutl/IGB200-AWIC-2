@@ -36,9 +36,9 @@ public class PipeBurst : Event
     }
     void Start()
     {
+        occupationList.Add("Plumber");
         
-        
-        occupationList = eventManager.avaliableOccupations;
+        //occupationList = eventManager.avaliableOccupations;
         
     }
     void Update()

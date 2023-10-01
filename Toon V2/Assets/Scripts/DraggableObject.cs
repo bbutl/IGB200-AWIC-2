@@ -1,30 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DraggableObject : MonoBehaviour
 {
     [Header("Mouse Position")]
     private Vector3 mousePosOffset;
     Vector3 mousePosition;
+    public Vector3 goTransform;
     float yPos;
     float xPos;
     public bool lockY = true;
+    public bool isDraggable = true;
     private GameObject duplicateObject;
-    
+    private float timer = 0;
+    private bool timerStart = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        goTransform = gameObject.transform.position;
+
         yPos = gameObject.transform.position.y;
         xPos = gameObject.transform.position.x;
     }
 
     void Update()
     {
-        if (Camera.main.transform.localEulerAngles.x > 80 )
+        if (!isDraggable)
         {
-            
+            timer += Time.deltaTime;
+        }
+        if (timer > 1)
+        {
+            timer = 0;
+            isDraggable = true;
+        }
+        if (Camera.main.transform.localEulerAngles.x > 80)
+        {
             lockY = true;
         }
         else
@@ -34,6 +48,7 @@ public class DraggableObject : MonoBehaviour
         LockX();
         LockY();
     }
+
 
     private void LockX()
     {
@@ -67,27 +82,44 @@ public class DraggableObject : MonoBehaviour
         //If the object is an ingredient, instantiate a clone of the object on click
         if (this.gameObject.tag == "Ingredient")
         {
+            /*
             duplicateObject = this.gameObject;
             mousePosOffset = gameObject.transform.position - GetMousePos();
             Instantiate(duplicateObject, GetMousePos() + mousePosOffset, transform.rotation);
+            */
         }
         else
         {
             mousePosOffset = gameObject.transform.position - GetMousePos();
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (gameObject.tag == "Ingredient")
+        {
+            isDraggable = false;
+            gameObject.transform.position = goTransform;
+        }
+
+    }
     private void OnMouseDrag()
     {
-        //Object transform position is equal to cursor position
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
+        if (isDraggable)
+        {
+            //Object transform position is equal to cursor position
+            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
+        }
+
+
     }
     public void OnMouseUp()
     {
         //If the object is an ingredient, destroy game object on mouse button up
         if (this.gameObject.tag == "Ingredient")
         {
-            Destroy(gameObject);
+            this.gameObject.transform.position = goTransform;
+            //Destroy(gameObject);
         }
     }
-    
+
 }
