@@ -9,6 +9,7 @@ public class DayController : MonoBehaviour
     public int finalDay = 7;
     public QueueController[] dayQueues;
     public TextMeshProUGUI dayText;
+    public MenuController menuController;
 
     private string[] dayNames = new string[] { "Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7", "Day 8" };
 
@@ -29,6 +30,7 @@ public class DayController : MonoBehaviour
 
     public void NextDay()
     {
+        menuController.PauseAndOpenMenu(8);
         day += 1;
         UpdateText();
     }

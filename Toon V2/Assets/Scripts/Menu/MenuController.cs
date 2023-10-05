@@ -44,6 +44,13 @@ public class MenuController : MonoBehaviour
         menus[menu].SetActive(true);
     }
 
+    public void PauseAndOpenMenu(int menu)
+    {
+        OpenMenu(menu);
+        Time.timeScale = 0;
+        isPaused = true;
+    }
+
     private void ClearMenus()
     {
         for (int menu = 0; menu < menus.Length; menu++)

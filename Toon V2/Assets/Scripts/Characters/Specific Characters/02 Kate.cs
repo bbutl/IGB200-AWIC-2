@@ -15,7 +15,7 @@ public class Kate : GenericCharacter
     public CharacterRandomisation characterRandomisation;
     public CustomerOrder order;
 
-    private string localName;
+    private string localName = "Katie";
     string playerName = "Player";
     private void Start()
     {

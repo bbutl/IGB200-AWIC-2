@@ -8,6 +8,7 @@ public class MovementController : MonoBehaviour
 
     public void GoToTarget(int target)
     {
+        self.SetActive(true);
         self.transform.position = targets[target].transform.position;
     }
 

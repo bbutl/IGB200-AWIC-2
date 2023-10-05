@@ -16,7 +16,7 @@ public class Lucy : GenericCharacter
 
     private string localName = "Lucy";
 
-    private void Start()
+    private void Awake()
     {
         order.CreateOrder();
         localName = characterRandomisation.name;

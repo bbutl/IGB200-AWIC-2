@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class SaveFileManagement : MonoBehaviour
 {
     [SerializeField] private CharacterRandomisation[] characterRandomisation;
+    [SerializeField] private Text[] fileNames;
 
     private string path;
     private string persistentPath;
@@ -56,6 +57,17 @@ public class SaveFileManagement : MonoBehaviour
             }
         }
     }
+
+    public void UpdateSaveFileUIElements()
+    {
+        for (int file = 0; file < fileNames.Length; file++)
+        {
+            if (file % 3 == -1)
+            {
+                fileNames[file].text = $"File {file % 3}: (Empty)";
+            }
+        }
+    }
 }
 
 public class GameData
@@ -64,9 +76,11 @@ public class GameData
     public float[] sliderOptions = new float[] { 1f, 1f, 0.5f };
     public int[] otherOptions = new int[16];
     public string playerName;
-    public int day;
+    public int day = -1;
     public int[] characterRandomisations = new int[1350];
     public int[] characterNames = new int[90];
+    public int[] playerFavour = new int[3];
+    public int[] playerFlags = new int[120];
 }
 
 /*

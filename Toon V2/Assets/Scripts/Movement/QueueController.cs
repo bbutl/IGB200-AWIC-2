@@ -39,8 +39,8 @@ public class QueueController : MonoBehaviour
     }
 
     void Update()
-    {
-        if (Input.GetKeyDown("x"))
+    {        
+        if (Input.GetKeyDown("x") && Time.timeScale != 0)
         {
             Next();
         }
@@ -49,6 +49,10 @@ public class QueueController : MonoBehaviour
     public void Next()
     {
         //Remove the current character, make the next character enter, and make them start conversation
+        if (currentCharacter >=  0)
+        {
+            movementCharacters[order[dayController.day][currentCharacter]].LeaveShop();
+        }
         if (currentCharacter < order[dayController.day].Length - 1)
         {
             currentCharacter += 1;
@@ -59,25 +63,39 @@ public class QueueController : MonoBehaviour
         {
             DayOver();
         }
-        if (currentCharacter > 0)
-        {
-            movementCharacters[order[dayController.day][currentCharacter - 1]].LeaveShop();
-        }
         //saveFileMangement.SaveData();
     }
 
     private void DayOver()
     {
-        dayController.NextDay();
-        currentCharacter = -1;
-        Next();
+        if (dayController.day < dayController.finalDay)
+        {
+            dayController.NextDay();
+            currentCharacter = -1;
+            Next();
+        }
+        if (dayController.day == dayController.finalDay)
+        {
+            //Place every character in the shop
+            foreach (MovementController character in movementCharacters)
+            {
+                character.GoToTarget(2);
+            }
+        }
     }
 
     private int[][] GenerateOrder()
     {
-        order[0] = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+        //order[0] = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 
-        order[1] = new int[] { 0, 4, 1 };
+        order[0] = new int[] { 9, 11 };
+        order[1] = new int[] { 1, 6, 7 };
+        order[2] = new int[] { 0, 1, 4 };
+        order[3] = new int[] { 2, 0 };
+        order[4] = new int[] { 3, 7 };
+        order[5] = new int[] { 4, 9 };
+        order[6] = new int[] { 5, 11 };
+        order[7] = new int[] { 6, 7, 10, 1 };
 
         return order;
     }

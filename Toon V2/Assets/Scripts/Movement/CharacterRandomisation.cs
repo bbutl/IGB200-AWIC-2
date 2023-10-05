@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class CharacterRandomisation : MonoBehaviour
 {
-    //Character index (refer to 'QueueController'
+    //Character index (refer to 'QueueController')
     [SerializeField] int characterIndex;
     [SerializeField] SaveFileManagement SFM;
 
@@ -60,7 +60,7 @@ public class CharacterRandomisation : MonoBehaviour
 
     //Random name
     public string name;
-    public int nameIndex;
+    public int nameIndex = -1;
 
     void Start()
     {
@@ -319,6 +319,31 @@ public class CharacterRandomisation : MonoBehaviour
                 return;
             default:
                 return;
+        }
+    }
+
+    public string GetName()
+    {
+        if (nameIndex == -1)
+        {
+            //Set random name
+            switch (gender)
+            {
+                case 'F':
+                    nameIndex = Random.Range(0, ListOfNames.girlNames.Length);
+                    return ListOfNames.girlNames[nameIndex];
+                case 'M':
+                    nameIndex = Random.Range(0, ListOfNames.boyNames.Length);
+                    return ListOfNames.boyNames[nameIndex];
+                case 'X':
+                    return "";
+                default:
+                    return "";
+            }
+        }
+        else
+        {
+            return "Archibald";
         }
     }
 }
