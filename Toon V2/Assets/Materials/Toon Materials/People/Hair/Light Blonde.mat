@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: hair
+  m_Name: Light Blonde
   m_Shader: {fileID: -6465566751694194690, guid: 0cdcabdd91a1e5c46984d8e7310553f9,
     type: 3}
   m_Parent: {fileID: 0}
@@ -62,12 +62,12 @@ Material:
     - Brightness_Rim: 2
     - Rim_Power: 5
     - Toon_Ramp_Offset: 0.5
-    - Toon_Ramp_Smoothness: 0.029
+    - Toon_Ramp_Smoothness: 0
     - _Ambient: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Toon_Ramp_Offset_Point: 0.5
     m_Colors:
     - Toon_Ramp_Tint: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
-    - _Color: {r: 1, g: 0.94561106, b: 0.37169808, a: 1}
+    - _Color: {r: 1, g: 0.9673113, b: 0.6264151, a: 1}
   m_BuildTextureStacks: []

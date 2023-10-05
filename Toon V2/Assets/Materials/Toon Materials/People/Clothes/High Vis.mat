@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blue
+  m_Name: High Vis
   m_Shader: {fileID: -6465566751694194690, guid: 0cdcabdd91a1e5c46984d8e7310553f9,
     type: 3}
   m_Parent: {fileID: 0}
@@ -69,5 +69,5 @@ Material:
     - _Toon_Ramp_Offset_Point: 0.5
     m_Colors:
     - Toon_Ramp_Tint: {r: 0.49056596, g: 0.49056596, b: 0.49056596, a: 1}
-    - _Color: {r: 0.5981132, g: 1, b: 0.945213, a: 1}
+    - _Color: {r: 0.992313, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
