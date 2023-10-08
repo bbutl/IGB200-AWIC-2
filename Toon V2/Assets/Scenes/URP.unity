@@ -1749,13 +1749,14 @@ GameObject:
   - component: {fileID: 91796779}
   - component: {fileID: 91796778}
   - component: {fileID: 91796777}
+  - component: {fileID: 91796780}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &91796777
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -6566,6 +6567,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &91796780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91796776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95130bc7d6ee874e8beceae621e7f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMaterial: {fileID: 0}
+  particles: {fileID: 0}
+  manager: {fileID: 4408890809175129185}
 --- !u!1 &92601921 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 69be26b85ccac0942b6da23de56a0768,

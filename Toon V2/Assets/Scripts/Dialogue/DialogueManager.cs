@@ -95,6 +95,7 @@ public class DialogueManager : MonoBehaviour
             goodChoice += 1;
             ProceedToNext();
         }
+        
     }
     private void UpdateCanvasOpacity()
     {

@@ -85,13 +85,13 @@ public class Sean : MonoBehaviour
         Monologue line16 = new Monologue(playerName, "Yes actually!", line17);
         Monologue line15 = new Monologue(localname, "Is there anything here that still works?", line16);
         Monologue line14 = new Monologue(localname, "So tell me...", line15);
-        // laugh react
-        Monologue line13 = new Monologue(localname, "Ah yes, eleven years. Time flies by when you’re retired!", line14);
+        
+        Monologue line13 = new Monologue(localname, "Ah yes, eleven years. Time flies by when you’re retired!\n\n\n\n\nLaugh..", line14);
         Monologue line12 = new Monologue(playerName, "After you told me that this place hadn’t seen anyone in eleven years \n  I decided it’s time for a makeover.", line13);
         Monologue line11 = new Monologue(playerName, "Yes, there is an official reopening next Monday.", line12);
         Monologue line10 = new Monologue(localname, "I heard there was a grand reopening soon?", line11);
-        // laugh react
-        Monologue line9 = new Monologue(localname, "Forty-five years in this industry does a number on you when you \n get to my age.", line10);
+       
+        Monologue line9 = new Monologue(localname, "Forty-five years in this industry does a number on you when you \n get to my age.\n\n\n\n\n Laugh..", line10);
         Monologue line8 = new Monologue(localname, "Don’t even mention it.", line9);
         Monologue line7 = new Monologue(playerName, "I wouldn’t have a job if it weren’t for you selling this place to me.", line8);
         Monologue line6 = new Monologue(playerName, "You’re welcome here anytime.", line7);
@@ -134,7 +134,7 @@ public class Sean : MonoBehaviour
         Monologue line3 = new Monologue(localname, "As long as you know how to make a pie already, then you’ll be fine.", line4);
         Monologue line2 = new Monologue(localname, "I won’t be a bother on your first day.", line3);
         //Sad React
-        Monologue line1 = new Monologue(localname, "Ah no worries.", line2);
+        Monologue line1 = new Monologue(localname, "Ah no worries.\n\n\n\n\nSad..", line2);
         return line1;
     }
     public DialogueSection ConversationBad2()
@@ -179,8 +179,8 @@ public class Sean : MonoBehaviour
         Monologue end = new Monologue(playerName, "See ya later Sean.", end2);
         Monologue line16 = new Monologue(localname, "Good luck with the renovations, I’ll catch ya around some time!", end);
         Monologue line15 = new Monologue(localname, "Anyay, I'll be heading off.", line16 );
-        //Laugh
-        Monologue line14 = new Monologue(localname, "Well with pies like that, I’m sure they’d flock to help you open!", line15 );
+        
+        Monologue line14 = new Monologue(localname, "Well with pies like that, I’m sure they’d flock to help you open!\n\n\n\n\nLaugh..", line15 );
         Monologue line13 = new Monologue(playerName, "Maybe I can find some people to help me with the renovations \nsince I know nothing about construction.", line14);
         Monologue line12 = new Monologue(playerName, "Oh yeah for sure.", line13);
         Monologue line11 = new Monologue(localname, "I’m sure a pie store like this would be a hot spot once fully opened.", line12);
@@ -190,8 +190,8 @@ public class Sean : MonoBehaviour
         Monologue line7 = new Monologue(localname, "...", line8);
         Monologue line6 = new Monologue(localname, "Oh cheers mate.", line7);
         Monologue line5 = new Monologue(playerName, "Well you certainly are welcome here anytime.", line6);
-        //Laugh
-        Monologue line4 = new Monologue(localname, "I think I should become your official taste tester if you keep \n making them like this. ", line5 );
+        
+        Monologue line4 = new Monologue(localname, "I think I should become your official taste tester if you keep \n making them like this. \n\n\n\n\nLaugh..", line5 );
         Monologue line3 = new Monologue(localname, "For a newcomer you sure can make a great pie.", line4);
         Monologue line2 = new Monologue(localname, "Fantastic!", line3);
         
