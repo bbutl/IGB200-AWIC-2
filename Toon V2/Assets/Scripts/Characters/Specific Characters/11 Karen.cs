@@ -23,7 +23,7 @@ public class Karen : GenericCharacter
     }
     public void Update()
     {
-        if (cook.PieCompleted() == true && queue.currentCharacter == 0)
+        if (cook.PieCompleted() == true && queue.currentCharacter == 1)
         {
             FindObjectOfType<DialogueManager>().StartDialogue(LucyThanks());
         }

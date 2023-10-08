@@ -30,7 +30,7 @@ public class OutlineObject : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit)) 
         {
             highlight = raycastHit.transform;
-            if (highlight.tag == "Ingredient" || highlight.tag == "Event" && highlight != selection)
+            if (highlight.tag == "Ingredient" || highlight.tag == "Event" || highlight.tag == "Pie" && highlight != selection)
             {
                 if (highlight.gameObject.GetComponent<Outline>() != null)
                 {

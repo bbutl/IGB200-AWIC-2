@@ -5,6 +5,8 @@ using UnityEngine;
 using TMPro;
 using static Dialogue;
 using Unity.VisualScripting;
+using UnityEngine.UI;
+using Unity.PlasticSCM.Editor.WebApi;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI contentsText;
     public TextMeshProUGUI playerName;
     public char[] contentsArray;
-
+    private float typingSpeed = 0.03f;
     [Header("Dialogue Choice")]
     public GameObject proceedConverstaionObject;
     public GameObject dialogueChoiceObject;
@@ -31,7 +33,14 @@ public class DialogueManager : MonoBehaviour
     public Kate kate;
     public CameraPan cameraPan;
     public CustomerOrder customerOrder;
-    
+    public GameObject currentCharacter;
+
+    public int badChoice = 0;
+    public int goodChoice = 0;
+
+    //public GameObject DialogueBox;
+   // public Sprite playerImage;
+   // public Sprite otherImage;
     private void Start()
     {
         InitalizePanel();
@@ -44,10 +53,11 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+        //ChangeBox();
         UpdateCanvasOpacity();
         PrepareForOptionDisplay();
         DisplayDialogueOptions();
-        NextCustomer();
+        TextCommands();
         if(cameraPan.hasOrderded == true)
         {
             cameraPan.hasOrderded = false;
@@ -55,8 +65,10 @@ public class DialogueManager : MonoBehaviour
         
     }
 
-    public void NextCustomer()
+    public void TextCommands()
     {
+        currentCharacter = GameObject.FindGameObjectWithTag("Character");
+        
         if (contentsText.text == "Next")
         {
             EndDialogue();
@@ -70,7 +82,18 @@ public class DialogueManager : MonoBehaviour
         if (contentsText.text == "Order")
         {
             cameraPan.hasOrderded = true;
+            ProceedToNext();
             EndDialogue();
+        }
+        if(contentsText.text == "Bad.")
+        {
+            badChoice += 1;
+            ProceedToNext();
+        }
+        if (contentsText.text == "Good.")
+        {
+            goodChoice += 1;
+            ProceedToNext();
         }
     }
     private void UpdateCanvasOpacity()
@@ -127,7 +150,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         bool isMonologue = typeof(Monologue).IsInstanceOfType(currentSection);
-
+        StopAllCoroutines();
         proceedConverstaionObject.SetActive(isMonologue);
 
         ClearAllOptions();
@@ -143,12 +166,20 @@ public class DialogueManager : MonoBehaviour
         nameText.text = $"{currentSection.GetSpeakerName()}:";
         
         contentsArray = currentSection.GetSpeechContents().ToCharArray();
-        
-        
-        contentsText.text = currentSection.GetSpeechContents();
+
+
+        StartCoroutine(DisplayLine(currentSection.GetSpeechContents()));
     }
     
-    
+    private IEnumerator DisplayLine(string line)
+    {
+        contentsText.text = "";
+        foreach (char c in line.ToCharArray())
+        {
+            contentsText.text += c;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+    }
 
     private void EndDialogue()
     {
@@ -183,7 +214,16 @@ public class DialogueManager : MonoBehaviour
         displayingChoices = true;
         indexOfCurrentChoice = 0;
     }
+    /*
+    public void ChangeBox()
+    {
+        if(currentSection.GetSpeakerName() == "Player")
+        {
+            Image playerImage = DialogueBox.GetComponent<Image>();
 
+        }
+    }
+    */
     public void DisplayDialogueOptions()
     {
         if(!typeof(Choices).IsInstanceOfType(currentSection))

@@ -19,7 +19,7 @@ public class Counter : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collide");
+        
 
         if (other.gameObject.tag == "Ingredient")
         {

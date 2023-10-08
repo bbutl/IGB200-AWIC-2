@@ -56,7 +56,7 @@ public class Cook : MonoBehaviour
             pie.filling = "Default";
             pie.top = "Default";
             cameraPan.start = true;
-            cameraPan.Invoke("StartRotate", 5);
+            //cameraPan.Invoke("StartRotate", 2.5f);
             Debug.Log("Complete");
         }
     }

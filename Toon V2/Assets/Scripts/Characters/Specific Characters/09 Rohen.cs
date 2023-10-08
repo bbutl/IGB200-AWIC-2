@@ -13,14 +13,20 @@ public class Rohen : GenericCharacter
     public QueueController queue;
     public CharacterRandomisation characterRandomisation;
     public CustomerOrder order;
-
-    private string localName = "Rohen";
-
+    public string orderFilling;
+    private string localName;
+    private void Awake()
+    {
+        localName = characterRandomisation.GetName();
+        order.CreateOrder();
+        orderFilling = order.orderFilling;
+    }
     private void Start()
     {
-        order.CreateOrder();
-        localName = characterRandomisation.name;
+        
+        
     }
+    
     public void Update()
     {
         if (cook.PieCompleted() == true && queue.currentCharacter == 0)
@@ -43,7 +49,7 @@ public class Rohen : GenericCharacter
     private DialogueSection Conversation()
     {
      
-        string occupation = "Plumber";
+        
         Monologue order1 = new Monologue(localName, "Order");
         Monologue sure = new Monologue(localName, "Thanks", order1);
         Choices d = new Choices(localName, $"Can I get a Pie with {order.orderFilling}?", ChoiceList(Choice("Sure thing", sure)));
@@ -54,7 +60,7 @@ public class Rohen : GenericCharacter
         
         Choices b = new Choices(localName, "How are you today?", ChoiceList(Choice("Fine", fine), Choice("Not so fine...", not_fine), Choice("Bad", bad)));
         
-        Monologue a = new Monologue(localName, $"Good morning, I'm {localName}.", b);
+        Monologue a = new Monologue(localName, "Next");
         
         return a;
 
