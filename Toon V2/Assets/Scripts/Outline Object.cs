@@ -9,18 +9,25 @@ public class OutlineObject : MonoBehaviour
     private Transform highlight;
     private Transform selection;
     private RaycastHit raycastHit;
-    public GameObject target;
+    //public GameObject target;
+    public float timer = 0f;
+    public float maxTime = 1f;
 
     private List<string> tags = new List<string>();
 
     private void Start()
     {
         tags.Add("Ingredient");
-        HighLight(target);
+        //HighLight(target);
     }
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+        if(timer > maxTime)
+        {
+            timer = 0f;
+        }
         if (highlight != null)
         {
             highlight.gameObject.GetComponent<Outline>().enabled = false;

@@ -43,7 +43,7 @@ public class Lucy : GenericCharacter
     private DialogueSection Conversation()
     {
      
-        string occupation = "Plumber";
+        
         Monologue order1 = new Monologue(localName, "Order");
         Monologue sure = new Monologue(localName, "Thanks", order1);
         Choices d = new Choices(localName, $"Can I get a Pie with {order.orderFilling}?", ChoiceList(Choice("Sure thing", sure)));

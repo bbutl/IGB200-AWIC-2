@@ -31,6 +31,8 @@ public class QueueController : MonoBehaviour
     public int[][] order = new int[8][];
     public int currentCharacter = -1;
 
+    public GameObject pie;
+
     void Start()
     {
         order = GenerateOrder();
@@ -39,7 +41,8 @@ public class QueueController : MonoBehaviour
     }
 
     void Update()
-    {        
+    {
+        pie = GameObject.FindGameObjectWithTag("Pie");
         if (Input.GetKeyDown("x") && Time.timeScale != 0)
         {
             Next();
@@ -52,13 +55,28 @@ public class QueueController : MonoBehaviour
         if (currentCharacter >=  0)
         {
             movementCharacters[order[dayController.day][currentCharacter]].LeaveShop();
+            if(pie != null)
+            {
+                Destroy(pie);
+            }
         }
         if (currentCharacter < order[dayController.day].Length - 1)
         {
             currentCharacter += 1;
             movementCharacters[order[dayController.day][currentCharacter]].GoToTarget(0);
-            individualCharacters[order[dayController.day][currentCharacter]].StartConversation();
-        }
+            int day = dayController.day;
+            switch (day)
+            {
+                case 0:
+                    individualCharacters[order[dayController.day][currentCharacter]].StartConversation();
+                    break;
+                case 1:
+                    individualCharacters[order[dayController.day][currentCharacter]].Day2Start();
+                    break;
+            }
+
+
+            }
         else
         {
             DayOver();
@@ -88,8 +106,8 @@ public class QueueController : MonoBehaviour
     {
         //order[0] = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 
-        order[0] = new int[] { 9, 11 };
-        order[1] = new int[] { 1, 6, 7 };
+        order[0] = new int[] { 9 };
+        order[1] = new int[] { 9, 0, 1 };
         order[2] = new int[] { 0, 1, 4 };
         order[3] = new int[] { 2, 0 };
         order[4] = new int[] { 3, 7 };

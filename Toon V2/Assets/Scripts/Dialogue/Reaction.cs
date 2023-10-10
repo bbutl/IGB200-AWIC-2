@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
+
 
 public class Reaction : MonoBehaviour
 {
@@ -34,7 +34,12 @@ public class Reaction : MonoBehaviour
             currentMaterial = Resources.Load<Material>("SadP");
             particlesRenderer.material = currentMaterial;
         }
-
+        else if (manager.currentSection.GetSpeechContents().Contains("Smile.."))
+        {
+            particlesRenderer.enabled = true;
+            currentMaterial = Resources.Load<Material>("SmileP");
+            particlesRenderer.material = currentMaterial;
+        }
         else
         {
             particlesRenderer.enabled = false;

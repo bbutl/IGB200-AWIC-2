@@ -45,6 +45,7 @@ public class PipeBurst : Event
     {
         if(eventStarted == false)
         {
+            
             StartEvent();
             
         }
@@ -76,6 +77,7 @@ public class PipeBurst : Event
         //Removing old pipe
         if (other.gameObject.name == "Sink" && pipeRemoved == false)
         {
+            this.gameObject.GetComponent<Rigidbody>().useGravity = true;
             pipeRemoved = true;
             stepNumber += 1;
             d.ProceedToNext();

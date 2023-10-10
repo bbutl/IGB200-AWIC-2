@@ -5,7 +5,7 @@ using UnityEngine;
 using static Dialogue;
 
 
-public class Sean : MonoBehaviour
+public class Sean : GenericCharacter
 {
     public DialogueManager dManager;
     public Cook cook;
@@ -13,60 +13,74 @@ public class Sean : MonoBehaviour
     public GameObject pie;
     string localname = "Sean";
     string playerName = "Player";
+    public DayController dayController;
     
     
     // Start is called before the first frame update
     void Start()
     {
-        
-        FindObjectOfType<DialogueManager>().StartDialogue(Conversation());
+
     }
 
     // Update is called once per frame
     void Update()
     {
         pie = GameObject.FindGameObjectWithTag("Pie");
-       
-        if (cook.PieCompleted() == true && queue.currentCharacter == 0)
+        //Change to switch statement
+        //First Day Dialogue Tree
+        if (dayController.day == 0)
         {
-            if(dManager.goodChoice == 1 && dManager.badChoice == 2)
+            if (cook.PieCompleted() == true && queue.currentCharacter == 0)
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(ConversationGood3());
+                if (dManager.goodChoice == 1 && dManager.badChoice == 2)
+                {
+                    FindObjectOfType<DialogueManager>().StartDialogue(ConversationGood3());
+                }
+                else
+                {
+                    FindObjectOfType<DialogueManager>().StartDialogue(Conversation2());
+                }
+
             }
-            else
+            if (dManager.badChoice == 1 && pie == null)
             {
-                FindObjectOfType<DialogueManager>().StartDialogue(Conversation2());
+                FindObjectOfType<DialogueManager>().StartDialogue(ConversationBad());
+                dManager.badChoice += 1;
             }
+            if (dManager.badChoice == 3)
+            {
+                if (pie != null)
+                {
+                    FindObjectOfType<DialogueManager>().StartDialogue(ConversationBad2());
+                }
+                else
+                {
+                    FindObjectOfType<DialogueManager>().StartDialogue(ConversationBad3());
+                }
+
+                dManager.badChoice += 1;
+            }
+            if (dManager.goodChoice == 2)
+            {
+                FindObjectOfType<DialogueManager>().StartDialogue(ConversationGood2());
+                dManager.goodChoice += 1;
+            }
+        }
+
+        if(dayController.day == 1)
+        {
             
         }
-        if(dManager.badChoice == 1 && pie == null)
-        {
-            FindObjectOfType<DialogueManager>().StartDialogue(ConversationBad());
-            dManager.badChoice += 1;
-        }
-        if (dManager.badChoice == 3)
-        {
-            if(pie != null)
-            {
-                FindObjectOfType<DialogueManager>().StartDialogue(ConversationBad2());
-            }
-            else
-            {
-                FindObjectOfType<DialogueManager>().StartDialogue(ConversationBad3());
-            }
-            
-            dManager.badChoice += 1;
-        }
-        if(dManager.goodChoice == 2)
-        {
-            FindObjectOfType<DialogueManager>().StartDialogue(ConversationGood2());
-            dManager.goodChoice += 1;
-        }
-        if (dManager.goodChoice == 3 && pie != null)
-        {
-            //FindObjectOfType<DialogueManager>().StartDialogue(ConversationGood2());
-            //dManager.goodChoice += 1;
-        }
+     
+    }
+    
+    public override void StartConversation()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(Conversation());
+    }
+    public override void Day2Start()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(D2Start());
     }
 
     public DialogueSection Conversation()
@@ -79,8 +93,8 @@ public class Sean : MonoBehaviour
         Monologue good = new Monologue(localname, "Good.", end);
         Monologue ofCourse = new Monologue(localname, "Order", good);
 
-        Choices line18 = new Choices(localname, "That sounds amazing, reckon you could cook one up for me?", ChoiceList(Choice("Of course! Consider it a thanks.", ofCourse), 
-            Choice("I’m not sure if I want to cook anything today.", notToday)));
+        Choices line18 = new Choices(localname, "That sounds amazing, reckon you could cook one up for me?", ChoiceList(Choice("I can certainly try…", ofCourse), 
+            Choice("I’m actually pretty busy at the moment.", notToday)));
         Monologue line17 = new Monologue(playerName, "I can make a classic meat pie but that’s it right now.", line18);
         Monologue line16 = new Monologue(playerName, "Yes actually!", line17);
         Monologue line15 = new Monologue(localname, "Is there anything here that still works?", line16);
@@ -107,7 +121,7 @@ public class Sean : MonoBehaviour
     {
         Monologue bad = new Monologue(localname, "Bad.");
         Monologue good= new Monologue(localname, "Good.");
-        Choices line9 = new Choices(localname, "Don’t ya think?", ChoiceList(Choice("Yeah that’s a great idea.", good), Choice("Aw I’m not sure.", bad)));
+        Choices line9 = new Choices(localname, "Don’t ya think?", ChoiceList(Choice("That would be the dream.", good), Choice("That’s asking for quite a lot.", bad)));
         Monologue line8 = new Monologue(localname, "I’m sure a pie store like this would be a hot spot once fully opened.", line9);
         Monologue line7 = new Monologue(localname, "Maybe you could find someone to help out with fixing this old place.", line8);
         Monologue line6 = new Monologue(playerName, "Yeah, Awicville has really grown busy the past couple weeks.", line7);
@@ -125,10 +139,10 @@ public class Sean : MonoBehaviour
         Monologue good = new Monologue(localname, "Good.", end);
 
         Monologue bad = new Monologue(localname, "Bad.", end);
-        Choices line9 = new Choices(localname, "Would you like me to show you some tips and tricks I’ve picked up?", ChoiceList(Choice("That would be wonderful!", good), Choice("Maybe some other time.", bad)));
+        Choices line9 = new Choices(localname, "Would you like me to show you some tips and tricks I’ve picked up?", ChoiceList(Choice("By all means, go ahead.", good), Choice("I think I can manage by myself.", bad)));
         Monologue line8 = new Monologue(localname, "Oh mate! Don’t even stress!", line9 );
-        Monologue line7 = new Monologue(playerName, "That’s why I didn’t want to cook just yet.", line8 );
-        Monologue line6 = new Monologue(playerName, "I was going to learn a bit more before officially opening.", line7);
+        
+        Monologue line6 = new Monologue(playerName, "I was going to learn a bit more before officially opening.", line9);
         Monologue line5 = new Monologue(playerName, "Yeah but I don’t think I’m any good at it.", line6 );
         Monologue line4 = new Monologue(localname, "Do you?", line5);
         Monologue line3 = new Monologue(localname, "As long as you know how to make a pie already, then you’ll be fine.", line4);
@@ -140,7 +154,8 @@ public class Sean : MonoBehaviour
     public DialogueSection ConversationBad2()
     {
         dManager.goodChoice = 0;
-        Monologue end2 = new Monologue(localname, "Next");
+        Monologue end3 = new Monologue(localname, "");
+        Monologue end2 = new Monologue(localname, "Next", end3);
         Monologue end = new Monologue(playerName, "See ya later Sean.", end2);
         Monologue line8 = new Monologue(localname, "Good luck with the renovations, I’ll catch ya around some time.", end);
         Monologue line7 = new Monologue(localname, "Anyway, I best be setting off.", line8);
@@ -175,6 +190,7 @@ public class Sean : MonoBehaviour
     public DialogueSection ConversationGood3()
     {
         dManager.goodChoice = 0;
+        
         Monologue end2 = new Monologue(localname, "Next");
         Monologue end = new Monologue(playerName, "See ya later Sean.", end2);
         Monologue line16 = new Monologue(localname, "Good luck with the renovations, I’ll catch ya around some time!", end);
@@ -197,6 +213,20 @@ public class Sean : MonoBehaviour
         
         Monologue line1 = new Monologue(playerName, "How’s that?", line2);
         
+        return line1;
+    }
+    public DialogueSection D2Start()
+    {
+        Monologue line9 = new Monologue(localname, "Next");
+        Monologue line8 = new Monologue(localname, "I’ll let you handle this… get some practice in dealing with customers.", line9);
+        Monologue line7 = new Monologue(playerName, "…I’m not open though.", line8);
+        Monologue line6 = new Monologue(localname, "Oop, seems like someone’s here.", line7);
+        // Door sound
+        Monologue line5 = new Monologue(playerName, "Yeah good I-", line6);
+        Monologue line4 = new Monologue(localname, "How are things here?", line5);
+        Monologue line3 = new Monologue(localname, "Oh you know, I’m as good as gold on my end, mate.", line4);
+        Monologue line2 = new Monologue(playerName, "Good morning Sean, how are you today?", line3);
+        Monologue line1 = new Monologue(localname, "Hello hello!", line2);
         return line1;
     }
 }

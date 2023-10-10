@@ -40,18 +40,11 @@ public class InstallPipe : MonoBehaviour
         {
             Destroy (other.gameObject);
             eventComplete = true;
-            FindObjectOfType<DialogueManager>().StartDialogue(EventCompleted());
+            
             
             Camera.main.transform.position = orignalPos;
             Camera.main.transform.rotation = originalRotation;
         }
     }
-    public DialogueSection EventCompleted()
-    {
-        string localName = "Sarah";
-        string playerName = "Player";
-        Monologue startA = new Monologue(localName, "Any time.");
-        Choices start = new Choices(localName, $"Great work! Now that the sink is working you should be able to use fresh vegetables in your pies.", ChoiceList(Choice("Thanks for your help.", startA)));
-        return start;
-    }
+    
 }

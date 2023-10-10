@@ -7,9 +7,8 @@ public class CameraPan : MonoBehaviour
 {
     [Header("Button attributes")]
     [SerializeField] private SpriteState _state;
-    [SerializeField] private Button button;
-    [SerializeField] private Sprite[] buttonSprites;
-    [SerializeField] private Image targetButton;
+    
+    
     public bool start = true;
     public bool startRotate = false;
     public bool hasOrderded = false;
@@ -69,15 +68,10 @@ public class CameraPan : MonoBehaviour
         if (start == true)
         { 
             start = false;
-            //Change button sprite on click
-            targetButton.sprite = buttonSprites[1];
         }
         else
         {
             start = true;
-            //Change button sprite on click
-            targetButton.sprite = buttonSprites[0];
-            
         }
     }
     public void RotateCam()
@@ -92,25 +86,10 @@ public class CameraPan : MonoBehaviour
             transform.Rotate(transform.localEulerAngles.x, 180, transform.localEulerAngles.z);
             startRotate = false;
         }
-       /*
-        if (cam.transform.localRotation.eulerAngles.y >= 270f)
-        {
-            startRotate = false;
-            return;
-        }
-        if(startRotate == true)
-        {
-            transform.Rotate(0, transform.localEulerAngles.y, 0);
-           
-            //cam.transform.Rotate(right, angle * (Time.deltaTime) * 2f);
-            //cam.transform.rotation = Quaternion.Euler(currentXRotation, cam.transform.rotation.eulerAngles.y, currentZRotation);
-
-        }
-        */
+      
     }
     public void StartRotate()
     {
-        Debug.Log("ss");
         startRotate = true;
     }
     

@@ -6,7 +6,7 @@ using TMPro;
 using static Dialogue;
 using Unity.VisualScripting;
 using UnityEngine.UI;
-using Unity.PlasticSCM.Editor.WebApi;
+
 
 public class DialogueManager : MonoBehaviour
 {
@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour
     public CanvasGroup dialogueCanvasGroup;
     public QueueController queue;
     public PipeBurst pipeBurst;
-    public Kate kate;
+    public Plumber plumber;
     public CameraPan cameraPan;
     public CustomerOrder customerOrder;
     public GameObject currentCharacter;
@@ -71,12 +71,14 @@ public class DialogueManager : MonoBehaviour
         
         if (contentsText.text == "Next")
         {
+            
             EndDialogue();
             queue.Next();
         }
         if (contentsText.text == "Start")
         {
-            kate.startGuide = true;
+            ProceedToNext();
+            plumber.startGuide = true;
             pipeBurst.eventStarted = false;
         }
         if (contentsText.text == "Order")
