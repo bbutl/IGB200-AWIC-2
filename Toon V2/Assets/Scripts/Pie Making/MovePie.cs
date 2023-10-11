@@ -14,7 +14,7 @@ public class MovePie : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        b = GameObject.Find("Target").transform;
+        b = GameObject.Find("Pie Target").transform;
         current = a;
         target = b;
         transform.position = current.position;
