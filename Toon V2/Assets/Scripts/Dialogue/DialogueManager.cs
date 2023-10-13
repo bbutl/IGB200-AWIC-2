@@ -86,6 +86,7 @@ public class DialogueManager : MonoBehaviour
         }
         if (contentsText.text == "Fuse")
         {
+            ProceedToNext();
             fuseBox.eventStarted = true;
         }
             if (contentsText.text == "Order")
