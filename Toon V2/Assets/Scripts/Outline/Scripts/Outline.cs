@@ -81,7 +81,7 @@ public class Outline : MonoBehaviour {
   private bool needsUpdate;
 
   void Awake() {
-
+       
     // Cache renderers
     renderers = GetComponentsInChildren<Renderer>();
 
@@ -128,8 +128,12 @@ public class Outline : MonoBehaviour {
       Bake();
     }
   }
-
-  void Update() {
+    private void FixedUpdate()
+    {
+       
+    }
+    void Update() {
+     
     if (needsUpdate) {
       needsUpdate = false;
 

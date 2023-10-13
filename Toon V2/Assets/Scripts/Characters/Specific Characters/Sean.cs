@@ -139,7 +139,7 @@ public class Sean : GenericCharacter
         Monologue good = new Monologue(localname, "Good.", end);
 
         Monologue bad = new Monologue(localname, "Bad.", end);
-        Choices line9 = new Choices(localname, "Would you like me to show you some tips and tricks I’ve picked up?", ChoiceList(Choice("By all means, go ahead.", good), Choice("I think I can manage by myself.", bad)));
+        Choices line9 = new Choices(localname, "Would you like me to show you some tips and tricks I’ve picked up?", ChoiceList(Choice("Perhaps I do have the time for it.", good), Choice("I think I can manage by myself.", bad)));
         Monologue line8 = new Monologue(localname, "Oh mate! Don’t even stress!", line9 );
         
         Monologue line6 = new Monologue(playerName, "I was going to learn a bit more before officially opening.", line9);

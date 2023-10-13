@@ -10,7 +10,6 @@ public class Plumber : GenericCharacter
 {
     public bool startGuide = false;
     public InstallPipe installPipe;
-    
     public Cook cook;
     public QueueController queue;
     public CharacterRandomisation characterRandomisation;
@@ -69,7 +68,8 @@ public class Plumber : GenericCharacter
 
     public DialogueSection D2Start()
     {
-        Monologue end = new Monologue(playerName, "Next");
+        //Monologue end = new Monologue(playerName, "Next");
+        Monologue end = new Monologue(playerName, "Fuse");
         //Bad Choice 
         Monologue bad2 = new Monologue(localName, "Have a good one.", end);
         Monologue bad1 = new Monologue(localName, "Oh, no worries then mate.\n\n\n\n\nSad..", bad2);

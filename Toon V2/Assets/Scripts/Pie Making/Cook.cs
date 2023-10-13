@@ -126,7 +126,7 @@ public class Cook : MonoBehaviour
                     Debug.Log($"Top already present");
                 }
                 // If Pie has base & filling
-                if (pie.pbase != "Default" && pie.filling != "Default")
+                if (pie.pbase != "Default" && pie.filling != "Default" || pie.filling == "Default")
                 {
                     pie.top = ingredient.name;
                     Debug.Log($"New Top : {pie.top}");
@@ -141,7 +141,7 @@ public class Cook : MonoBehaviour
     // If pie is complete, returns true
     public bool PieCompleted()
     {
-        if (pie.pbase != "Default" && pie.filling != "Default" && pie.top != "Default")
+        if (pie.pbase != "Default" && pie.top != "Default")
         {
             if (isCooked)
             {

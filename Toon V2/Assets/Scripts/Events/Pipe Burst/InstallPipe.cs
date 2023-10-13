@@ -11,8 +11,8 @@ public class InstallPipe : MonoBehaviour
     public bool eventComplete = false;
     private int stepNumber = 1;
     public DialogueManager d;
-    private Vector3 orignalPos = new Vector3(-61.8815994f, 4.1500001f, 3.25843453f);
-    private Quaternion originalRotation = new Quaternion(0.0308435727f, 0.706433773f, -0.0308435727f, 0.706433773f);
+    private Vector3 orignalPos = new Vector3(-66.677002f, 4.4000001f, 3.56999993f);
+    private Quaternion originalRotation = new Quaternion(0, 0.707106829f, 0, 0.707106829f);
     // Start is called before the first frame update
     void Start()
     {

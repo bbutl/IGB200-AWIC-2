@@ -29,8 +29,11 @@ public class DialogueManager : MonoBehaviour
     
     public CanvasGroup dialogueCanvasGroup;
     public QueueController queue;
+    [Header("Events")]
     public PipeBurst pipeBurst;
     public Plumber plumber;
+    public FuseBox fuseBox;
+
     public CameraPan cameraPan;
     public CustomerOrder customerOrder;
     public GameObject currentCharacter;
@@ -81,7 +84,11 @@ public class DialogueManager : MonoBehaviour
             plumber.startGuide = true;
             pipeBurst.eventStarted = false;
         }
-        if (contentsText.text == "Order")
+        if (contentsText.text == "Fuse")
+        {
+            fuseBox.eventStarted = true;
+        }
+            if (contentsText.text == "Order")
         {
             cameraPan.hasOrderded = true;
             ProceedToNext();
