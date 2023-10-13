@@ -27,6 +27,7 @@ public class Slot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Plate.GetComponent<BoxCollider>().enabled = false;
         MoveFuse();
         MovePlate();
     }
@@ -53,7 +54,7 @@ public class Slot : MonoBehaviour
                 plateSpawned = true;
                 originalPos = Plate.transform.position;
                 Plate = Instantiate(Plate, Plate.transform.position + offset, Quaternion.identity);
-                Plate.GetComponent<BoxCollider>().enabled = false;
+                
                 Plate.transform.transform.Rotate(0, 270, 0);
                 plateMove = true;
             }
