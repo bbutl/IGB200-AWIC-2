@@ -7,16 +7,16 @@ public class QueueController : MonoBehaviour
 {
     /*
      * ORDER OF CHARACTERS (BY INTERNAL NAME)
-     * 0 - Lucy
-     * 1 - Kate
+     * 0 - Susan
+     * 1 - Plumber
      * 2 - Sarah
      * 3 - Lily
      * 4 - Steve
-     * 5 - Sean
+     * 5 - 
      * 6 - Aiden
      * 7 - Blake
      * 8 - Lachlan
-     * 9 - Rohen
+     * 9 - Sean
      * 10 - Sam
      * 11 - Karen
      * */
@@ -32,7 +32,7 @@ public class QueueController : MonoBehaviour
     public int currentCharacter = -1;
 
     public GameObject pie;
-
+    public SoundManager soundManager;
     void Start()
     {
         order = GenerateOrder();
@@ -55,7 +55,8 @@ public class QueueController : MonoBehaviour
         if (currentCharacter >=  0)
         {
             movementCharacters[order[dayController.day][currentCharacter]].LeaveShop();
-            if(pie != null)
+            soundManager.DoorChime();
+            if (pie != null)
             {
                 Destroy(pie);
             }
@@ -72,6 +73,9 @@ public class QueueController : MonoBehaviour
                     break;
                 case 1:
                     individualCharacters[order[dayController.day][currentCharacter]].Day2Start();
+                    break;
+                case 2:
+                    individualCharacters[order[dayController.day][currentCharacter]].Day3Start();
                     break;
             }
 
@@ -105,10 +109,12 @@ public class QueueController : MonoBehaviour
     private int[][] GenerateOrder()
     {
         //order[0] = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
-
+        //Sean Only
         order[0] = new int[] { 9 };
+        //Sean, Susan, Plumber
         order[1] = new int[] { 9, 0, 1 };
-        order[2] = new int[] { 0, 1, 4 };
+        //Sean, 
+        order[2] = new int[] { 9, 1, 4 };
         order[3] = new int[] { 2, 0 };
         order[4] = new int[] { 3, 7 };
         order[5] = new int[] { 4, 9 };

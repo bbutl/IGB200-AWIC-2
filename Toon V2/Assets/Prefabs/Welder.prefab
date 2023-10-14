@@ -95,6 +95,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 707595209912816101}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c5dc15236cac084da8ac2a7a10d7497,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3538353205322260294}
   m_SourcePrefab: {fileID: 100100000, guid: 9c5dc15236cac084da8ac2a7a10d7497, type: 3}
 --- !u!1 &2090970685490366132 stripped
 GameObject:
@@ -135,4 +139,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481f2ccf210ec9d4c8a0164932000dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goTransform: {x: 0, y: 0, z: 0}
   lockY: 0
+  isDraggable: 1
+--- !u!114 &3538353205322260294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090970685490366132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3b9e7cfee797445a91e3ad38f560f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolName: Welder
+  toolDesc: Need Desc
+  toolUI: {fileID: 0}
+  toolNameText: {fileID: 0}

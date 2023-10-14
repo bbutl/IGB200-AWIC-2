@@ -6,6 +6,8 @@ public interface IGenericCharacter
 {
     public void StartConversation();
     public void Day2Start();
+
+    public void Day3Start();
 }
 
 public abstract class GenericCharacter : MonoBehaviour, IGenericCharacter
@@ -15,6 +17,10 @@ public abstract class GenericCharacter : MonoBehaviour, IGenericCharacter
 
     }
     public virtual void Day2Start()
+    {
+
+    }
+    public virtual void Day3Start()
     {
 
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1613274432923606730}
   - component: {fileID: 6783307352330581142}
   - component: {fileID: 5820019336374032534}
+  - component: {fileID: 5091015908255224808}
   m_Layer: 0
   m_Name: Holder
   m_TagString: Event
@@ -67,7 +68,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481f2ccf210ec9d4c8a0164932000dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goTransform: {x: 0, y: 0, z: 0}
   lockY: 0
+  isDraggable: 1
+--- !u!114 &5091015908255224808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101017324555453552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3b9e7cfee797445a91e3ad38f560f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolName: Pipe Cutter
+  toolDesc: Need Desc
+  toolUI: {fileID: 0}
+  toolNameText: {fileID: 0}
 --- !u!1 &8612377218203589718
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class Sean : GenericCharacter
     public Cook cook;
     public QueueController queue;
     public GameObject pie;
+    public Pie p;
     string localname = "Sean";
     string playerName = "Player";
     public DayController dayController;
@@ -19,13 +20,15 @@ public class Sean : GenericCharacter
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         pie = GameObject.FindGameObjectWithTag("Pie");
+        //if(pie != null) { p = pie.GetComponent<Pie>(); }
+        
         //Change to switch statement
         //First Day Dialogue Tree
         if (dayController.day == 0)
@@ -67,10 +70,7 @@ public class Sean : GenericCharacter
             }
         }
 
-        if(dayController.day == 1)
-        {
-            
-        }
+        
      
     }
     
@@ -83,10 +83,15 @@ public class Sean : GenericCharacter
         FindObjectOfType<DialogueManager>().StartDialogue(D2Start());
     }
 
+    public override void Day3Start()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(D3Start());
+    }
+
     public DialogueSection Conversation()
     {
         Monologue endBad = new Monologue(localname, "");
-        // Sad React
+        
         Monologue notToday = new Monologue(localname, "Bad.", endBad);
 
         Monologue end = new Monologue(localname, "");
@@ -119,6 +124,7 @@ public class Sean : GenericCharacter
     }
     public DialogueSection Conversation2()
     {
+        
         Monologue bad = new Monologue(localname, "Bad.");
         Monologue good= new Monologue(localname, "Good.");
         Choices line9 = new Choices(localname, "Don’t ya think?", ChoiceList(Choice("That would be the dream.", good), Choice("That’s asking for quite a lot.", bad)));
@@ -128,8 +134,24 @@ public class Sean : GenericCharacter
         Monologue line5 = new Monologue(localname, "Have you heard about all the construction going on?", line6);
         Monologue line4 = new Monologue(playerName, "...", line5);
         Monologue line3 = new Monologue(playerName, "I’m glad you enjoyed it.", line4 );
-        Monologue line2 = new Monologue(localname, "That is wonderful mate, don’t change a thing.", line3);
-        Monologue line1 = new Monologue(playerName, "Here you go, enjoy and let me know what I could improve.", line2);
+        
+        //Pie Check
+
+        Monologue pie1 = new Monologue();
+        Monologue pie2 = new Monologue();
+        if (p.filling == "Beef Filling")
+        {
+            pie1 = new Monologue(localname, "That is wonderful mate, don’t change a thing.", line3);
+            
+        }
+        else
+        {
+            pie2 = new Monologue(playerName, "My bad, the next one will be better.", line4);
+            pie1 = new Monologue(localname, "Hmm… I think it could use some work but it’s a start.", pie2);
+        }
+        
+        Monologue line1 = new Monologue(playerName, "Here you go, enjoy and let me know what I could improve.", pie1);
+
         return line1;
     }
     public DialogueSection ConversationBad()
@@ -207,14 +229,31 @@ public class Sean : GenericCharacter
         Monologue line6 = new Monologue(localname, "Oh cheers mate.", line7);
         Monologue line5 = new Monologue(playerName, "Well you certainly are welcome here anytime.", line6);
         
-        Monologue line4 = new Monologue(localname, "I think I should become your official taste tester if you keep \n making them like this. \n\n\n\n\nLaugh..", line5 );
-        Monologue line3 = new Monologue(localname, "For a newcomer you sure can make a great pie.", line4);
-        Monologue line2 = new Monologue(localname, "Fantastic!", line3);
         
-        Monologue line1 = new Monologue(playerName, "How’s that?", line2);
+        //Pie Check
+
+        Monologue pie1 = new Monologue();
+        Monologue pie2 = new Monologue();
+        Monologue pie3 = new Monologue();
+        if (p.filling == "Beef Filling")
+        {
+            Monologue line4 = new Monologue(localname, "I think I should become your official taste tester if you keep \nmaking them like this. \n\n\n\n\nLaugh..", line5);
+            Monologue line3 = new Monologue(localname, "For a newcomer you sure can make a great pie.", line4);
+            pie1 = new Monologue(localname, "Fantastic!", line3);
+        }
+        else
+        {
+           Monologue line4 = new Monologue(localname, "Take it from me that pie baking is an art form.\n\n\n\n\nLaugh..", line7);
+           Monologue line3 = new Monologue(localname, "No worries, mate.", line4);
+            pie2 = new Monologue(playerName, "My bad, the next one will be better.", line3);
+            pie1 = new Monologue(localname, "Hmm… I think it could use some work but it’s a start.", pie2);
+        }
+
+        Monologue line1 = new Monologue(playerName, "How’s that?", pie1);
         
         return line1;
     }
+  
     public DialogueSection D2Start()
     {
         Monologue line9 = new Monologue(localname, "Next");
@@ -227,6 +266,12 @@ public class Sean : GenericCharacter
         Monologue line3 = new Monologue(localname, "Oh you know, I’m as good as gold on my end, mate.", line4);
         Monologue line2 = new Monologue(playerName, "Good morning Sean, how are you today?", line3);
         Monologue line1 = new Monologue(localname, "Hello hello!", line2);
+        return line1;
+    }
+    public DialogueSection D3Start()
+    {
+        Monologue line2 = new Monologue(localname, "Good mate, sorry to disturb you.");
+        Monologue line1 = new Monologue(playerName, "Sean! How are you?", line2);
         return line1;
     }
 }
