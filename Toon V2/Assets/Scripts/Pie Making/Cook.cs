@@ -31,6 +31,7 @@ public class Cook : MonoBehaviour
     public Vector3 goTransform;
     //change to false
     private bool isCooked = true;
+
     // Start is called before the first frame update
     void Start()
     {

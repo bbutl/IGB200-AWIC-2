@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class OutlinePulse : MonoBehaviour
 {
-    float timer =0;
+    float timer = 0;
     float maxTime = 0.25f;
     private bool on = false;
     public bool startPulse = true;
@@ -17,6 +17,10 @@ public class OutlinePulse : MonoBehaviour
         if (startPulse)
         {
             Pulse(5);
+        }
+        else
+        {
+            gameObject.GetComponent<Outline>().enabled = false;
         }
         
 
