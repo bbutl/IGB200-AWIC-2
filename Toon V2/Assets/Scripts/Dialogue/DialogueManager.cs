@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     public DialogueSection currentSection;
-
+    private string pName = "Player:";
     [Header("Text Components")]
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI contentsText;
@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject proceedConverstaionObject;
     public GameObject dialogueChoiceObject;
     public Transform parentChoicesTo;
+    public Animator animator;
 
     [Header("Fade")]
     public float canvasGroupFadeTime = 5F;
@@ -40,7 +41,8 @@ public class DialogueManager : MonoBehaviour
 
     public int badChoice = 0;
     public int goodChoice = 0;
-
+    
+    public string fullText;
     //public GameObject DialogueBox;
    // public Sprite playerImage;
    // public Sprite otherImage;
@@ -56,6 +58,8 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+        currentCharacter = GameObject.FindGameObjectWithTag("Character");
+        animator = currentCharacter.GetComponent<Animator>();
         //ChangeBox();
         UpdateCanvasOpacity();
         PrepareForOptionDisplay();
@@ -65,7 +69,19 @@ public class DialogueManager : MonoBehaviour
         {
             cameraPan.hasOrderded = false;
         }
-        
+
+       
+        if (contentsText.text != fullText && nameText.text != pName)
+                                          
+        {
+            animator.SetBool("isTalking", true);
+            
+        }
+        else
+        {
+            
+            animator.SetBool("isTalking", false);
+        }
     }
 
     public void TextCommands()
@@ -105,7 +121,22 @@ public class DialogueManager : MonoBehaviour
             goodChoice += 1;
             ProceedToNext();
         }
+        if(contentsText.text == "Mmmmmm")
+        {
+            animator.SetBool("isTaking", true);
+            Invoke("PlayTalk", 3);
+            
+        }
         
+        else
+        {
+            animator.SetBool("isTaking", false);
+        }
+        
+    }
+    public void PlayTalk()
+    {
+        animator.SetBool("isTalking", true);
     }
     private void UpdateCanvasOpacity()
     {
@@ -171,7 +202,10 @@ public class DialogueManager : MonoBehaviour
 
     private void DisplayText()
     {
-        // Implement scrolling text effect so text doesnt appear all at once
+        StartCoroutine(DisplayLine(currentSection.GetSpeechContents()));
+        Debug.Log("YEs");
+        fullText = currentSection.GetSpeechContents();
+
         optionsBeenDisplayed = false;
 
         nameText.text = $"{currentSection.GetSpeakerName()}:";
@@ -179,7 +213,7 @@ public class DialogueManager : MonoBehaviour
         contentsArray = currentSection.GetSpeechContents().ToCharArray();
 
 
-        StartCoroutine(DisplayLine(currentSection.GetSpeechContents()));
+        
     }
     
     private IEnumerator DisplayLine(string line)

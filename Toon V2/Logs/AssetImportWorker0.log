@@ -1,23 +1,23 @@
 Using pre-set license
 Built from '2022.3/release' branch; Version is '2022.3.5f1 (9674261d40ee) revision 9860134'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'en' Physical Memory: 15731 MB
+OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'en' Physical Memory: 32581 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
 
 COMMAND LINE ARGUMENTS:
-G:\Program Files\Unity\2022.3.5f1\Editor\Unity.exe
+C:\Program Files\Unity\Hub\Editor\2022.3.5f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/Omen/Documents/GitHub/new_IGB200-AWIC-2/Toon V2
+C:/Users/User/Documents/GitHub/IGB200-AWIC-2/IGB200-AWIC-2/Toon V2
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-60957
-Successfully changed project path to: C:/Users/Omen/Documents/GitHub/new_IGB200-AWIC-2/Toon V2
-C:/Users/Omen/Documents/GitHub/new_IGB200-AWIC-2/Toon V2
+61395
+Successfully changed project path to: C:/Users/User/Documents/GitHub/IGB200-AWIC-2/IGB200-AWIC-2/Toon V2
+C:/Users/User/Documents/GitHub/IGB200-AWIC-2/IGB200-AWIC-2/Toon V2
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -49,66 +49,64 @@ C:/Users/Omen/Documents/GitHub/new_IGB200-AWIC-2/Toon V2
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [25624] Host "[IP] 192.168.0.17 [Port] 0 [Flags] 2 [Guid] 3906547556 [EditorId] 3906547556 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-05N40Q5C) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [31880] Host "[IP] 192.168.0.128 [Port] 0 [Flags] 2 [Guid] 2023147132 [EditorId] 2023147132 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-JFRQM2P) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [25624] Host "[IP] 192.168.0.17 [Port] 0 [Flags] 2 [Guid] 3906547556 [EditorId] 3906547556 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-05N40Q5C) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [31880] Host "[IP] 192.168.0.128 [Port] 0 [Flags] 2 [Guid] 2023147132 [EditorId] 2023147132 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-JFRQM2P) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 22.02 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 12.82 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.5f1 (9674261d40ee)
-[Subsystems] Discovering subsystems at path G:/Program Files/Unity/2022.3.5f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/Omen/Documents/GitHub/new_IGB200-AWIC-2/Toon V2/Assets
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.5f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/User/Documents/GitHub/IGB200-AWIC-2/IGB200-AWIC-2/Toon V2/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce GTX 1660 Ti (ID=0x2191)
+    Renderer: NVIDIA GeForce RTX 3060 (ID=0x2544)
     Vendor:   NVIDIA
-    VRAM:     5979 MB
-    Driver:   31.0.15.3161
+    VRAM:     8049 MB
+    Driver:   31.0.15.3640
 Initialize mono
-Mono path[0] = 'G:/Program Files/Unity/2022.3.5f1/Editor/Data/Managed'
-Mono path[1] = 'G:/Program Files/Unity/2022.3.5f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
-Mono config path = 'G:/Program Files/Unity/2022.3.5f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56936
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.5f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.5f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.5f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56956
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: G:/Program Files/Unity/2022.3.5f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
-Register platform support module: G:/Program Files/Unity/2022.3.5f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.030758 seconds.
-- Loaded All Assemblies, in  0.639 seconds
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.5f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.013535 seconds.
+- Loaded All Assemblies, in  0.387 seconds
 Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.477 seconds
-Domain Reload Profiling: 1116ms
-	BeginReloadAssembly (192ms)
+- Finished resetting the current domain, in  0.293 seconds
+Domain Reload Profiling: 678ms
+	BeginReloadAssembly (102ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (59ms)
-	RebuildNativeTypeToScriptingClass (22ms)
-	initialDomainReloadingComplete (126ms)
-	LoadAllAssembliesAndSetupDomain (239ms)
-		LoadAssemblies (192ms)
+	RebuildCommonClasses (37ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (78ms)
+	LoadAllAssembliesAndSetupDomain (154ms)
+		LoadAssemblies (99ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (231ms)
-			TypeCache.Refresh (229ms)
-				TypeCache.ScanAssembly (210ms)
-			ScanForSourceGeneratedMonoScriptInfo (1ms)
+		AnalyzeDomain (146ms)
+			TypeCache.Refresh (145ms)
+				TypeCache.ScanAssembly (132ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (478ms)
+	FinalizeReload (294ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (377ms)
+		SetupLoadedEditorAssemblies (229ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (12ms)
-			SetLoadedEditorAssemblies (6ms)
+			SetLoadedEditorAssemblies (8ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (4ms)
-			ProcessInitializeOnLoadAttributes (250ms)
-			ProcessInitializeOnLoadMethodAttributes (105ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (154ms)
+			ProcessInitializeOnLoadMethodAttributes (53ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -116,54 +114,53 @@ Domain Reload Profiling: 1116ms
 ========================================================================
 Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\Omen\Documents\GitHub\new_IGB200-AWIC-2\Toon V2\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\Omen\Documents\GitHub\new_IGB200-AWIC-2\Toon V2\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-- Loaded All Assemblies, in  1.661 seconds
-Refreshing native plugins compatible for Editor in 13.07 ms, found 3 plugins.
+Symbol file LoadedFromMemory doesn't match image C:\Users\User\Documents\GitHub\IGB200-AWIC-2\IGB200-AWIC-2\Toon V2\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\User\Documents\GitHub\IGB200-AWIC-2\IGB200-AWIC-2\Toon V2\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.827 seconds
+Refreshing native plugins compatible for Editor in 6.43 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.109 seconds
-Domain Reload Profiling: 2764ms
-	BeginReloadAssembly (210ms)
+- Finished resetting the current domain, in  0.652 seconds
+Domain Reload Profiling: 1474ms
+	BeginReloadAssembly (128ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (6ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (28ms)
-	RebuildCommonClasses (53ms)
-	RebuildNativeTypeToScriptingClass (13ms)
-	initialDomainReloadingComplete (58ms)
-	LoadAllAssembliesAndSetupDomain (1320ms)
-		LoadAssemblies (830ms)
+		CreateAndSetChildDomain (19ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (54ms)
+	LoadAllAssembliesAndSetupDomain (589ms)
+		LoadAssemblies (306ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (605ms)
-			TypeCache.Refresh (550ms)
-				TypeCache.ScanAssembly (524ms)
-			ScanForSourceGeneratedMonoScriptInfo (35ms)
-			ResolveRequiredComponents (20ms)
-	FinalizeReload (1111ms)
+		AnalyzeDomain (331ms)
+			TypeCache.Refresh (298ms)
+				TypeCache.ScanAssembly (285ms)
+			ScanForSourceGeneratedMonoScriptInfo (22ms)
+			ResolveRequiredComponents (12ms)
+	FinalizeReload (652ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (809ms)
+		SetupLoadedEditorAssemblies (475ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (13ms)
-			SetLoadedEditorAssemblies (5ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (3ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (127ms)
-			ProcessInitializeOnLoadAttributes (530ms)
-			ProcessInitializeOnLoadMethodAttributes (128ms)
-			AfterProcessingInitializeOnLoad (5ms)
+			BeforeProcessingInitializeOnLoad (82ms)
+			ProcessInitializeOnLoadAttributes (287ms)
+			ProcessInitializeOnLoadMethodAttributes (82ms)
+			AfterProcessingInitializeOnLoad (12ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (12ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
-Refreshing native plugins compatible for Editor in 18.42 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (7ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 5.18 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5015 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 64 unused Assets / (348.2 KB). Loaded Objects now: 5477.
-Memory consumption went from 204.1 MB to 203.7 MB.
-Total: 8.813300 ms (FindLiveObjects: 1.184900 ms CreateObjectMapping: 0.916700 ms MarkObjects: 6.189500 ms  DeleteObjects: 0.520400 ms)
+Unloading 5019 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 64 unused Assets / (347.3 KB). Loaded Objects now: 5483.
+Memory consumption went from 205.5 MB to 205.2 MB.
+Total: 3.783100 ms (FindLiveObjects: 0.691000 ms CreateObjectMapping: 0.195200 ms MarkObjects: 2.724000 ms  DeleteObjects: 0.171600 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -178,36 +175,61 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 57504.267141 seconds.
-  path: Assets/Filling_Bucket_Temp.fbx
-  artifactKey: Guid(69be26b85ccac0942b6da23de56a0768) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Filling_Bucket_Temp.fbx using Guid(69be26b85ccac0942b6da23de56a0768) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b2360ff4fbfac6de86a036080e12c31') in 0.027814 seconds
+  Time since last request: 785667.307460 seconds.
+  path: Assets/Scripts/DialogueOptionParent.prefab
+  artifactKey: Guid(44446d7a18997184ea54affc0c9989b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/DialogueOptionParent.prefab using Guid(44446d7a18997184ea54affc0c9989b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8edc102c76e083c6c2d071877f841839') in 0.039378 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 20
-========================================================================
-Received Import Request.
-  Time since last request: 0.000041 seconds.
-  path: Assets/Store_V3.fbx
-  artifactKey: Guid(d3e2f43f6bdaec84db29506f329dae32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Store_V3.fbx using Guid(d3e2f43f6bdaec84db29506f329dae32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a15a1f79c2491c054382eac80f34b946') in 0.021289 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 158
-========================================================================
-Received Import Request.
-  Time since last request: 0.000056 seconds.
-  path: Assets/Female_Full (Full Person).fbx
-  artifactKey: Guid(f53b88fea07abb24db2b1ee139b028f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Female_Full (Full Person).fbx using Guid(f53b88fea07abb24db2b1ee139b028f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32526bb8458bcd654ad4f567780d7ae7') in 0.016434 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 67
+Number of asset objects unloaded after import = 18
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 15.36 ms, found 3 plugins.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\User\Documents\GitHub\IGB200-AWIC-2\IGB200-AWIC-2\Toon V2\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\User\Documents\GitHub\IGB200-AWIC-2\IGB200-AWIC-2\Toon V2\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+- Loaded All Assemblies, in  0.779 seconds
+Refreshing native plugins compatible for Editor in 5.39 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.152 seconds
+Domain Reload Profiling: 1926ms
+	BeginReloadAssembly (156ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (35ms)
+	RebuildCommonClasses (36ms)
+	RebuildNativeTypeToScriptingClass (13ms)
+	initialDomainReloadingComplete (40ms)
+	LoadAllAssembliesAndSetupDomain (529ms)
+		LoadAssemblies (306ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (292ms)
+			TypeCache.Refresh (275ms)
+				TypeCache.ScanAssembly (264ms)
+			ScanForSourceGeneratedMonoScriptInfo (5ms)
+			ResolveRequiredComponents (12ms)
+	FinalizeReload (1152ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (428ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (79ms)
+			ProcessInitializeOnLoadAttributes (251ms)
+			ProcessInitializeOnLoadMethodAttributes (74ms)
+			AfterProcessingInitializeOnLoad (12ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+Refreshing native plugins compatible for Editor in 5.15 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 2 unused Assets / (290.7 KB). Loaded Objects now: 5478.
-Memory consumption went from 99.0 MB to 98.7 MB.
-Total: 5.639300 ms (FindLiveObjects: 0.588400 ms CreateObjectMapping: 0.414200 ms MarkObjects: 4.492200 ms  DeleteObjects: 0.143100 ms)
+Unloading 4849 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 40 unused Assets / (318.8 KB). Loaded Objects now: 5488.
+Memory consumption went from 175.3 MB to 175.0 MB.
+Total: 3.483500 ms (FindLiveObjects: 0.663300 ms CreateObjectMapping: 0.191900 ms MarkObjects: 2.526300 ms  DeleteObjects: 0.101000 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
@@ -222,49 +244,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 24.260814 seconds.
-  path: Assets/Materials/Counter.mat
-  artifactKey: Guid(967c6350b2d3e8b4aadf2e9bdb2e4145) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Counter.mat using Guid(967c6350b2d3e8b4aadf2e9bdb2e4145) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c00da6ad8585c27d04c983d51d9926cc') in 0.011436 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 1.217985 seconds.
-  path: Assets/Materials/Toon Materials/Person_No_Rig.fbx
-  artifactKey: Guid(2484e34fed904ce4685d19f323c0917d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Materials/Person_No_Rig.fbx using Guid(2484e34fed904ce4685d19f323c0917d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24e1572d925b77824763e394e7fafa97') in 0.015703 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 79
-========================================================================
-Received Import Request.
-  Time since last request: 3.012120 seconds.
-  path: Assets/Materials/Toon Materials/People/Skin/Skin 1.mat
-  artifactKey: Guid(67a2715cec3871644ae4d928d14246bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Materials/People/Skin/Skin 1.mat using Guid(67a2715cec3871644ae4d928d14246bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7d1e3967f322e456a6fd47c0a54d864') in 0.004174 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Materials/Toon Materials/People/Skin/Skin 4.mat
-  artifactKey: Guid(15e64caff52af5f4eaf350f0ecd8b973) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Materials/People/Skin/Skin 4.mat using Guid(15e64caff52af5f4eaf350f0ecd8b973) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90f727a4f259ed81e3396af73ba8465b') in 0.004723 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.054099 seconds.
-  path: Assets/Materials/Toon Materials/People/Skin/Skin 9.mat
-  artifactKey: Guid(f521666da2a610b439dd406d98ae1039) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Materials/People/Skin/Skin 9.mat using Guid(f521666da2a610b439dd406d98ae1039) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0eab32b6f41f4df152bbb41d9ea16a8e') in 0.003325 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-TcpMessagingSession - receive error
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
 AssetImportWorker is now disconnected from the server
 Process exiting
 Exiting without the bug reporter. Application will terminate with return code 0

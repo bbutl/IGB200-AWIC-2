@@ -13,8 +13,10 @@ public class Slot : MonoBehaviour
     public GameObject Plate;
     private float speed = 1f;
     private bool plateSpawned = false;
-    private Vector3 offset = new Vector3 (4, 0, 0);
+    private Vector3 offset = new Vector3 (4, 0, -0.75f);
     private Vector3 originalPos;
+    public FuseBox fusebox;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -68,11 +70,22 @@ public class Slot : MonoBehaviour
             {
                 Plate.transform.position -= new Vector3((speed * 2f) * Time.deltaTime, 0, 0);
             }
+            else if(Plate.transform.position.z < originalPos.z)
+            {
+                Plate.transform.position += new Vector3(0, 0, (speed * 2f * Time.deltaTime));
+                
+            }
             else
             {
                 door.close = true;
+                Invoke("End", 5);
             }
         }
         
+    }
+    private void End()
+    {
+        fusebox.eventFinished = true;
+        Destroy(gameObject);
     }
 }

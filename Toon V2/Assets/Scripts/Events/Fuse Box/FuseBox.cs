@@ -7,6 +7,7 @@ public class FuseBox : MonoBehaviour
     public OpenDoor door;
     public Camera cam;
     public Camera mainCam;
+    public Sean sean;
     //public GameObject Plate;
     private Vector3 orignalPos = new Vector3(-66.677002f, 4.4000001f, 3.56999993f);
     private Quaternion originalRotation = new Quaternion(0, 0.707106829f, 0, 0.707106829f);
@@ -37,6 +38,7 @@ public class FuseBox : MonoBehaviour
         {
             Camera.main.transform.position = orignalPos;
             Camera.main.transform.rotation = originalRotation;
+            sean.finished = true;
             eventFinished = false;
         }
     }
