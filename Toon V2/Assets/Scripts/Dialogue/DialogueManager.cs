@@ -42,7 +42,9 @@ public class DialogueManager : MonoBehaviour
     public Image newsImage;
     public int badChoice = 0;
     public int goodChoice = 0;
-    
+
+   
+
     public string fullText;
     //public GameObject DialogueBox;
    // public Sprite playerImage;
