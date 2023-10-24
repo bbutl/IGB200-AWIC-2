@@ -17,4 +17,14 @@ public class MovementController : MonoBehaviour
         GoToTarget(1);
         self.SetActive(false);
     }
+
+    public void StopTalking()
+    {
+
+    }
+
+    public void StartTalking()
+    {
+
+    }
 }

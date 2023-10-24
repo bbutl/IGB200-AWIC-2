@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
@@ -12,16 +13,22 @@ public class SaveFileManagement : MonoBehaviour
 
     private string path;
     private string persistentPath;
+    private SaveGameStreamReadWriteable saveFileReadWriteable;
 
-    public GameData saveDataList;
+    public static SaveGame saveGame;
+    public static SaveFile saveFile;
+    public static SaveState saveState;
 
     void Start()
     {
-        saveDataList = new GameData();
-        SetPaths();
-        //Whenever the save file layout is changed, run the game with the next line uncommented once
-        //SaveData();
-        LoadData();
+        if (saveGame == null)
+        {
+            saveFileReadWriteable = new SaveGameStreamReadWriteable();
+            SetPaths();
+            //Whenever the save file layout is changed, run the game with the next line uncommented once
+            MakeFile();
+            LoadData();
+        }
     }
 
     private void SetPaths()
@@ -32,8 +39,19 @@ public class SaveFileManagement : MonoBehaviour
 
     public void SaveData()
     {
+        //saveGame.saveGames[saveGame.currentFile] = saveData;
+        ConvertFromSGToSGReadWriteable();
+
         string savePath = path;
-        string json = JsonUtility.ToJson(saveDataList);
+        string json = JsonUtility.ToJson(saveFileReadWriteable);
+        using StreamWriter writer = new StreamWriter(savePath);
+        writer.Write(json);
+    }
+
+    public void MakeFile()
+    {
+        string savePath = path;
+        string json = JsonUtility.ToJson(saveFileReadWriteable);
         using StreamWriter writer = new StreamWriter(savePath);
         writer.Write(json);
     }
@@ -43,11 +61,14 @@ public class SaveFileManagement : MonoBehaviour
         using StreamReader reader = new StreamReader(path);
         string json = reader.ReadToEnd();
 
-        saveDataList = JsonUtility.FromJson<GameData>(json);
+        saveFileReadWriteable = JsonUtility.FromJson<SaveGameStreamReadWriteable>(json);
+        ConvertFromSGReadWriteableToSG();
+        //saveData = saveGame.saveGames[saveGame.currentFile];
     }
 
     public void SetCharacterAppearances()
     {
+        /*
         for (int character = 0; character < characterRandomisation.Length; character++)
         {
             for (int element = 0; element < 15; element++)
@@ -55,11 +76,12 @@ public class SaveFileManagement : MonoBehaviour
                 characterRandomisation[character].ChangeValue(element, saveDataList.characterRandomisations[saveDataList.currentFile * 450 + character * 15 + element]);
                 characterRandomisation[character].ChangeName(saveDataList.characterNames[saveDataList.currentFile * 30 + character * 15]);
             }
-        }
+        }*/
     }
 
     public void UpdateSaveFileUIElements()
     {
+        /*
         for (int file = 0; file < fileNames.Length; file++)
         {
             if (file % 3 == -1)
@@ -67,9 +89,138 @@ public class SaveFileManagement : MonoBehaviour
                 fileNames[file].text = $"File {file % 3}: (Empty)";
             }
         }
+        */
+    }
+
+    private void ConvertFromSGReadWriteableToSG()
+    {
+        saveGame = new SaveGame(saveFileReadWriteable.SFcurrentFile, saveFileReadWriteable.SFsliderOptions, saveFileReadWriteable.SFotherOptions,
+            saveFileReadWriteable.SFcurrentState, saveFileReadWriteable.SFplayerNames, saveFileReadWriteable.SFtools, saveFileReadWriteable.SFcustomerFavour,
+            saveFileReadWriteable.SFcustomerAppearence, saveFileReadWriteable.SFday, saveFileReadWriteable.SFrepairProgress);
+        saveFile = saveGame.saveFiles[saveGame.currentFile];
+        saveState = saveFile.saveStates[saveFile.currentState];
+    }
+
+    private void ConvertFromSGToSGReadWriteable()
+    {
+        saveFileReadWriteable.SFcurrentFile = saveGame.currentFile;
+        saveFileReadWriteable.SFsliderOptions = saveGame.sliderOptions;
+        saveFileReadWriteable.SFotherOptions = saveGame.otherOptions;
+        saveFileReadWriteable.SFcurrentState = saveGame.saveFiles[saveGame.currentFile].currentState;
+        for (int i = 0; i < 3; i++)
+        {
+            saveFileReadWriteable.SFplayerNames[i] = saveGame.saveFiles[i].playerName;
+        }
+        for (int a = 0; a < 3; a++)
+        {
+            for (int b = 0; b < 20; b++)
+            {
+                saveFileReadWriteable.SFtools[a * 20 + b] = saveGame.saveFiles[a].tools[b];
+            }
+        }
+        for (int a = 0; a < 3; a++)
+        {
+            for (int b = 0; b < 8; b++)
+            {
+                for (int c = 0; c < 20; c++)
+                {
+                    saveFileReadWriteable.SFcustomerFavour[a * 160 + b * 20 + c] = saveGame.saveFiles[a].saveStates[b].customerFavour[c];
+                }
+                for (int c = 0; c < 300; c++)
+                {
+                    saveFileReadWriteable.SFcustomerAppearence[a * 2400 + b * 300 + c] = saveGame.saveFiles[a].saveStates[b].customerAppearence[c];
+                }
+                for (int c = 0; c < 3; c++)
+                {
+                    saveFileReadWriteable.SFday[a * 24 + b * 3 + c] = saveGame.saveFiles[a].saveStates[b].day[c];
+                }
+                for (int c = 0; c < 10; c++)
+                {
+                    saveFileReadWriteable.SFrepairProgress[a * 80 + b * 10 + c] = saveGame.saveFiles[a].saveStates[b].repairProgress[c];
+                }
+            }
+        }
     }
 }
 
+public class SaveGame
+{
+    public int currentFile = 0;
+    public float[] sliderOptions = new float[] { 1f, 1f, 0.5f };
+    public int[] otherOptions = new int[16];
+    public SaveFile[] saveFiles = new SaveFile[3];
+
+    public SaveGame(int SFcurrentFile, float[] SFsliderOptions, int[] SFotherOptions,
+        int SFcurrentState, string[] SFplayerNames, bool[] SFtools, int[] SFcustomerFavour, int[] SFcustomerAppearence, int[] SFday, bool[] SFreapairProgress)
+    {
+        currentFile = SFcurrentFile;
+        sliderOptions = SFsliderOptions;
+        otherOptions = SFotherOptions;
+
+        for (int file = 0; file < saveFiles.Length; file++)
+        {
+            saveFiles[file] = new SaveFile(file, SFcurrentState, SFplayerNames, SFtools,
+                SFcustomerFavour, SFcustomerAppearence, SFday, SFreapairProgress);
+        }
+    }
+}
+
+public class SaveFile
+{
+    public int currentState = 0;
+    public string playerName = "LK";
+    public bool[] tools = new bool[20];
+    public SaveState[] saveStates = new SaveState[8];
+
+    public SaveFile(int file, int SFcurrentState, string[] SFplayerNames, bool[] SFtools, 
+        int[] SFcustomerFavour, int[] SFcustomerAppearence, int[] SFday, bool[] SFreapairProgress)
+    {
+        currentState = SFcurrentState;
+        playerName = SFplayerNames[file];
+        tools = SFtools[(file * 20)..((file * 20) + 20)];
+
+        for (int state = 0; state < saveStates.Length; state++)
+        {
+            saveStates[state] = new SaveState(state, SFcustomerFavour, SFcustomerAppearence, SFday, SFreapairProgress);
+        }
+    }
+}
+
+public class SaveState
+{
+    public int[] customerFavour = new int[20];
+    public int[] customerAppearence = new int[300];
+    public int[] day = new int[3];
+    public bool[] repairProgress = new bool[10];
+
+    public SaveState(int state, int[] SFcustomerFavour, int[] SFcustomerAppearence, int[] SFday, bool[] SFreapairProgress)
+    {
+        customerFavour = SFcustomerFavour[(state * 20)..((state * 20) + 20)];
+        customerAppearence = SFcustomerAppearence[(state * 300)..((state * 300) + 300)];
+        day = SFday[(state * 3)..((state * 3) + 3)];
+        repairProgress = SFreapairProgress[(state * 10)..((state * 10) + 10)];
+    }
+}
+
+public class SaveGameStreamReadWriteable
+{
+    public int SFcurrentFile = 0;
+    public float[] SFsliderOptions = new float[] { 1f, 1f, 0.5f };
+    public int[] SFotherOptions = new int[16];
+
+    public int SFcurrentState = 0;
+    public string[] SFplayerNames = new string[3];
+    public bool[] SFtools = new bool[60];
+
+    public int[] SFcustomerFavour = new int[480];
+    public int[] SFcustomerAppearence = new int[7200];
+    public int[] SFday = new int[84];
+    public bool[] SFrepairProgress = new bool[240];
+}
+
+//When changing file turn off auto!!!!
+
+/*
 public class GameData
 {
     public int currentFile = 0;
@@ -81,7 +232,8 @@ public class GameData
     public int[] characterNames = new int[90];
     public int[] playerFavour = new int[3];
     public int[] playerFlags = new int[120];
-}
+    public int currentCustomer = 0;
+}*/
 
 /*
  * Save file layout:
@@ -105,8 +257,3 @@ public class GameData
  * 
  * 
  */
-
-public class SFM : SaveFileManagement
-{
-    //This class is used as a shorthand for writing 'SaveFileManagement'
-}
