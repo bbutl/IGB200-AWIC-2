@@ -9,6 +9,7 @@ public class Reaction : MonoBehaviour
     public ParticleSystem particles;
     ParticleSystemRenderer particlesRenderer;
     public DialogueManager manager;
+    private 
     
     // Start is called before the first frame update
     void Start()
@@ -22,27 +23,28 @@ public class Reaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var emission = particles.emission;
         if (manager.currentSection.GetSpeechContents().Contains("Laugh.."))
         {
-            particlesRenderer.enabled = true;
+            emission.enabled = true;
             currentMaterial = Resources.Load<Material>("LaughP");
             particlesRenderer.material = currentMaterial;
         }
         else if (manager.currentSection.GetSpeechContents().Contains("Sad.."))
         {
-            particlesRenderer.enabled = true;
+            emission.enabled = true;
             currentMaterial = Resources.Load<Material>("SadP");
             particlesRenderer.material = currentMaterial;
         }
         else if (manager.currentSection.GetSpeechContents().Contains("Smile.."))
         {
-            particlesRenderer.enabled = true;
+            emission.enabled = true;
             currentMaterial = Resources.Load<Material>("SmileP");
             particlesRenderer.material = currentMaterial;
         }
         else
         {
-            particlesRenderer.enabled = false;
+            emission.enabled = false;
             currentMaterial = null;
         }
     }

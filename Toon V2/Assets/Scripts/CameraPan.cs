@@ -5,8 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class CameraPan : MonoBehaviour
 {
-    [Header("Button attributes")]
-    [SerializeField] private SpriteState _state;
+   
     
     
     public bool start = true;
@@ -27,7 +26,8 @@ public class CameraPan : MonoBehaviour
     private float currentZRotation;
     private Vector3 currentRotation;
     
-    
+    private bool firstPan = true;
+    public Tutorial tut;
     
     private void Start()
     {
@@ -48,7 +48,11 @@ public class CameraPan : MonoBehaviour
         {
             cam.transform.position += new Vector3(0, 0.5f * (Time.deltaTime * 2f), 0);
             cam.transform.Rotate(direction, angle * (Time.deltaTime * 2f));
-            
+            if(firstPan)
+            {
+                firstPan = false;
+                tut.startTutorial = true;
+            }
         }
 
         // Pans the camera up to customer view

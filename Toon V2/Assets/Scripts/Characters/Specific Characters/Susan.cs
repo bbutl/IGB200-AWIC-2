@@ -39,7 +39,7 @@ public class Susan : GenericCharacter
         
         Monologue end = new Monologue(localName, "");
         Monologue good15 = new Monologue(localName, "Order", end);
-        Monologue good14 = new Monologue(localName, "Well in that case, sure.\n\n\n\n\nSmile..", good15);
+        Monologue good14 = new Monologue(localName, "Well in that case, sure.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSmile..", good15);
         Monologue good13 = new Monologue(playerName, "That’s fine, this one’s on the house.", good14);
         Monologue good12 = new Monologue(localName, "I don’t have any money on me right now.", good13);
         Monologue good11 = new Monologue(localName, "Oh! Are you sure?", good12);
@@ -50,7 +50,7 @@ public class Susan : GenericCharacter
         Monologue good6 = new Monologue(playerName, "I might start networking a bit myself to find some help for the store.", good7);
         Monologue good5 = new Monologue(playerName, "Not particularly, but I’m looking to learn.", good6);
         Monologue good4 = new Monologue(localName, "Do you know anything about construction?", good5);
-        Monologue good3 = new Monologue(localName, "Oh I see.\n\n\n\n\nSmile..", good4);
+        Monologue good3 = new Monologue(localName, "Oh I see.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSmile..", good4);
         Monologue good2 = new Monologue(playerName, "I am actually busy renovating the store for a reopening next week.", good3);
         Monologue good1 = new Monologue(playerName, "Of course.", good2);
         //Worried Reaction
@@ -58,7 +58,7 @@ public class Susan : GenericCharacter
         Monologue endBad = new Monologue(playerName, "Next");
         Monologue bad2 = new Monologue(localName, "Goodbye!", endBad);
         Monologue bad1 = new Monologue(localName, "In that case I’ll leave.", bad2);
-        Monologue bad = new Monologue(localName, "Oh, okay. I understand.\n\n\n\n\nSad..", bad1);
+        Monologue bad = new Monologue(localName, "Oh, okay. I understand.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSad..", bad1);
         Choices line19 = new Choices(localName, "I saw someone in here earlier and thought you were open.", ChoiceList(Choice("No worries, you’re welcome to stay.", good),
             Choice("That was the previous owner.", bad)));
         Monologue line18 = new Monologue(localName, "I didn’t even realise.", line19);
@@ -88,7 +88,7 @@ public class Susan : GenericCharacter
     private DialogueSection GoodConvo()
     {
         Monologue end = new Monologue(playerName, "Next");
-        Monologue line27 = new Monologue(localName, "Best of luck! Goodbye!\n\n\n\n\nSmile..", end);
+        Monologue line27 = new Monologue(localName, "Best of luck! Goodbye!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSmile..", end);
         Monologue line26 = new Monologue(localName, "I think I should get back home and tell her about this.", line27);
         Monologue line25 = new Monologue(localName, "Thank you again, you’ve been very kind.", line26);
         Monologue line24 = new Monologue(playerName, "I’d be happy to share what I learn and potentially introduce \nher to some people I may meet.", line25);
@@ -112,7 +112,7 @@ public class Susan : GenericCharacter
         Monologue line6 = new Monologue(playerName, "I’m glad you enjoyed it.", line7);
         Monologue line5 = new Monologue(playerName, "Oh certainly, I’ll get some sauces.", line6);
         Monologue line4 = new Monologue(localName, "Only thing better would’ve been some ketchup.", line5);
-        Monologue line3 = new Monologue(localName, "I like it!\n\n\n\n\nSmile..", line4);
+        Monologue line3 = new Monologue(localName, "I like it!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSmile..", line4);
         //Thinking reaction
         Monologue line2 = new Monologue(localName, "Hmm…", line3);
         Monologue line1 = new Monologue(playerName, "What do you think?", line2);

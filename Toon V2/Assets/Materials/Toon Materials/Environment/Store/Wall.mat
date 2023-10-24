@@ -66,7 +66,7 @@ Material:
     - _Ambient: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Toon_Ramp_Offset_Point: 0.5
+    - _Toon_Ramp_Offset_Point: 1
     m_Colors:
     - Toon_Ramp_Tint: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
     - _Color: {r: 1, g: 0.78880745, b: 0.65471697, a: 1}

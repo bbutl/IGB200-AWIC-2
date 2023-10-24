@@ -24,7 +24,7 @@ public class QueueController : MonoBehaviour
     [SerializeField] GameObject[] characters;
     [SerializeField] SaveFileManagement saveFileMangement;
     [SerializeField] DayController dayController;
-
+    
     private MovementController[] movementCharacters;
     private GenericCharacter[] individualCharacters;
 
@@ -110,7 +110,7 @@ public class QueueController : MonoBehaviour
     {
         //order[0] = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
         //Sean Only
-        order[0] = new int[] { 9 };
+        order[0] = new int[] { 11, 9 };
         //Sean, Susan, Plumber
         order[1] = new int[] { 9, 0, 1 };
         //Sean, 
