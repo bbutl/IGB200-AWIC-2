@@ -42,18 +42,11 @@ public class DialogueManager : MonoBehaviour
     public Image newsImage;
     public int badChoice = 0;
     public int goodChoice = 0;
-
-    [SerializeField] MovementController[] customers;
-    public List<string> historyNames = new List<string>();
-    public List<string> historyContent = new List<string>();
-    [SerializeField] TextMeshProUGUI textSpeedText;
-    [SerializeField] TextMeshProUGUI autoText;
-    private bool isTyping = false;
-
+    
     public string fullText;
     //public GameObject DialogueBox;
-    // public Sprite playerImage;
-    // public Sprite otherImage;
+   // public Sprite playerImage;
+   // public Sprite otherImage;
     private void Start()
     {
         InitalizePanel();
@@ -79,10 +72,6 @@ public class DialogueManager : MonoBehaviour
             cameraPan.hasOrderded = false;
         }
 
-        if (Input.GetKeyDown("space"))
-        {
-            ProceedToNext();
-        }
        
         if (contentsText.text != fullText && nameText.text != pName)
                                           
@@ -201,30 +190,19 @@ public class DialogueManager : MonoBehaviour
 
     public void ProceedToNext()
     {
-        if (!isTyping)
+        if (displayingChoices)
         {
-            if (displayingChoices)
-            {
-                return;
-            }
+            return;
+        }
 
-            if (currentSection.GetNextSection() != null)
-            {
-
-                customers[0].StartTalking();
-                currentSection = currentSection.GetNextSection();
-                //customers[SaveFileManagement.saveDataList.currentCustomer].StartTalking();
-                DisplayDialogue();
-            }
-            else
-            {
-                customers[0].StopTalking();
-                EndDialogue();
-            }
+        if (currentSection.GetNextSection() != null)
+        {
+            currentSection = currentSection.GetNextSection();
+            DisplayDialogue();
         }
         else
         {
-            isTyping = false;
+            EndDialogue();
         }
     }
 
@@ -232,7 +210,6 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentSection == null)
         {
-            //customers[SaveFileManagement.saveDataList.currentCustomer].StopTalking();
             EndDialogue();
             return;
         }
@@ -255,47 +232,20 @@ public class DialogueManager : MonoBehaviour
         optionsBeenDisplayed = false;
 
         nameText.text = $"{currentSection.GetSpeakerName()}:";
-
-        historyNames.Add($"{currentSection.GetSpeakerName()}:");
         
         contentsArray = currentSection.GetSpeechContents().ToCharArray();
 
-        historyContent.Add($"{currentSection.GetSpeechContents()}");
 
         
     }
     
     private IEnumerator DisplayLine(string line)
     {
-        if (typingSpeed == 0.0f)
+        contentsText.text = "";
+        foreach (char c in line.ToCharArray())
         {
-            contentsText.text = line;
-        }
-        else
-        {
-            isTyping = true;
-
-            contentsText.text = "";
-            foreach (char c in line.ToCharArray())
-            {
-                if (isTyping)
-                {
-                    contentsText.text += c;
-                    yield return new WaitForSeconds(typingSpeed);
-                }
-                else
-                {
-                    contentsText.text = line;
-                    break;
-                }
-            }
-
-            if (SaveFileManagement.saveGame.otherOptions[0] == 1)
-            {
-                ProceedToNext();
-            }
-
-            isTyping = false;
+            contentsText.text += c;
+            yield return new WaitForSeconds(typingSpeed);
         }
     }
 
@@ -371,27 +321,6 @@ public class DialogueManager : MonoBehaviour
             {
                 displayingChoices = false;
             }
-        }
-    }
-
-    public void ChangeTextSpeed(int speed)
-    {
-        typingSpeed = new float[] { 0.06f, 0.03f, 0.01f }[speed];
-        textSpeedText.text = $"Text Speed ({new string[] {"Fast", "Medium", "Slow"}[speed]})";
-    }
-
-    public void ToggleAuto()
-    {
-        if (SaveFileManagement.saveGame.otherOptions[0] == 1)
-        {
-            SaveFileManagement.saveGame.otherOptions[0] = 0;
-            autoText.text = "";
-        }
-        else
-        {
-            SaveFileManagement.saveGame.otherOptions[0] = 1;
-            autoText.text = "Auto";
-            //ProceedToNext();
         }
     }
 }

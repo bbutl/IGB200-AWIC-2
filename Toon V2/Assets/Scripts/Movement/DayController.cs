@@ -11,8 +11,7 @@ public class DayController : MonoBehaviour
     public TextMeshProUGUI dayText;
     public MenuController menuController;
 
-    //private string[] dayNames = new string[] { "Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7", "Day 8" };
-    private string[] dayNames = new string[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday" };
+    private string[] dayNames = new string[] { "Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7", "Day 8" };
 
     void Start()
     {

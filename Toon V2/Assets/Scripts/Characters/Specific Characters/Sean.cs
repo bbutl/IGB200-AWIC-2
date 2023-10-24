@@ -13,14 +13,14 @@ public class Sean : GenericCharacter
     public GameObject pie;
     public Pie p;
     string localname = "Sean";
-    string playerName;
+    string playerName = "Player";
     public DayController dayController;
     public bool finished = false;
     
     // Start is called before the first frame update
     void Start()
     {
-        playerName = SaveFileManagement.saveFile.playerName;
+        
     }
 
     // Update is called once per frame

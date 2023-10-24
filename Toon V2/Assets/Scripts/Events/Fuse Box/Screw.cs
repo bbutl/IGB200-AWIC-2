@@ -11,10 +11,6 @@ public class Screw : MonoBehaviour
     public bool start = false;
     private bool unscrewed = false;
     private float timer = 0;
-
-    [SerializeField] private TooltipLocation tooltip;
-    [SerializeField] private int tooltipNumber;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -67,13 +63,4 @@ public class Screw : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void OnMouseOver()
-    {
-        tooltip.ShowTooltip(tooltipNumber);
-    }
-
-    public void OnMouseExit()
-    {
-        tooltip.HideTooltip();
-    }
 }

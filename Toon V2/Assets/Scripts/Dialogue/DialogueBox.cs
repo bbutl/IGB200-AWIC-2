@@ -11,15 +11,10 @@ public class DialogueBox : MonoBehaviour
     public Sprite playerImage;
     private Vector3 otherPos = new Vector3(-450, 25, -20);
     public Sprite otherImage;
-    public Material playerColour;
-    public Material[] customerColours;
-
-    private Image image;
-
     // Start is called before the first frame update
     void Start()
     {
-        image = gameObject.GetComponent<Image>();
+        
     }
 
     // Update is called once per frame
@@ -28,10 +23,6 @@ public class DialogueBox : MonoBehaviour
         RectTransform rectTransform = GetComponent<RectTransform>();
         if(manager.currentSection.GetSpeakerName() == "Player")
         {
-/*
-            image.sprite = playerImage;
-            image.color = playerColour.color;
-*/
             rectTransform.localPosition = playerPos;
             gameObject.GetComponent<Image>().sprite = playerImage;
         }
@@ -42,10 +33,6 @@ public class DialogueBox : MonoBehaviour
         }
         else
         {
-/*
-            image.sprite = otherImage;
-            image.color = customerColours[0].color;
-*/
             rectTransform.localPosition = otherPos;
             gameObject.GetComponent<Image>().sprite = playerImage;
         }
