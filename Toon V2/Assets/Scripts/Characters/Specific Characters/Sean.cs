@@ -39,7 +39,7 @@ public class Sean : GenericCharacter
                 FindObjectOfType<DialogueManager>().StartDialogue(PostFuse());
 
             }
-            if (cook.PieCompleted() == true && queue.currentCharacter == 0)
+            if (cook.PieCompleted() == true && queue.currentCharacter == 1)
             {
                 
                 if (dManager.goodChoice == 1 && dManager.badChoice == 2)
