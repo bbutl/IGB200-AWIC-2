@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuController : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class MenuController : MonoBehaviour
      */
 
     [SerializeField] GameObject[] menus;
+    [SerializeField] TextMeshProUGUI nameInput;
 
     private bool isPaused;
 
@@ -40,6 +43,8 @@ public class MenuController : MonoBehaviour
 
     public void OpenMenu(int menu)
     {
+        Time.timeScale = 0;
+        isPaused = true;
         ClearMenus();
         menus[menu].SetActive(true);
     }
@@ -62,8 +67,6 @@ public class MenuController : MonoBehaviour
     public void Pause()
     {
         OpenMenu(0);
-        Time.timeScale = 0;
-        isPaused = true;
     }
 
     public void Resume()
@@ -75,11 +78,19 @@ public class MenuController : MonoBehaviour
 
     public void StartGame()
     {
+        Debug.Log(nameInput.text);
+        SaveFileManagement.saveFile.playerName = nameInput.text;
         SceneManager.LoadScene("URP");
+    }
+
+    public void StartCustomisation()
+    {
+        SceneManager.LoadScene("Customise");
     }
 
     public void ReturnToTitle()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("TitleScreen");
     }
 

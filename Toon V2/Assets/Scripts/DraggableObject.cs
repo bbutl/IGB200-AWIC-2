@@ -17,6 +17,9 @@ public class DraggableObject : MonoBehaviour
     private float timer = 0;
     private bool timerStart = false;
 
+    [SerializeField] private TooltipLocation tooltip;
+    [SerializeField] private int tooltipNumber;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -122,4 +125,13 @@ public class DraggableObject : MonoBehaviour
         }
     }
 
+    public void OnMouseOver()
+    {
+        tooltip.ShowTooltip(tooltipNumber);
+    }
+
+    public void OnMouseExit()
+    {
+        tooltip.HideTooltip();
+    }
 }

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/URP.unity
     guid: 07a708e0d2757fa48b9b562f07b028ca
+  - enabled: 1
+    path: Assets/Scenes/Customise.unity
+    guid: 838daec0e469202449a7ae8a1b58eeaf
   m_configObjects: {}

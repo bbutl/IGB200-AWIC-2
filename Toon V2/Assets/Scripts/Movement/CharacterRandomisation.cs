@@ -7,7 +7,6 @@ public class CharacterRandomisation : MonoBehaviour
 {
     //Character index (refer to 'QueueController')
     [SerializeField] int characterIndex;
-    [SerializeField] SaveFileManagement SFM;
 
     //Physical body parts
     [SerializeField] GameObject[] physcialHead;
@@ -153,6 +152,8 @@ public class CharacterRandomisation : MonoBehaviour
             meshClothesInner[randomPhyscialClothesInner].material = colourClothesInner[randomColourClothesInner];
         else
             meshClothesInnerMR[randomPhyscialClothesInner].material = colourClothesInner[randomColourClothesInner];
+
+        SaveFileManagement.saveState.customerAppearence[characterIndex * 15 + 1] = randomPhyscialHead;
 
         //Put the new character values into the save file
         //Because load hasn't been implemented this has been commented out as it does not work yet

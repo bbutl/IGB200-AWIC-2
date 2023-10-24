@@ -8,10 +8,15 @@ public class DialogueBox : MonoBehaviour
     public DialogueManager manager;
     public Sprite playerImage;
     public Sprite otherImage;
+    public Material playerColour;
+    public Material[] customerColours;
+
+    private Image image;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        image = gameObject.GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -19,11 +24,13 @@ public class DialogueBox : MonoBehaviour
     {
         if(manager.currentSection.GetSpeakerName() == "Player")
         {
-            gameObject.GetComponent<Image>().sprite = playerImage;
+            image.sprite = playerImage;
+            image.color = playerColour.color;
         }
         else
         {
-            gameObject.GetComponent<Image>().sprite = otherImage;
+            image.sprite = otherImage;
+            image.color = customerColours[0].color;
         }
     }
 }
