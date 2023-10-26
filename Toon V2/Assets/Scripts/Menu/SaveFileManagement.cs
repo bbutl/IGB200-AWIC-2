@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEditor;
 using System.IO;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -10,6 +11,7 @@ public class SaveFileManagement : MonoBehaviour
 {
     [SerializeField] private CharacterRandomisation[] characterRandomisation;
     [SerializeField] private Text[] fileNames;
+    [SerializeField] private StateController[] saveStateSlots;
 
     private string path;
     private string persistentPath;
@@ -19,7 +21,31 @@ public class SaveFileManagement : MonoBehaviour
     public static SaveFile saveFile;
     public static SaveState saveState;
 
+    public Camera camera;
+
+    public Texture2D cursorTexture;
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
     void Start()
+    {
+
+
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown("q"))
+        {
+            SaveData();
+        }
+        if (Input.GetKeyDown("w"))
+        {
+            LoadData();
+        }
+    }
+
+    public void OpenFiles()
     {
         if (saveGame == null)
         {
@@ -66,6 +92,48 @@ public class SaveFileManagement : MonoBehaviour
         //saveData = saveGame.saveGames[saveGame.currentFile];
     }
 
+    public void SaveToState(int state)
+    {
+        SaveCameraView(camera, state);
+        saveFile.saveStates[state] = saveState;
+
+        SaveData();
+        UpdateSaveSlotMenu();
+    }
+
+    public void LoadFromState(int state)
+    {
+
+    }
+
+    private void SaveCameraView(Camera cam, int stateNo)
+    {
+        RenderTexture screenTexture = new RenderTexture(Screen.width, Screen.height, 16);
+        cam.targetTexture = screenTexture;
+        RenderTexture.active = screenTexture;
+        cam.Render();
+        Texture2D renderedTexture = new Texture2D(Screen.width, Screen.height);
+        renderedTexture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        RenderTexture.active = null;
+        byte[] byteArray = renderedTexture.EncodeToPNG();
+        System.IO.File.WriteAllBytes(Application.dataPath + $"/Captures/saveStateIcon{stateNo}.png", byteArray);
+        AssetDatabase.Refresh();
+    }
+
+    public void UpdateSaveSlotMenu()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            saveStateSlots[i].UpdateSaveStateSlot(saveFile.saveStates[i].day[0], saveFile.saveStates[i].day[1], saveFile.saveStates[i].day[2], !saveFile.saveStates[i].repairProgress[9]);
+            saveStateSlots[i + 8].UpdateSaveStateSlot(saveFile.saveStates[i].day[0], saveFile.saveStates[i].day[1], saveFile.saveStates[i].day[2], !saveFile.saveStates[i].repairProgress[9]);
+        }
+    }
+
+    public void UpdateSaveFileMenu()
+    {
+
+    }
+
     public void SetCharacterAppearances()
     {
         /*
@@ -98,7 +166,9 @@ public class SaveFileManagement : MonoBehaviour
             saveFileReadWriteable.SFcurrentState, saveFileReadWriteable.SFplayerNames, saveFileReadWriteable.SFtools, saveFileReadWriteable.SFcustomerFavour,
             saveFileReadWriteable.SFcustomerAppearence, saveFileReadWriteable.SFday, saveFileReadWriteable.SFrepairProgress);
         saveFile = saveGame.saveFiles[saveGame.currentFile];
-        saveState = saveFile.saveStates[saveFile.currentState];
+        saveState = new SaveState(saveFile.currentState, saveFile.saveStates[saveFile.currentState].customerFavour,
+            saveFile.saveStates[saveFile.currentState].customerAppearence, saveFile.saveStates[saveFile.currentState].day, 
+            saveFile.saveStates[saveFile.currentState].repairProgress);
     }
 
     private void ConvertFromSGToSGReadWriteable()

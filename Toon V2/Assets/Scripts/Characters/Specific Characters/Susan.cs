@@ -111,7 +111,7 @@ public class Susan : GenericCharacter
         Monologue line7 = new Monologue(localName, "Of course…", line8);
         Monologue line6 = new Monologue(playerName, "I’m glad you enjoyed it.", line7);
         Monologue line5 = new Monologue(playerName, "Oh certainly, I’ll get some sauces.", line6);
-        Monologue line4 = new Monologue(localName, "Only thing better would’ve been some ketchup.", line5);
+        Monologue line4 = new Monologue(localName, "Only thing better would’ve been some tomato sauce.", line5);
         Monologue line3 = new Monologue(localName, "I like it!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSmile..", line4);
         //Thinking reaction
         Monologue line2 = new Monologue(localName, "Hmm…", line3);

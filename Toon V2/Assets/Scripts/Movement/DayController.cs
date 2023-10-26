@@ -32,6 +32,9 @@ public class DayController : MonoBehaviour
     {
         menuController.PauseAndOpenMenu(8);
         day += 1;
+        SaveFileManagement.saveState.day[0] = day + 1;
+        SaveFileManagement.saveState.day[1] = 0;
+        SaveFileManagement.saveState.day[2] = 0;
         UpdateText();
     }
 }

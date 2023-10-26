@@ -7,7 +7,8 @@ public class CharacterRandomisation : MonoBehaviour
 {
     //Character index (refer to 'QueueController')
     [SerializeField] int characterIndex;
-    [SerializeField] SaveFileManagement SFM;
+
+    [SerializeField] MovementController movementController;
 
     //Physical body parts
     [SerializeField] GameObject[] physcialHead;
@@ -62,10 +63,12 @@ public class CharacterRandomisation : MonoBehaviour
     public string name;
     public int nameIndex = -1;
 
-    void Start()
+    public void StartAndRandomiseCharacter()
     {
         GetMeshes();
         RandomiseCharacter();
+
+        movementController.LeaveShop();
 
         //SetPaths();
         //LoadFromText();
@@ -154,6 +157,21 @@ public class CharacterRandomisation : MonoBehaviour
         else
             meshClothesInnerMR[randomPhyscialClothesInner].material = colourClothesInner[randomColourClothesInner];
 
+        SaveFileManagement.saveState.customerAppearence[characterIndex * 15 + 1] = randomPhyscialHead;
+        SaveFileManagement.saveState.customerAppearence[characterIndex * 15 + 2] = randomPhyscialHands;
+        SaveFileManagement.saveState.customerAppearence[characterIndex * 15 + 3] = randomPhyscialHair;
+        SaveFileManagement.saveState.customerAppearence[characterIndex * 15 + 4] = randomPhyscialEyes;
+        SaveFileManagement.saveState.customerAppearence[characterIndex * 15 + 5] = randomPhyscialClothesOuter;
+        SaveFileManagement.saveState.customerAppearence[characterIndex * 15 + 6] = randomPhyscialClothesInner;
+
+        SaveFileManagement.saveState.customerAppearence[characterIndex * 15 + 9] = randomColourSkin;
+        SaveFileManagement.saveState.customerAppearence[characterIndex * 15 + 10] = randomColourHair;
+        SaveFileManagement.saveState.customerAppearence[characterIndex * 15 + 11] = randomColourEyes;
+        SaveFileManagement.saveState.customerAppearence[characterIndex * 15 + 12] = randomColourClothesOuter;
+        SaveFileManagement.saveState.customerAppearence[characterIndex * 15 + 13] = randomColourClothesInner;
+
+        SaveFileManagement.saveState.repairProgress[9] = true;
+
         //Put the new character values into the save file
         //Because load hasn't been implemented this has been commented out as it does not work yet
         /*
@@ -163,6 +181,7 @@ public class CharacterRandomisation : MonoBehaviour
         SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 4] = randomPhyscialEyes;
         SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 5] = randomPhyscialClothesOuter;
         SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 6] = randomPhyscialClothesInner;
+
         SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 9] = randomColourSkin;
         SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 10] = randomColourHair;
         SFM.saveDataList.characterRandomisations[SFM.saveDataList.currentFile * 450 + characterIndex * 15 + 11] = randomColourEyes;

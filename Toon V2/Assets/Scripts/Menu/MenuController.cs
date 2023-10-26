@@ -15,12 +15,16 @@ public class MenuController : MonoBehaviour
      */
 
     [SerializeField] GameObject[] menus;
+    [SerializeField] SaveFileManagement saveFileManagement;
+    [SerializeField] CharacterRandomisation[] customers;
 
     private bool isPaused;
 
     void Start()
     {
         isPaused = false;
+        saveFileManagement.OpenFiles();
+        RandomiseCustomers();
     }
 
     void Update()
@@ -41,6 +45,12 @@ public class MenuController : MonoBehaviour
     public void OpenMenu(int menu)
     {
         ClearMenus();
+
+        if (menu == 9 || menu == 10)
+        {
+            saveFileManagement.UpdateSaveSlotMenu();
+        }
+
         menus[menu].SetActive(true);
     }
 
@@ -87,5 +97,13 @@ public class MenuController : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    private void RandomiseCustomers()
+    {
+        foreach (CharacterRandomisation customer in customers)
+        {
+            customer.StartAndRandomiseCharacter();
+        }
     }
 }
