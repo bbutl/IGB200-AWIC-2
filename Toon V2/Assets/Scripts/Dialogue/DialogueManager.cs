@@ -128,6 +128,10 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             queue.Next();
         }
+        if (fullText == "")
+        {
+            ProceedToNext();
+        }
         if (fullText == "Start")
         {
             ProceedToNext();
@@ -141,7 +145,7 @@ public class DialogueManager : MonoBehaviour
         }
             if (fullText == "Order")
         {
-            cameraPan.hasOrderded = true;
+            cameraPan.start = false;
             ProceedToNext();
             EndDialogue();
         }

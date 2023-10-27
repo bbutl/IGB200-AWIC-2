@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using Random = UnityEngine.Random;
 public class QueueController : MonoBehaviour
 {
     /*
@@ -33,6 +33,10 @@ public class QueueController : MonoBehaviour
 
     public GameObject pie;
     public SoundManager soundManager;
+    private void Awake()
+    {
+        SelectWorkers();
+    }
     void Start()
     {
         order = GenerateOrder();
@@ -112,9 +116,9 @@ public class QueueController : MonoBehaviour
         //Sean Only
         order[0] = new int[] { 11, 9 };
         //Sean, Susan, Plumber
-        order[1] = new int[] { 9, 0, 1 };
+        order[1] = new int[] { 11, 9, 0, 1 };
         //Sean, 
-        order[2] = new int[] { 9, 1, 4 };
+        order[2] = new int[] { 11, 9, 1, 4 };
         order[3] = new int[] { 2, 0 };
         order[4] = new int[] { 3, 7 };
         order[5] = new int[] { 4, 9 };
@@ -138,6 +142,18 @@ public class QueueController : MonoBehaviour
         for (int character = 0; character < individualCharacters.Length; character++)
         {
             individualCharacters[character] = characters[character].GetComponent<GenericCharacter>();
+        }
+    }
+    private void SelectWorkers()
+    {
+        int select = Random.Range(0, 2);
+       if(select == 0)
+        {
+            characters[1] = GameObject.Find("Carpenter");
+        }
+        else
+        {
+            characters[1] = GameObject.Find("Plumber");
         }
     }
 }

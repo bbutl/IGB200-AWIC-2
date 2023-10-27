@@ -8,6 +8,7 @@ using static Dialogue;
 
 public class Plumber : GenericCharacter
 {
+    public MovementController Controller;
     public bool startGuide = false;
     public InstallPipe installPipe;
     public Cook cook;
@@ -68,11 +69,12 @@ public class Plumber : GenericCharacter
 
     public DialogueSection D2Start()
     {
+        Controller.GoToTarget(0);
         //Monologue end = new Monologue(playerName, "Next");
-        Monologue end = new Monologue(playerName, "Fuse");
+        Monologue end = new Monologue(playerName, "Next");
         //Bad Choice 
         Monologue bad2 = new Monologue(localName, "Have a good one.", end);
-        Monologue bad1 = new Monologue(localName, "Oh, no worries then mate.\n\n\n\n\nSad..", bad2);
+        Monologue bad1 = new Monologue(localName, "Oh, no worries then mate.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSad..", bad2);
 
         //Good Choice
         Monologue good29 = new Monologue(playerName, "I always wondered who installed fire hydrants…", end);
@@ -80,7 +82,7 @@ public class Plumber : GenericCharacter
         Monologue good28 = new Monologue(localName, "Have a good one!", good29);
         Monologue good27 = new Monologue(localName, "Thank you for helping me out, I’ll catch ya around \nsome time.", good28);
         Monologue good26 = new Monologue(localName, "Anyway! I need to get to work.", good27);
-        Monologue good25 = new Monologue(localName, "For sure.\n\n\n\n\nLaugh..", good26);
+        Monologue good25 = new Monologue(localName, "For sure.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLaugh..", good26);
         Monologue good24 = new Monologue(playerName, "Always a plus.", good25);
         Monologue good23 = new Monologue(localName, "It also pays well.", good24);
         Monologue good22 = new Monologue(localName, "Then there’s sanitary plumbers, water plumbers and more \nso it’s quite a nice field to dive into.", good23);
@@ -88,7 +90,7 @@ public class Plumber : GenericCharacter
         Monologue good19 = new Monologue(localName, "It does go into more specific fields,", good21);
         Monologue good18 = new Monologue(localName, "Yeah I guess it is quite broad.", good19);
         Monologue good17 = new Monologue(playerName, "Oh wow, I didn’t realise it was that broad.", good18);
-        Monologue good16 = new Monologue(localName, "but yes, also toilets.\n\n\n\n\nLaugh..", good17);
+        Monologue good16 = new Monologue(localName, "but yes, also toilets.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLaugh..", good17);
         Monologue good15 = new Monologue(localName, "Things like fire sprinklers are also a plumber's job…", good16);
         Monologue good14 = new Monologue(localName, "Any system that requires water I also maintain.", good15);
         Monologue good13 = new Monologue(localName, "Whether it’s for drainage or gas, that’s me.", good14);

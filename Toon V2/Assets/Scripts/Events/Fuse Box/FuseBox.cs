@@ -17,15 +17,15 @@ public class FuseBox : MonoBehaviour
     {
         door.enabled = false;
     }
-    
+
 
     // Update is called once per frame
     void Update()
     {
         CamHandler();
-        
+
     }
-    private void CamHandler() 
+    private void CamHandler()
     {
         if (eventStarted)
         {
@@ -38,10 +38,18 @@ public class FuseBox : MonoBehaviour
         {
             Camera.main.transform.position = orignalPos;
             Camera.main.transform.rotation = originalRotation;
+
             sean.finished = true;
             eventFinished = false;
+            Invoke("Finish", 0.5f);
         }
     }
-        
-    
+    private void Finish()
+    {
+
+        Camera.main.transform.position = orignalPos;
+        Camera.main.transform.rotation = originalRotation;
+    }
+
+
 }

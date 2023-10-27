@@ -43,6 +43,10 @@ public class MovePie2 : MonoBehaviour
     }
     public void Dtroy()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        if(gameObject.GetComponent<MeshRenderer>() != null)
+        {
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+        }
+        
     }
 }

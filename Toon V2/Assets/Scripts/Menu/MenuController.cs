@@ -17,6 +17,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] GameObject[] menus;
     [SerializeField] SaveFileManagement saveFileManagement;
     [SerializeField] CharacterRandomisation[] customers;
+    [SerializeField] QueueController queueController;
 
     private bool isPaused;
 
@@ -105,5 +106,12 @@ public class MenuController : MonoBehaviour
         {
             customer.StartAndRandomiseCharacter();
         }
+    }
+    public void NextDay()
+    {
+        ClearMenus();
+        Time.timeScale = 1;
+        isPaused = false;
+        queueController.Next();
     }
 }

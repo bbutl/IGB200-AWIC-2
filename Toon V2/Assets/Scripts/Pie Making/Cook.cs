@@ -9,6 +9,7 @@ public class Cook : MonoBehaviour
     [Header("Ingredients")]
     public GameObject pieBase;
     public GameObject pieFilling;
+    public GameObject meatCubes;
     public GameObject pieTop;
 
     [Header("Current Ingredients")]
@@ -29,6 +30,7 @@ public class Cook : MonoBehaviour
     private Vector3 pieSpawn = new Vector3(0, 0.5f, 0);
     private Vector3 offset = new Vector3(0f, 0.75f, 0f);
     public Vector3 goTransform;
+    private Vector3 fillingPos = new Vector3(-66.3949966f, 2.477f, 2.54099989f);
     //change to false
     private bool isCooked = true;
 
@@ -48,7 +50,10 @@ public class Cook : MonoBehaviour
         // If pie is complete, instantiate the pie & reset values of prefab
         if (PieCompleted())
         {
-
+            if(meatCubes != null)
+            {
+                Destroy(meatCubes);
+            }
             Destroy(currBase);
             Destroy(currFilling);
             GameObject p = Instantiate(pieObject, cookingArea.transform.position + pieSpawn, Quaternion.identity);
@@ -96,6 +101,7 @@ public class Cook : MonoBehaviour
                     pie.pbase = ingredient.name;
                     Debug.Log($"New Base : {pie.pbase}");
                     currBase = Instantiate(pieBase, cookingArea.transform.position + offset, Quaternion.identity);
+                    currBase.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
                 }
 
                 break;
@@ -113,6 +119,12 @@ public class Cook : MonoBehaviour
                     pie.filling = ingredient.name;
                     Debug.Log($"New Filling : {pie.filling}");
                     currFilling = Instantiate(pieFilling, cookingArea.transform.position + offset, Quaternion.identity);
+                    currFilling.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
+                    if(ingredient.name == "Beef Filling")
+                    {
+                       meatCubes = Instantiate(meatCubes, fillingPos, Quaternion.identity);
+                        meatCubes.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
+                    }
                 }
                 else
                 {
