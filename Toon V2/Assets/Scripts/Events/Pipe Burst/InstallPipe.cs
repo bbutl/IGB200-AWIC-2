@@ -5,6 +5,8 @@ using static Dialogue;
 
 public class InstallPipe : MonoBehaviour
 {
+    public GameObject pea;
+    public GameObject shroom;
     public PipeBurst pBurst;
     Vector3 stopMove;
     private bool pipeInstalled = false;
@@ -41,7 +43,8 @@ public class InstallPipe : MonoBehaviour
             Destroy (other.gameObject);
             eventComplete = true;
             
-            
+            pea.gameObject.SetActive(true);
+            shroom.gameObject.SetActive(true);
             Camera.main.transform.position = orignalPos;
             Camera.main.transform.rotation = originalRotation;
         }

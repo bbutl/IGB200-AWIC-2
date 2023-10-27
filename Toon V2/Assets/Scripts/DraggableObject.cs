@@ -16,6 +16,7 @@ public class DraggableObject : MonoBehaviour
     private GameObject duplicateObject;
     private float timer = 0;
     private bool timerStart = false;
+    public bool moveBack = false;
 
     // Start is called before the first frame update
     void Start()
@@ -119,6 +120,10 @@ public class DraggableObject : MonoBehaviour
         {
             this.gameObject.transform.position = goTransform;
             //Destroy(gameObject);
+        }
+        if (this.gameObject.tag == "Event" && moveBack)
+        {
+            this.gameObject.transform.position = goTransform;
         }
     }
 

@@ -10,6 +10,8 @@ public class Cook : MonoBehaviour
     public GameObject pieBase;
     public GameObject pieFilling;
     public GameObject meatCubes;
+    public GameObject peas;
+    public GameObject mushroom;
     public GameObject pieTop;
 
     [Header("Current Ingredients")]
@@ -124,6 +126,16 @@ public class Cook : MonoBehaviour
                     {
                        meatCubes = Instantiate(meatCubes, fillingPos, Quaternion.identity);
                         meatCubes.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
+                    }
+                    if(ingredient.name == "Peas")
+                    {
+                        peas = Instantiate(peas, new Vector3(-66.4710007f, 3.06299996f, 3.41199994f), Quaternion.identity);
+                        peas.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
+                    }
+                    if(ingredient.name == "Mushrooms")
+                    {
+                        mushroom = Instantiate(mushroom, new Vector3(-66.4710007f, 3.06299996f, 3.41199994f), Quaternion.identity);
+                        mushroom.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
                     }
                 }
                 else
