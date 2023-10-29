@@ -336,20 +336,26 @@ public class DialogueManager : MonoBehaviour
             contentsText.text = "";
             foreach (char c in line.ToCharArray())
             {
+
+                PlayDialogueSound(c);
+                contentsText.text += c;
+
+                yield return new WaitForSeconds(typingSpeed);
+                /*
                 if (isTyping)
                 {
-                    PlayDialogueSound(c);
-                    contentsText.text += c;
-
-                    yield return new WaitForSeconds(typingSpeed);
                 }
                 else
                 {
-                    contentsText.text = line;
-                    break;
-                }
+                    if (SaveFileManagement.saveGame.otherOptions[0] != 1)
+                    {
+                        contentsText.text = line;
+                        break;
+                    }
+                }*/
             }
 
+            ProceedToNext();
             if (SaveFileManagement.saveGame.otherOptions[0] == 1)
             {
                 ProceedToNext();
@@ -474,7 +480,7 @@ public class DialogueManager : MonoBehaviour
     public void ChangeTextSpeed(int speed)
     {
         typingSpeed = new float[] { 0.06f, 0.03f, 0.01f }[speed];
-        textSpeedText.text = $"Text Speed ({new string[] { "Fast", "Medium", "Slow" }[speed]})";
+        textSpeedText.text = $"Text Speed ({new string[] { "Slow", "Medium", "Fast" }[speed]})";
     }
 
     public void ToggleAuto()
@@ -491,5 +497,11 @@ public class DialogueManager : MonoBehaviour
             autoText.text = "Auto";
             //ProceedToNext();
         }
+    }
+
+    public void ResetHistory()
+    {
+        historyNames = new List<string>();
+        historyContent = new List<string>();
     }
 }

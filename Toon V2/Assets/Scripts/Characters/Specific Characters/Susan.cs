@@ -16,7 +16,7 @@ public class Susan : GenericCharacter
     public CustomerOrder order;
     public EventTally tally;
     private string localName = "Susan";
-    private string playerName = "Player";
+    private string playerName = SaveFileManagement.saveFile.playerName;
     private void Start()
     {
         order.CreateOrder();

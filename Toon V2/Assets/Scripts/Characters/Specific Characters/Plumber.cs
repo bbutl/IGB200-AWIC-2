@@ -23,7 +23,7 @@ public class Plumber : GenericCharacter
     public DayController dayController;
 
     private string localName = "Sarah";
-    private string playerName = "Player";
+    private string playerName = SaveFileManagement.saveFile.playerName;
 
     private void Start()
     {

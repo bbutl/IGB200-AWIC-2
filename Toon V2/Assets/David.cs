@@ -13,7 +13,7 @@ public class David : GenericCharacter
     
     public Hannah hannah;
     string localname = "David";
-    string playerName = "Player";
+    string playerName = SaveFileManagement.saveFile.playerName;
     // Start is called before the first frame update
     void Start()
     {

@@ -14,7 +14,7 @@ public class Welder : GenericCharacter
     public Weld weld;
 
     string localname = "Lucy";
-    string playerName = "Player";
+    string playerName = SaveFileManagement.saveFile.playerName;
 
     // Start is called before the first frame update
     void Start()

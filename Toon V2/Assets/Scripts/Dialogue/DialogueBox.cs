@@ -11,6 +11,7 @@ public class DialogueBox : MonoBehaviour
     public Sprite playerImage;
     private Vector3 otherPos = new Vector3(-450, 25, -20);
     public Sprite otherImage;
+    public Material[] materials;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,16 +26,19 @@ public class DialogueBox : MonoBehaviour
         {
             rectTransform.localPosition = playerPos;
             gameObject.GetComponent<Image>().sprite = playerImage;
+            gameObject.GetComponent<Image>().material.color = materials[SaveFileManagement.saveGame.otherOptions[1]].color;
         }
         else if(manager.currentSection.GetSpeakerName() == "James")
         {
             rectTransform.localPosition = newsPos;
             gameObject.GetComponent<Image>().sprite = otherImage;
+            gameObject.GetComponent<Image>().material.color = materials[10].color;
         }
         else
         {
             rectTransform.localPosition = otherPos;
             gameObject.GetComponent<Image>().sprite = playerImage;
+            gameObject.GetComponent<Image>().material.color = materials[11].color;
         }
     }
 }

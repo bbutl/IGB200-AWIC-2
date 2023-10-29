@@ -13,7 +13,7 @@ public class Roof : GenericCharacter
 
 
     string localname = "Karen";
-    string playerName = "Player";
+    string playerName = SaveFileManagement.saveFile.playerName;
     // Start is called before the first frame update
     void Start()
     {

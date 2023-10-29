@@ -11,7 +11,7 @@ public class Carpenter : GenericCharacter
 
     public CharacterRandomisation characterRandomisation;
     string localname = "Sean";
-    string playerName = "Player";
+    string playerName = SaveFileManagement.saveFile.playerName;
     public Bench bench;
     public DialogueManager dManager;
     public CameraPan pan;

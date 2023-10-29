@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuController : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] SaveFileManagement saveFileManagement;
     [SerializeField] CharacterRandomisation[] customers;
     [SerializeField] QueueController queueController;
+    [SerializeField] TextMeshProUGUI textinput;
 
     private bool isPaused;
 
@@ -86,7 +89,12 @@ public class MenuController : MonoBehaviour
 
     public void StartGame()
     {
+        //SaveFileManagement.saveFile.playerName = textinput.text;
         SceneManager.LoadScene("URP");
+    }
+    public void Csutoemris()
+    {
+        SceneManager.LoadScene("Customise");
     }
 
     public void ReturnToTitle()
@@ -113,5 +121,10 @@ public class MenuController : MonoBehaviour
         Time.timeScale = 1;
         isPaused = false;
         queueController.Next();
+    }
+
+    public void UpdateColour(int colourIndex)
+    {
+        SaveFileManagement.saveGame.otherOptions[1] = colourIndex;
     }
 }

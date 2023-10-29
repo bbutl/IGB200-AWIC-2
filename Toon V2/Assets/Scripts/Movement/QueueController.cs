@@ -24,7 +24,8 @@ public class QueueController : MonoBehaviour
     [SerializeField] GameObject[] characters;
     [SerializeField] SaveFileManagement saveFileMangement;
     [SerializeField] DayController dayController;
-    
+    [SerializeField] DialogueManager dialogueManager;
+
     private MovementController[] movementCharacters;
     private GenericCharacter[] individualCharacters;
 
@@ -103,6 +104,8 @@ public class QueueController : MonoBehaviour
 
     private void DayOver()
     {
+        dialogueManager.ResetHistory();
+
         if (dayController.day < dayController.finalDay)
         {
             dayController.NextDay();

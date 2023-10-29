@@ -229,7 +229,7 @@ public class SaveGame
 public class SaveFile
 {
     public int currentState = 0;
-    public string playerName = "LK";
+    public string playerName = "Player";
     public bool[] tools = new bool[20];
     public SaveState[] saveStates = new SaveState[8];
 
