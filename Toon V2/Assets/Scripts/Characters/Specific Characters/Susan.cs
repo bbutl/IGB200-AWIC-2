@@ -14,7 +14,7 @@ public class Susan : GenericCharacter
     public QueueController queue;
     public CharacterRandomisation characterRandomisation;
     public CustomerOrder order;
-
+    public EventTally tally;
     private string localName = "Susan";
     private string playerName = "Player";
     private void Start()
@@ -32,6 +32,49 @@ public class Susan : GenericCharacter
     public override void Day2Start()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(D2Start());
+    }
+
+
+    public override void Day6Start()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(D6Start());
+    }
+
+
+
+
+
+
+        public DialogueSection D6Start()
+    {
+
+        if (tally.tally >= 2)
+        {
+            Monologue line13 = new Monologue(localName, "Next");
+            Monologue line12 = new Monologue(playerName, "What a lovely day it is.", line13);
+            Monologue line11 = new Monologue(playerName, "Good luck! ", line12);
+            Monologue line10 = new Monologue(localName, "Anyway! I’m not finished learning, so I'm going to go back to mingling.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLaugh..", line11);
+            Monologue line9 = new Monologue(localName, "If there was any conflict between them, I can’t see it now. They’re both wonderful friends.", line10);
+            Monologue line8 = new Monologue(playerName, "Oh? They must have figured out their conflicts. That’s wonderful.", line9);
+            Monologue line7 = new Monologue(localName, "She was very informative. Her colleague David also gave me some great insight.", line8);
+            Monologue line6 = new Monologue(localName, "Likewise, I was even talking to Hannah, the site manager sitting over there.", line7);
+            Monologue line5 = new Monologue(playerName, "I’m happy you could learn so much", line6);
+            Monologue line4 = new Monologue(localName, "I can tell my daughter about all of them. It’s quite exciting.", line5);
+            Monologue line3 = new Monologue(localName, "I’m fantastic. I’ve been talking to all these people and learning about different construction roles.", line4);
+            Monologue line2 = new Monologue(playerName, "You look better than you did a couple days ago, how are you?", line3);
+            Monologue line1 = new Monologue(localName, "Hi! It’s me again. What a lovely day, congratulations on opening the store!", line2);
+            return line1;
+        }
+
+        else
+        {
+            
+            Monologue line1 = new Monologue(localName, "Next");
+            return line1;
+
+        }
+
+
     }
 
     private DialogueSection D2Start()

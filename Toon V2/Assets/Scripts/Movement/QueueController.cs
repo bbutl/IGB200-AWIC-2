@@ -87,6 +87,9 @@ public class QueueController : MonoBehaviour
                 case 4:
                     individualCharacters[order[dayController.day][currentCharacter]].Day5Start();
                     break;
+                case 5:
+                    individualCharacters[order[dayController.day][currentCharacter]].Day6Start();
+                    break;
             }
 
 
@@ -126,8 +129,8 @@ public class QueueController : MonoBehaviour
         //Sean, 
         order[2] = new int[] { 11, 9, 1};
         order[3] = new int[] { 11, 2, 5 };
-        order[4] = new int[] { 11, 10 };
-        order[5] = new int[] { 4, 9 };
+        order[4] = new int[] { 11, 7, 10 };
+        order[5] = new int[] { 11, 9, 0};
         order[6] = new int[] { 5, 11 };
         order[7] = new int[] { 6, 7, 10, 1 };
 

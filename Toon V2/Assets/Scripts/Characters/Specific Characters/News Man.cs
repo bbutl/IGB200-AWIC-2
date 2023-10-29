@@ -9,6 +9,7 @@ public class NewsMan : GenericCharacter
     private string localName = "James";
     public Image newsImage;
     public DialogueManager dManager;
+    public EventTally tally;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +35,11 @@ public class NewsMan : GenericCharacter
     {
         FindObjectOfType<DialogueManager>().StartDialogue(Day5News());
     }
+    public override void Day6Start()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(Day6News());
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -84,5 +90,27 @@ public class NewsMan : GenericCharacter
         Monologue line2 = new Monologue(localName, "These include restaurants, shops and tourist attractions.", line3);
         Monologue line1 = new Monologue(localName, "Awicville’s population spikes as smaller construction projects begin finishing.", line2);
         return line1;
+    }
+    public DialogueSection Day6News()
+    {
+        if(tally.tally >= 2)
+        {
+            Monologue end2 = new Monologue(localName, "");
+            Monologue end = new Monologue(localName, "Next", end2);
+            Monologue line3 = new Monologue(localName, "With a grand opening, Pie Stop is opening its doors after years of being rundown.", end);
+            Monologue line2 = new Monologue(localName, "Especially the small pie store in the middle of it all.", line3);
+            Monologue line1 = new Monologue(localName, "Awicville’s construction boom has been a major success for the \ntown.", line2);
+            return line1;
+        }
+        else
+        {
+            Monologue end2 = new Monologue(localName, "");
+            Monologue end = new Monologue(localName, "Next", end2);
+            
+            Monologue line2 = new Monologue(localName, "This has meant that many smaller businesses are struggling to finish renovations.", end);
+            Monologue line1 = new Monologue(localName, "Awicville’s construction projects have hit a sudden slump as workers strike for better working conditions.", line2);
+            return line1;
+        }
+       
     }
 }

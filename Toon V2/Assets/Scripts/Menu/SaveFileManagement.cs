@@ -108,7 +108,7 @@ public class SaveFileManagement : MonoBehaviour
         RenderTexture.active = null;
         byte[] byteArray = renderedTexture.EncodeToPNG();
         System.IO.File.WriteAllBytes(Application.dataPath + $"/Captures/saveStateIcon{stateNo}.png", byteArray);
-        AssetDatabase.Refresh();
+        //AssetDatabase.Refresh();
     }
 
     public void UpdateSaveSlotMenu()

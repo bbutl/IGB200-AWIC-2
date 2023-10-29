@@ -33,7 +33,7 @@ public class David : GenericCharacter
             dManager.goodChoice = 2;
         }
         // change to 2
-        if (cook.PieCompleted() == true && queue.currentCharacter == 1)
+        if (cook.PieCompleted() == true && queue.currentCharacter == 2)
         {
             FindObjectOfType<DialogueManager>().StartDialogue(PieTalk());
         }

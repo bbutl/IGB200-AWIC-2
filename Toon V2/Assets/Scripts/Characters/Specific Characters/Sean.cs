@@ -17,7 +17,7 @@ public class Sean : GenericCharacter
     public DayController dayController;
     public bool finished = false;
     public CameraPan pan;
-
+    public EventTally tally;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +40,8 @@ public class Sean : GenericCharacter
                 FindObjectOfType<DialogueManager>().StartDialogue(PostFuse());
 
             }
-            if(dManager.badChoice == 1)
+            
+            if (dManager.badChoice == 1)
             {
                 FindObjectOfType<DialogueManager>().StartDialogue(ConversationBad());
                 dManager.badChoice = 2;
@@ -100,6 +101,52 @@ public class Sean : GenericCharacter
     {
         FindObjectOfType<DialogueManager>().StartDialogue(D3Start());
     }
+
+    public override void Day6Start()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(D6Start());
+    }
+
+
+    public DialogueSection D6Start()
+    {
+        dManager.goodChoice = 0;
+        dManager.badChoice = 0;
+        if(tally.tally >= 2)
+        {
+            Monologue line10 = new Monologue();
+            Monologue line9 = new Monologue(localname ,"");
+            Monologue line8 = new Monologue(localname, "Next", line9);
+            Monologue line7 = new Monologue(localname, "I am a man of simple taste.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLaugh..", line8);
+            Monologue line6 = new Monologue(playerName, "Always liked the meat pies didn’t you mate?", line7);
+            Monologue line5 = new Monologue(localname, "You spoil me! I’ll gladly have a pie, a meat pie would be great.", line6);
+            Monologue line4 = new Monologue(playerName, "Thank you, thank you. I can now officially offer you a pie, a free one for old times sake.", line5);
+            Monologue line3 = new Monologue(localname, "I wouldn't dare miss this grand occasion. Look at this place! You’ve done such a fantastic job.", line4);
+            Monologue line2 = new Monologue(playerName, "Welcome Sean! I’m so happy you could make it!", line3);
+            Monologue line1 = new Monologue(localname, "Look who it is! The most legendary pie, construction, awesome person in existence, ha! \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLaugh..", line2);
+            return line1;
+        }
+
+        else
+        {
+            Monologue line10 = new Monologue();
+            Monologue line9 = new Monologue();
+            Monologue line8 = new Monologue();
+            Monologue line7 = new Monologue(localname, "Next", line8);
+            Monologue line6 = new Monologue(playerName, "Sounds like a plan!", line7);
+            Monologue line5 = new Monologue(localname, "That’s the spirit. I think you should go into this next week with an open mind and look for any opportunities to learn.", line6);
+            Monologue line4 = new Monologue(playerName, "I guess you’re right. I still have chances to learn in the future, this isn’t the end of Pie Stop.", line5);
+            Monologue line3 = new Monologue(localname, "That’s right. I heard about the demands and strikes starting throughout town. Oh well, the store’s not going anywhere. You can certainly try again and make some nice connections to open the store on a different day.", line4);
+            Monologue line2 = new Monologue(playerName, "I couldn’t fix the store in time. There are still too many jobs to do and construction workers in town are dealing with bigger problems it seems, at least according to the news.", line3);
+            Monologue line1 = new Monologue(localname, "Ah, what happened here?", line2);
+            return line1;
+            
+        }
+        
+        
+    }
+
+
 
     public DialogueSection Conversation()
     {
