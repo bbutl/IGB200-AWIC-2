@@ -85,7 +85,10 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-
+        if (currentSection.GetSpeakerName() == "James")
+        {
+            hasMoved = false;
+        }
 
         currentCharacter = GameObject.FindGameObjectWithTag("Character");
         animator = currentCharacter.GetComponent<Animator>();
