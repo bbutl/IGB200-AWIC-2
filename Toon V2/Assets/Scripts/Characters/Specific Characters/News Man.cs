@@ -26,6 +26,14 @@ public class NewsMan : GenericCharacter
     {
         FindObjectOfType<DialogueManager>().StartDialogue(Day3News());
     }
+    public override void Day4Start()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(Day4News());
+    }
+    public override void Day5Start()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(Day5News());
+    }
 
     // Update is called once per frame
     void Update()
@@ -55,6 +63,26 @@ public class NewsMan : GenericCharacter
         Monologue end = new Monologue(localName, "Next");
         Monologue line2 = new Monologue(localName, "This is one of many small businesses that have become active during \nthe recent construction boom in town.", end);
         Monologue line1 = new Monologue(localName, "Renovations have begun for a small pie store in Awicville with a \ngrand reopening planned for next week.", line2);
+        return line1;
+    }
+    public DialogueSection Day4News()
+    {
+        Monologue end2 = new Monologue(localName, "");
+        Monologue end = new Monologue(localName, "Next", end2);
+        Monologue line3 = new Monologue(localName, "This pie store is in a prime location if it can successfully open\n the coming week.", end);
+        Monologue line2 = new Monologue(localName, "As a potential hot spot for all the construction workers in the area.", line3);
+        Monologue line1 = new Monologue(localName, "Word is spreading that the small pie store in the centre of town is \nalready developing a reputation amongst the community.", line2);
+        return line1;
+    }
+
+
+    public DialogueSection Day5News()
+    {
+        Monologue end2 = new Monologue(localName, "");
+        Monologue end = new Monologue(localName, "Next", end2);
+        Monologue line3 = new Monologue(localName, "Which have begun opening to drive the economy, lifestyle \nand culture of Awicville.\r\n", end);
+        Monologue line2 = new Monologue(localName, "These include restaurants, shops and tourist attractions.", line3);
+        Monologue line1 = new Monologue(localName, "Awicville’s population spikes as smaller construction projects begin finishing.", line2);
         return line1;
     }
 }

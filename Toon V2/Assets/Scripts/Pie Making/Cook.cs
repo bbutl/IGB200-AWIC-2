@@ -52,9 +52,18 @@ public class Cook : MonoBehaviour
         // If pie is complete, instantiate the pie & reset values of prefab
         if (PieCompleted())
         {
-            if(meatCubes != null)
+            if (meatCubes != null)
             {
                 Destroy(meatCubes);
+            }
+
+            if (peas != null)
+            {
+                Destroy(peas);
+            }
+            if (mushroom != null)
+            {
+                Destroy(mushroom);
             }
             Destroy(currBase);
             Destroy(currFilling);
@@ -122,17 +131,17 @@ public class Cook : MonoBehaviour
                     Debug.Log($"New Filling : {pie.filling}");
                     currFilling = Instantiate(pieFilling, cookingArea.transform.position + offset, Quaternion.identity);
                     currFilling.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
-                    if(ingredient.name == "Beef Filling")
+                    if (ingredient.name == "Beef Filling")
                     {
-                       meatCubes = Instantiate(meatCubes, fillingPos, Quaternion.identity);
+                        meatCubes = Instantiate(meatCubes, fillingPos, Quaternion.identity);
                         meatCubes.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
                     }
-                    if(ingredient.name == "Peas")
+                    if (ingredient.name == "Peas")
                     {
                         peas = Instantiate(peas, new Vector3(-66.4710007f, 3.06299996f, 3.41199994f), Quaternion.identity);
                         peas.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
                     }
-                    if(ingredient.name == "Mushrooms")
+                    if (ingredient.name == "Mushrooms")
                     {
                         mushroom = Instantiate(mushroom, new Vector3(-66.4710007f, 3.06299996f, 3.41199994f), Quaternion.identity);
                         mushroom.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);

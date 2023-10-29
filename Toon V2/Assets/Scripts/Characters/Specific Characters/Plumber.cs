@@ -16,57 +16,88 @@ public class Plumber : GenericCharacter
     public CharacterRandomisation characterRandomisation;
     public CustomerOrder order;
     public SaveFileManagement SFM;
+    public DialogueManager dManager;
+    public CameraPan pan;
+    public Pie p;
+    public Button nextButton;
+    public DayController dayController;
 
     private string localName = "Sarah";
     private string playerName = "Player";
 
     private void Start()
     {
+        dManager.goodChoice = 0;
+        dManager.badChoice = 0;
         order.CreateOrder();
         localName = characterRandomisation.name;
     }
 
-    
+
     public void Update()
     {
-        
-        if(startGuide == true)
-        {
-            //nextButton.gameObject.SetActive(false);
-            //nextButton.gameObject.GetComponent<Button>().enabled = false;
-        }
-        else
-        {
-            //nextButton.gameObject.GetComponent<Button>().enabled = true;
-        }
-    
-        //Second Conversation
-        if (cook.PieCompleted() == true && queue.currentCharacter == 1)
-        {   
-            FindObjectOfType<DialogueManager>().StartDialogue(Conversation2());
-        }
-        //Third Conversation
         if (startGuide == true)
         {
             startGuide = false;
+            
             FindObjectOfType<DialogueManager>().StartDialogue(Guide());
         }
         if (installPipe.eventComplete)
         {
-
+            installPipe.eventComplete = false;
             EventComplete();
         }
+        if (dManager.goodChoice == 1)
+        {
+            pan.start = false;
+            dManager.goodChoice = 2;
+        }
+        if (dManager.goodChoice == 4)
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(Finish());
+            dManager.goodChoice = 5;
+        }
+        if (dManager.goodChoice > 6)
+        {
+            queue.Next();
+            dManager.goodChoice = -1;
+
+        }
+        if (cook.PieCompleted() == true && queue.currentCharacter == 2 && dayController.day == 2)
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(PieTalk());
+        }
+
+
+
+
     }
-    
+
     public override void Day2Start()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(D2Start());
+    }
+    public override void Day3Start()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(D3Start());
     }
     public void EventComplete()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(EventCompleted());
     }
 
+    public DialogueSection Finish()
+    {
+
+        Monologue end = new Monologue(localName, "");
+        Monologue line8 = new Monologue(localName, "Next");
+        Monologue line7 = new Monologue(localName, "Bye bye.", line8);
+        Monologue line6 = new Monologue(playerName, "Of course, goodbye.", line7);
+        Monologue line5 = new Monologue(localName, "Well! I best be heading off, got a life to live ya know?", line6);
+        Monologue line4 = new Monologue(playerName, "Noted…", line5);
+
+        return line4;
+    }
     public DialogueSection D2Start()
     {
         Controller.GoToTarget(0);
@@ -116,18 +147,18 @@ public class Plumber : GenericCharacter
 
     public DialogueSection Conversation2()
     {
-        
+
         Monologue end = new Monologue(localName, "");
         Monologue startEvent = new Monologue(localName, $"Start", end);
         Monologue respones2a = new Monologue(localName, $"Lets get to it then.", startEvent);
-        
+
         Choices response1a = new Choices(localName, $"Im a plumber so I can give you a hand with fixing that up, on the house.", ChoiceList(Choice("Yes please!", respones2a)));
         Choices sink1 = new Choices(localName, $"I noticed that your sink back there doesnt seem to be working.", ChoiceList(Choice("Yeah the store has seen better days.", response1a)));
         return sink1;
     }
     public DialogueSection Guide()
     {
-        
+        nextButton.interactable = false;
         Monologue guide5 = new Monologue(localName, $"Now we just need to fit the new pipe in and solder it with the welder.");
         Monologue guide4 = new Monologue(localName, $"Now that we have cut the pipe, remove the pipe.", guide5);
         Monologue guide3 = new Monologue(localName, $"Secondly, you will need to fit the pipe cutter to the pipe.", guide4);
@@ -135,11 +166,87 @@ public class Plumber : GenericCharacter
         Monologue guide1 = new Monologue(localName, $"Firstly, {SaveFileManagement.saveFile.playerName} make sure the water supply is switched off.", guide2);
         return guide1;
     }
+    public DialogueSection PieTalk()
+    {
+        Monologue end = new Monologue(localName, "");
+
+        Monologue good = new Monologue(localName, "Good.", end);
+
+
+
+
+        //Pie Check
+        Monologue pie1 = new Monologue();
+        Monologue pie2 = new Monologue();
+        Monologue pie3 = new Monologue();
+
+
+
+        if (p.filling == "Beef Filling")
+        {
+            pie1 = new Monologue(localName, "Hmm… I’d like some vege next time I think but it’s still delicious.", good);
+        }
+        else
+        {
+            pie2 = new Monologue(localName, "Keep up the good work.", good);
+            pie1 = new Monologue(localName, "Definitely an upgrade.", pie2);
+
+        }
+        //Monologue line3 = new Monologue(localName, "Now that sounds fantastic, reckon I could try one?", pie1);
+        Monologue line2 = new Monologue(localName, "Mmmmmm", pie1);
+        Monologue line1 = new Monologue(playerName, "What do you think?", line2);
+
+        return line1;
+    }
+
     public DialogueSection EventCompleted()
     {
+        nextButton.interactable = true;
         startGuide = false;
-        Monologue start = new Monologue(localName, "Any time.");
-        
-        return start;
+
+
+        Monologue line10 = new Monologue();
+        Monologue line9 = new Monologue();
+        Monologue line8 = new Monologue();
+        Monologue line7 = new Monologue();
+        Monologue line6 = new Monologue(localName, "");
+        Monologue line5 = new Monologue(playerName, "Good.", line6);
+        Monologue line4 = new Monologue(playerName, "For sure! Consider it a thanks for helping.", line5);
+        Monologue line3 = new Monologue(localName, "Now that sounds fantastic, reckon I could try one?", line4);
+        Monologue line2 = new Monologue(playerName, "This is fantastic, thank you. I can now clean vegetables for the pies.", line3);
+        Monologue line1 = new Monologue(localName, "There ya’ go mate. Good as new.", line2);
+
+        return line1;
+    }
+    public DialogueSection D3Start()
+    {
+
+
+
+        Monologue line16 = new Monologue();
+
+        Monologue line15 = new Monologue();
+        Monologue line14 = new Monologue();
+        Monologue line13 = new Monologue();
+
+
+        Monologue line12 = new Monologue(localName, "");
+
+        Monologue line11 = new Monologue(localName, "Next", line12);
+        Monologue line10 = new Monologue(localName, "Have a good one.", line11);
+        Monologue line9 = new Monologue(localName, "No worries then mate. I won’t be a bother.", line10);
+
+        Monologue line8 = new Monologue(playerName, "");
+
+        Monologue eventstart = new Monologue(playerName, "Start", line8);
+        Monologue line7 = new Monologue(playerName, "Yes! Right this way.", eventstart);
+        Monologue line6 = new Monologue(localName, "Yep! Do you have any pipes or waterworks that need looking at?", line7);
+        Monologue line5 = new Monologue(playerName, "Are you sure? I would love all the help I can get! You’re a plumber \nright?", line6);
+        Monologue line4 = new Monologue(localName, "Did you need any help?", line5);
+
+        Monologue line3 = new Monologue(localName, "Oh? Now that you mention it, this place is a little beat up.", line4);
+        Choices line2 = new Choices(localName, "Sorry mate! I know you’re not open. I actually came to ask for your \nopening hours?", ChoiceList(Choice("I actually need to renovate first.", line3), Choice("I’m not sure, I haven’t thought about it.", line9)));
+        Monologue line1 = new Monologue(playerName, "Hello I-", line2);
+        return line1;
     }
 }

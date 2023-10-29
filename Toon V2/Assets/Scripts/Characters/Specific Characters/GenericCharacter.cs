@@ -24,4 +24,12 @@ public abstract class GenericCharacter : MonoBehaviour, IGenericCharacter
     {
 
     }
+    public virtual void Day4Start()
+    {
+
+    }
+    public virtual void Day5Start()
+    {
+
+    }
 }

@@ -6,10 +6,12 @@ using TMPro;
 using static Dialogue;
 using Unity.VisualScripting;
 using UnityEngine.UI;
-
+using Random = UnityEngine.Random;
 
 public class DialogueManager : MonoBehaviour
 {
+
+
     public DialogueSection currentSection;
     private string pName = "Player:";
     [Header("Text Components")]
@@ -23,6 +25,19 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogueChoiceObject;
     public Transform parentChoicesTo;
     public Animator animator;
+    public AudioClip dialogueTypingSoundClip;
+    public AudioClip[] audioClips;
+    public AudioSource audioSource;
+
+    [SerializeField] private float minPitch;
+
+    [SerializeField] private float maxPitch;
+
+
+    public Bench bench;
+
+    public Roofer roofer;
+    public Weld weld;
 
     [Header("Fade")]
     public float canvasGroupFadeTime = 5F;
@@ -42,7 +57,7 @@ public class DialogueManager : MonoBehaviour
     public Image newsImage;
     public int badChoice = 0;
     public int goodChoice = 0;
-
+    [SerializeField] private bool stopAudioSource;
     [SerializeField] MovementController[] customers;
     public List<string> historyNames = new List<string>();
     public List<string> historyContent = new List<string>();
@@ -50,6 +65,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI autoText;
     private bool isTyping = false;
 
+
+    public AudioSource doorSource;
     public string fullText;
     //public GameObject DialogueBox;
     // public Sprite playerImage;
@@ -57,6 +74,8 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         InitalizePanel();
+        minPitch = Random.Range(0.9f, 1f);
+        maxPitch = Random.Range(1, 1.1f);
     }
 
     private void InitalizePanel()
@@ -66,15 +85,17 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+
+
         currentCharacter = GameObject.FindGameObjectWithTag("Character");
         animator = currentCharacter.GetComponent<Animator>();
-       
+
         UpdateCanvasOpacity();
         PrepareForOptionDisplay();
         DisplayDialogueOptions();
         TextCommands();
         NewsControl();
-        if(cameraPan.hasOrderded == true)
+        if (cameraPan.hasOrderded == true)
         {
             cameraPan.hasOrderded = false;
         }
@@ -83,24 +104,24 @@ public class DialogueManager : MonoBehaviour
         {
             ProceedToNext();
         }
-       
+
         if (contentsText.text != fullText && nameText.text != pName)
-                                          
+
         {
             animator.SetBool("isTalking", true);
-            
+
         }
         else
         {
-            
+
             animator.SetBool("isTalking", false);
         }
     }
 
     public void NewsControl()
     {
-       
-        if (currentCharacter.name == "James")
+
+        if (currentSection.GetSpeakerName() == "James")
         {
             if (newsImage.enabled != true)
             {
@@ -108,23 +129,31 @@ public class DialogueManager : MonoBehaviour
                 Camera.main.transform.rotation = newsCam.transform.rotation;
                 newsImage.enabled = true;
             }
-        } 
-        else if (currentCharacter.name != "James" && !hasMoved)
+        }
+        else if (currentSection.GetSpeakerName() != "James" && !hasMoved)
         {
+            newsImage.enabled = false;
+            Invoke("MoveNews", 0.2f);
+        }
+    }
+    public void MoveNews()
+    {
+        if (hasMoved == false)
+        {
+
             Camera.main.transform.position = new Vector3(-66.677002f, 4.4000001f, 3.56999993f);
             Camera.main.transform.rotation = Quaternion.Euler(0, 90, 0);
-            newsImage.enabled = false;
             hasMoved = true;
         }
     }
     public void TextCommands()
     {
         currentCharacter = GameObject.FindGameObjectWithTag("Character");
-        
-       
+
+
         if (fullText == "Next")
         {
-            
+            doorSource.Play();
             EndDialogue();
             queue.Next();
         }
@@ -135,21 +164,42 @@ public class DialogueManager : MonoBehaviour
         if (fullText == "Start")
         {
             ProceedToNext();
+            ProceedToNext();
             plumber.startGuide = true;
             pipeBurst.eventStarted = false;
         }
+
+        if (fullText == "Carpent")
+        {
+            ProceedToNext();
+            ProceedToNext();
+            bench.startBench = true;
+        }
+        if(fullText == "Roof")
+        {
+            ProceedToNext();
+            ProceedToNext();
+            roofer.startRoofer = true;
+        }
+        if (fullText == "Weld")
+        {
+            ProceedToNext();
+            ProceedToNext();
+            weld.startWeld = true;
+        }
+
         if (fullText == "Fuse")
         {
             ProceedToNext();
             fuseBox.eventStarted = true;
         }
-            if (fullText == "Order")
+        if (fullText == "Order")
         {
             cameraPan.start = false;
             ProceedToNext();
             EndDialogue();
         }
-        if(fullText == "Bad.")
+        if (fullText == "Bad.")
         {
             badChoice += 1;
             ProceedToNext();
@@ -159,18 +209,22 @@ public class DialogueManager : MonoBehaviour
             goodChoice += 1;
             ProceedToNext();
         }
-        if(fullText == "Mmmmmm")
+        if (fullText == "Mmmmmm")
         {
             animator.SetBool("isTaking", true);
             Invoke("PlayTalk", 3);
-            
+
         }
-        
+
         else
         {
             animator.SetBool("isTaking", false);
         }
-        
+
+    }
+    public void NextChar()
+    {
+
     }
     public void PlayTalk()
     {
@@ -196,7 +250,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(DialogueSection start)
     {
-        
+
         canvasGroupDisplaying = true;
         ClearAllOptions();
         currentSection = start;
@@ -253,7 +307,7 @@ public class DialogueManager : MonoBehaviour
     private void DisplayText()
     {
         StartCoroutine(DisplayLine(currentSection.GetSpeechContents()));
-        
+
         fullText = currentSection.GetSpeechContents();
 
         optionsBeenDisplayed = false;
@@ -261,14 +315,14 @@ public class DialogueManager : MonoBehaviour
         nameText.text = $"{currentSection.GetSpeakerName()}:";
 
         historyNames.Add($"{currentSection.GetSpeakerName()}:");
-        
+
         contentsArray = currentSection.GetSpeechContents().ToCharArray();
 
         historyContent.Add($"{currentSection.GetSpeechContents()}");
 
-        
+
     }
-    
+
     private IEnumerator DisplayLine(string line)
     {
         if (typingSpeed == 0.0f)
@@ -284,7 +338,9 @@ public class DialogueManager : MonoBehaviour
             {
                 if (isTyping)
                 {
+                    PlayDialogueSound(c);
                     contentsText.text += c;
+
                     yield return new WaitForSeconds(typingSpeed);
                 }
                 else
@@ -303,17 +359,54 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void PlayDialogueSound(int currentDisplayedCharacterCount)
+    {
+
+        if (currentDisplayedCharacterCount % 2 == 0)
+        {
+            if (stopAudioSource)
+            {
+                audioSource.Stop();
+            }
+            audioSource.pitch = Random.Range(minPitch, maxPitch);
+            audioSource.PlayOneShot(dialogueTypingSoundClip);
+            if (dialogueTypingSoundClip == audioClips[0])
+            {
+                dialogueTypingSoundClip = audioClips[1];
+            }
+            else if (dialogueTypingSoundClip == audioClips[1])
+            {
+                dialogueTypingSoundClip = audioClips[2];
+            }
+            else if (dialogueTypingSoundClip == audioClips[2])
+            {
+                dialogueTypingSoundClip = audioClips[3];
+            }
+            else if (dialogueTypingSoundClip == audioClips[3])
+            {
+                dialogueTypingSoundClip = audioClips[0];
+            }
+            else
+            {
+                dialogueTypingSoundClip = audioClips[0];
+            }
+
+
+
+        }
+    }
+
     private void EndDialogue()
     {
         customerOrder.CreateOrder();
-        if (cameraPan.start == true && cameraPan.hasOrderded == true )
+        if (cameraPan.start == true && cameraPan.hasOrderded == true)
         {
-            
+
             cameraPan.start = false;
         }
         canvasGroupDisplaying = false;
         ClearAllOptions();
-        
+
     }
 
     private void ClearAllOptions()
@@ -348,7 +441,7 @@ public class DialogueManager : MonoBehaviour
     */
     public void DisplayDialogueOptions()
     {
-        if(!typeof(Choices).IsInstanceOfType(currentSection))
+        if (!typeof(Choices).IsInstanceOfType(currentSection))
         {
             return;
         }
@@ -357,7 +450,7 @@ public class DialogueManager : MonoBehaviour
 
         if (displayingChoices)
         {
-            if(indexOfCurrentChoice < choices.choices.Count)
+            if (indexOfCurrentChoice < choices.choices.Count)
             {
                 Tuple<string, DialogueSection> option = choices.choices[indexOfCurrentChoice];
 
@@ -381,7 +474,7 @@ public class DialogueManager : MonoBehaviour
     public void ChangeTextSpeed(int speed)
     {
         typingSpeed = new float[] { 0.06f, 0.03f, 0.01f }[speed];
-        textSpeedText.text = $"Text Speed ({new string[] {"Fast", "Medium", "Slow"}[speed]})";
+        textSpeedText.text = $"Text Speed ({new string[] { "Fast", "Medium", "Slow" }[speed]})";
     }
 
     public void ToggleAuto()

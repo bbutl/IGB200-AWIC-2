@@ -13,14 +13,14 @@ public class PipeBurst : Event
     public DialogueManager d;
     public Camera cam;
     public Camera mainCam;
-    
+
     public DraggableObject drag;
     public bool waterOn = true;
     public bool pipeRemoved = false;
     public Transform originalPos;
     Vector3 stopMove;
     public bool eventStarted = true;
-    
+
 
 
     [Header("Pipe Event Objects")]
@@ -30,27 +30,27 @@ public class PipeBurst : Event
     public GameObject newPipe;
 
     void Awake()
-    { 
+    {
         stopMove = gameObject.transform.position;
         originalPos = mainCam.transform;
     }
     void Start()
     {
         occupationList.Add("Plumber");
-        
+
         //occupationList = eventManager.avaliableOccupations;
-        
+
     }
     void Update()
     {
-        if(eventStarted == false)
+        if (eventStarted == false)
         {
-            
+
             StartEvent();
-            
+
         }
         if (stepNumber < 2) { gameObject.transform.position = stopMove; }
-        
+
         StepCompleted();
         if (water.hasClicked && waterOn)
         {
@@ -58,14 +58,14 @@ public class PipeBurst : Event
             d.ProceedToNext();
         }
     }
-   
-    
+
+
     public DialogueSection Guide()
     {
         string localName = "Sarah";
         string playerName = "Player";
         Monologue guide5 = new Monologue(localName, $"Now we just need to fit the new pipe in and solder it with the welder.");
-        Monologue guide4 = new Monologue(localName,$"Now that we have cut the pipe, remove the pipe.", guide5 );
+        Monologue guide4 = new Monologue(localName, $"Now that we have cut the pipe, remove the pipe.", guide5);
         Monologue guide3 = new Monologue(localName, $"Secondly, you will need to fit the pipe cutter to the pipe.", guide4);
         Monologue guide2 = new Monologue(localName, "", guide3);
         Monologue guide1 = new Monologue(localName, $"Firstly, {playerName} make sure the water supply is switched off.", guide2);
@@ -85,15 +85,15 @@ public class PipeBurst : Event
     }
     public void OnTriggerEnter(Collider other)
     {
-        
-        if(other.gameObject.name == "Holder(Clone)" )
+
+        if (other.gameObject.name == "Holder(Clone)")
         {
-            
+
             //Goes around the pipe before welding
 
             //Make holder non draggable & set in place
             Destroy(other.gameObject);
-            GameObject h = Instantiate(holder, gameObject.transform.position + new Vector3(0.2f, 0, 0.7f), Quaternion.Euler(0,90,0));
+            GameObject h = Instantiate(holder, gameObject.transform.position + new Vector3(0.2f, 0, 0.7f), Quaternion.Euler(0, 90, 0));
             h.gameObject.GetComponent<BoxCollider>().enabled = false;
 
             stepNumber += 1;
@@ -101,8 +101,8 @@ public class PipeBurst : Event
             //Next monologue
             d.ProceedToNext();
         }
-        
-        
+
+
 
 
     }
@@ -113,14 +113,14 @@ public class PipeBurst : Event
             eventStarted = true;
 
             cam.transform.position -= new Vector3(0, 1, 0);
-            
+
             mainCam.transform.position = cam.transform.position;
             mainCam.transform.rotation = cam.transform.rotation;
-            
-            
+
+
             Debug.Log("Event Started");
             InstantiateEventObjects();
-            
+
             //FindObjectOfType<DialogueManager>().StartDialogue(Guide());
 
 
@@ -129,10 +129,10 @@ public class PipeBurst : Event
     //Instantiate the objects required for the event
     public void InstantiateEventObjects()
     {
-        
-        Instantiate(welder, cam.transform.position + new Vector3(-1.3f, 0.3f, -1.1f), Quaternion.identity);
-        Instantiate(holder, cam.transform.position + new Vector3(-1.3f, -0.1f, -1.1f), Quaternion.identity);
-        
+
+        Instantiate(welder, cam.transform.position + new Vector3(-1.3f, 0.3f, -1.37f), Quaternion.identity);
+        Instantiate(holder, cam.transform.position + new Vector3(-1.3f, 0.3f, -1.1f), Quaternion.identity);
+
     }
     public bool StepCompleted()
     {
