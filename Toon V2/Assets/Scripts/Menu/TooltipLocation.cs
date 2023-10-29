@@ -10,9 +10,10 @@ public class TooltipLocation : MonoBehaviour
     [SerializeField] private GameObject self;
     [SerializeField] private TextMeshProUGUI nameText;
 
-    private string[] names = new string[] { "Pie Base", "Pie Lid", "Mince", "Peas", "Mushrooms", "", "", "", "", "", "", "", "", "", "", //0 - 14 Ingredients
-        "Pipe Cutter", "Broken Pipe", "New Pipe", "Welder", //15 - 19 Pipe event
-        "Screw", "Panel", "Broken Fuse", "New Fuse",}; //20 - 24 Fuse Event
+    private string[] names = new string[] { "Pie Base", "Pie Lid", "Mince", "Peas", "Mushrooms", "Carrot", "Cheese", "Tomato Sauce", "Barbecue Sacue", "", "", "", "", "", "", //0 - 14 Ingredients
+        "Pipe Cutter", "Broken Pipe", "New Pipe", "Welder", "", //15 - 19 Pipe event
+        "Screw", "Panel", "Broken Fuse", "New Fuse", "",
+        "Broken Chair"}; //20 - 24 Fuse Event
 
     void Update()
     {

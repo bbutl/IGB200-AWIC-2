@@ -18,6 +18,9 @@ public class DraggableObject : MonoBehaviour
     private bool timerStart = false;
     public bool moveBack = false;
 
+    public TooltipLocation tooltipLocation;
+    public int tooltipIndex;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -125,6 +128,16 @@ public class DraggableObject : MonoBehaviour
         {
             this.gameObject.transform.position = goTransform;
         }
+    }
+
+    public void OnMouseOver()
+    {
+        tooltipLocation.ShowTooltip(tooltipIndex);
+    }
+
+    public void OnMouseExit()
+    {
+        tooltipLocation.HideTooltip();
     }
 
 }

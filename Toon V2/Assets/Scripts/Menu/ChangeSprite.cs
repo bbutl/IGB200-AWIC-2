@@ -12,7 +12,6 @@ public class ChangeSprite : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-
         gameObject.GetComponent<Image>().sprite = icon2;
     }
     public void OnPointerExit(PointerEventData eventData)

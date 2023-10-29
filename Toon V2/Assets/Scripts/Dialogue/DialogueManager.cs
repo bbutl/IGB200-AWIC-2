@@ -483,6 +483,7 @@ public class DialogueManager : MonoBehaviour
         {
             SaveFileManagement.saveGame.otherOptions[0] = 0;
             autoText.text = "";
+            ProceedToNext();
         }
         else
         {
