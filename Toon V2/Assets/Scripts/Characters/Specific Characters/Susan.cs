@@ -24,7 +24,7 @@ public class Susan : GenericCharacter
     }
     private void Update()
     {
-        if (cook.PieCompleted() == true && queue.currentCharacter == 1)
+        if (cook.PieCompleted() == true && queue.currentCharacter == 2)
         {
             FindObjectOfType<DialogueManager>().StartDialogue(GoodConvo());
         }

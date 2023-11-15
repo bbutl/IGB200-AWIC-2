@@ -11,34 +11,35 @@ public class DialogueBox : MonoBehaviour
     public Sprite playerImage;
     private Vector3 otherPos = new Vector3(-450, 25, -20);
     public Sprite otherImage;
-    public Material[] materials;
+    private Vector3 tutPos = new Vector3(-341, 310, -20);
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         RectTransform rectTransform = GetComponent<RectTransform>();
-        if(manager.currentSection.GetSpeakerName() == "Player")
+        if (manager.currentSection.GetSpeakerName() == "Player")
         {
             rectTransform.localPosition = playerPos;
             gameObject.GetComponent<Image>().sprite = playerImage;
-            gameObject.GetComponent<Image>().material.color = materials[SaveFileManagement.saveGame.otherOptions[1]].color;
         }
-        else if(manager.currentSection.GetSpeakerName() == "James")
+        else if (manager.currentSection.GetSpeakerName() == "James")
         {
             rectTransform.localPosition = newsPos;
             gameObject.GetComponent<Image>().sprite = otherImage;
-            gameObject.GetComponent<Image>().material.color = materials[10].color;
+        }
+        else if (manager.currentSection.GetSpeakerName() == "Tutorial")
+        {
+            rectTransform.localPosition = tutPos;
         }
         else
         {
             rectTransform.localPosition = otherPos;
             gameObject.GetComponent<Image>().sprite = playerImage;
-            gameObject.GetComponent<Image>().material.color = materials[11].color;
         }
     }
 }

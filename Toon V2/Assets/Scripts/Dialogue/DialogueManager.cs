@@ -102,10 +102,15 @@ public class DialogueManager : MonoBehaviour
         {
             cameraPan.hasOrderded = false;
         }
-
-        if (Input.GetKeyDown("space"))
+       
+        if (Input.GetKeyDown("d"))
         {
-            ProceedToNext();
+            if(currentSection.GetType().Name != "Choices")
+            {
+                ProceedToNext();
+            }
+            
+            
         }
 
         if (contentsText.text != fullText && nameText.text != pName)
