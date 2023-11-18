@@ -30,6 +30,7 @@ public class Weld : MonoBehaviour
             Camera.main.transform.rotation = cam.transform.rotation;
             welder.SetActive(true);
             startWeld = false;
+            seat.GetComponent<BoxCollider>().enabled = true;
         }
         if (stepNumber == 5)
         {
@@ -37,6 +38,7 @@ public class Weld : MonoBehaviour
             gameObject.SetActive(false);
             seat.gameObject.SetActive(false); ;
             w.gameObject.SetActive(false);
+            seat.GetComponent<BoxCollider>().enabled = false;
             Camera.main.transform.position = new Vector3(-66.677002f, 4.4000001f, 3.56999993f);
             Camera.main.transform.rotation = new Quaternion(0, 0.707106829f, 0, 0.707106829f);
             weldFinish = true;

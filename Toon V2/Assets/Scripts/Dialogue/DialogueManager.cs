@@ -13,7 +13,7 @@ public class DialogueManager : MonoBehaviour
 
 
     public DialogueSection currentSection;
-    private string pName = "Player:";
+    private string pName = ":";
     [Header("Text Components")]
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI contentsText;
