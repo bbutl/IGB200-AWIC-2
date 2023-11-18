@@ -85,6 +85,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+        SaveFileManagement.saveGame.otherOptions[0] = 0;
         if (currentSection.GetSpeakerName() == "James")
         {
             hasMoved = false;
