@@ -60,9 +60,9 @@ public class FuseBox : MonoBehaviour
 
     public DialogueSection Tut()
     {
-        Monologue line2 = new Monologue("Tutorial", "You are encouraged to explore and figure out what each of these \nare and how they function.");
-        Monologue line1 = new Monologue("Tutorial", "Welcome to an 'event'. This is the electrician event. Press on the \nscreen on different aspects of the fuse box to progress the event \nand learn about this task. " +
-            "Throughout Pie Stop there are many \nchances to do different events.", line2);
+        Monologue line3 = new Monologue("Tutorial", "You are encouraged to explore and figure out what each of these \nare and how they function.");
+        Monologue line2 = new Monologue("Tutorial", "Throughout Pie Stop there are many chances to do different events.");
+        Monologue line1 = new Monologue("Tutorial", "Welcome to an 'event'. This is the electrician event. Press on the \nscreen on different aspects of the fuse box to progress the event \nand learn about this task.", line2);
         return line1;
 
     }

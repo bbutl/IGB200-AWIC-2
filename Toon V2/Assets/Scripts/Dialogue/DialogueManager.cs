@@ -85,7 +85,6 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        SaveFileManagement.saveGame.otherOptions[0] = 0;
         if (currentSection.GetSpeakerName() == "James")
         {
             hasMoved = false;
@@ -364,7 +363,7 @@ public class DialogueManager : MonoBehaviour
                 }*/
             }
 
-            ProceedToNext();
+            
             if (SaveFileManagement.saveGame.otherOptions[0] == 1)
             {
                 ProceedToNext();
@@ -504,7 +503,7 @@ public class DialogueManager : MonoBehaviour
         {
             SaveFileManagement.saveGame.otherOptions[0] = 1;
             autoText.text = "Auto";
-            //ProceedToNext();
+            ProceedToNext();
         }
     }
 
