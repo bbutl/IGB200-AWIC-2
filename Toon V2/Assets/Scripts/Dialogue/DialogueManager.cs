@@ -103,7 +103,7 @@ public class DialogueManager : MonoBehaviour
             cameraPan.hasOrderded = false;
         }
        
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKeyDown("space"))
         {
             if(currentSection.GetType().Name != "Choices")
             {
@@ -157,7 +157,10 @@ public class DialogueManager : MonoBehaviour
     public void TextCommands()
     {
         currentCharacter = GameObject.FindGameObjectWithTag("Character");
-
+        if (autoText.text == "Auto" && fullText == contentsText.text && currentSection.GetType().Name != "Choices")
+        {
+            ProceedToNext();
+        }
 
         if (fullText == "Next")
         {
@@ -364,10 +367,7 @@ public class DialogueManager : MonoBehaviour
             }
 
             
-            if (SaveFileManagement.saveGame.otherOptions[0] == 1)
-            {
-                ProceedToNext();
-            }
+            
 
             isTyping = false;
         }
@@ -503,6 +503,7 @@ public class DialogueManager : MonoBehaviour
         {
             SaveFileManagement.saveGame.otherOptions[0] = 1;
             autoText.text = "Auto";
+
             ProceedToNext();
         }
     }
