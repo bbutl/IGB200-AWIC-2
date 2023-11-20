@@ -10,8 +10,10 @@ using Random = UnityEngine.Random;
 
 public class DialogueManager : MonoBehaviour
 {
-
-
+    private bool timerActive = false;
+    private bool resetTimer = true;
+    private float timerr = 0;
+    private float maxTime = 5;
     public DialogueSection currentSection;
     private string pName = ":";
     [Header("Text Components")]
@@ -159,7 +161,7 @@ public class DialogueManager : MonoBehaviour
         currentCharacter = GameObject.FindGameObjectWithTag("Character");
         if (autoText.text == "Auto" && fullText == contentsText.text && currentSection.GetType().Name != "Choices")
         {
-            ProceedToNext();
+            StartCoroutine(Next());
         }
 
         if (fullText == "Next")
@@ -233,9 +235,10 @@ public class DialogueManager : MonoBehaviour
         }
 
     }
-    public void NextChar()
+    IEnumerator Next()
     {
-
+        yield return new WaitForSeconds(1.5f);
+        ProceedToNext();
     }
     public void PlayTalk()
     {
@@ -258,7 +261,26 @@ public class DialogueManager : MonoBehaviour
             ResetDisplayOptionsFlags();
         }
     }
+    public void NextTimer(float timer, float maxTime)
+    {
+        Debug.Log($"{timer}");
+        if (autoText.text == "Auto")
+        {
+            
+            if(timer > maxTime)
+            {
 
+                ProceedToNext();
+                timer = 0;
+                maxTime = 5f;
+            }
+            else
+            {
+                timer += Time.deltaTime;
+                timerr = timer;
+            }
+        }
+    }
     public void StartDialogue(DialogueSection start)
     {
 
