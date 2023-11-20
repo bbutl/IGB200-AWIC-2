@@ -23,7 +23,7 @@ public class EventTally : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+       
         if (installPipe.eventComplete)
         {
             tally++;

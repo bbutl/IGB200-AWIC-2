@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 
 public class DialogueManager : MonoBehaviour
 {
+    public Button nextButton;
     private bool timerActive = false;
     private bool resetTimer = true;
     private float timerr = 0;
@@ -109,7 +110,11 @@ public class DialogueManager : MonoBehaviour
         {
             if(currentSection.GetType().Name != "Choices")
             {
-                ProceedToNext();
+                if(nextButton.interactable == true)
+                {
+                    ProceedToNext();
+                }
+                
             }
             
             
@@ -519,14 +524,22 @@ public class DialogueManager : MonoBehaviour
         {
             SaveFileManagement.saveGame.otherOptions[0] = 0;
             autoText.text = "";
-            ProceedToNext();
+            nextButton.interactable = true;
+            if (currentSection.GetType().Name != "Choices")
+            {
+                ProceedToNext();
+            }
+                
         }
         else
         {
             SaveFileManagement.saveGame.otherOptions[0] = 1;
             autoText.text = "Auto";
-
-            ProceedToNext();
+            nextButton.interactable = false;
+            if (currentSection.GetType().Name != "Choices")
+            {
+                ProceedToNext();
+            }
         }
     }
 

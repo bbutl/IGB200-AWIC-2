@@ -94,10 +94,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dae6784a2b667ea45be675bb91705cc0,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: -2394359608774798533}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dae6784a2b667ea45be675bb91705cc0,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7277756284875244256}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dae6784a2b667ea45be675bb91705cc0,
         type: 3}
@@ -153,21 +149,6 @@ MonoBehaviour:
   pbase: Default
   filling: Default
   top: Default
---- !u!114 &-2394359608774798533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6383236377680965835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 481f2ccf210ec9d4c8a0164932000dd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goTransform: {x: 0, y: 0, z: 0}
-  lockY: 1
-  isDraggable: 1
 --- !u!135 &7277756284875244256
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class David : GenericCharacter
     // Start is called before the first frame update
     void Start()
     {
-     
+        dManager.goodChoice = 0;
     }
     public override void Day5Start()
     {
@@ -40,6 +40,7 @@ public class David : GenericCharacter
     }
     public DialogueSection D5Start()
     {
+        dManager.goodChoice = 0;
         if (hannah.pieMade)
         {
             Monologue end = new Monologue(localname, "");

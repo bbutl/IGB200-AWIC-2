@@ -58,7 +58,7 @@ public class Hannah : GenericCharacter
         Monologue line19 = new Monologue();
         Monologue line18 = new Monologue();
         Monologue line17 = new Monologue();
-        Monologue line16 = new Monologue(playerName, "Bye bye!");
+        Monologue line16 = new Monologue(playerName, "Bye bye!", end);
         Monologue line15 = new Monologue(localname, "Goodbye!", line16);
         Monologue line14 = new Monologue(localname, "That would be quite ironic haha!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLaugh..", line15);
 
@@ -98,7 +98,7 @@ public class Hannah : GenericCharacter
     }
     public DialogueSection D4Start()
     {
-
+        dManager.goodChoice = 0;
         Monologue line41 = new Monologue(localname, "Next");
         Monologue line40 = new Monologue(playerName, "Have a good day, come back next week!", line41);
         Monologue line39 = new Monologue(localname, "My apologies, I’ll get out of your hair right away.", line40);

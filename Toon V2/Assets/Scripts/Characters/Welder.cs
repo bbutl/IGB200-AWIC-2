@@ -19,7 +19,7 @@ public class Welder : GenericCharacter
     // Start is called before the first frame update
     void Start()
     {
-        
+        dManager.goodChoice = 0;
     }
     public override void Day5Start()
     {
@@ -93,6 +93,7 @@ public class Welder : GenericCharacter
     }
     public DialogueSection D5Start()
     {
+        dManager.goodChoice = 0;
         Monologue line23 = new Monologue(localname, "Next");
         Monologue line26 = new Monologue(localname, "No worries mate, see ya around.",line23);
         Monologue line25 = new Monologue(playerName, "That might be best, sorry.", line26);

@@ -13,6 +13,7 @@ public class Weld : MonoBehaviour
     public GameObject w;
     public bool weldFinish = false;
     public GameObject newSeat;
+    public EventTally tally;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class Weld : MonoBehaviour
             Camera.main.transform.position = new Vector3(-66.677002f, 4.4000001f, 3.56999993f);
             Camera.main.transform.rotation = new Quaternion(0, 0.707106829f, 0, 0.707106829f);
             weldFinish = true;
+            tally.tally++;
             stepNumber++;
         }
     }
