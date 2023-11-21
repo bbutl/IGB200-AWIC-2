@@ -39,6 +39,23 @@ public class Cook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        mushroom = Instantiate(mushroom, new Vector3(-66.4710007f, 3.06299996f, 3.41199994f), Quaternion.identity);
+        mushroom.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
+
+
+        peas = Instantiate(peas, new Vector3(-66.4710007f, 3.06299996f, 3.41199994f), Quaternion.identity);
+        peas.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
+
+
+        meatCubes = Instantiate(meatCubes, fillingPos, Quaternion.identity);
+        meatCubes.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
+
+        mushroom.gameObject.SetActive(false);
+        meatCubes.gameObject.SetActive(false);
+        peas.gameObject.SetActive(false);
+
+
         goTransform = gameObject.transform.position;
         pie = pieObject.GetComponent<Pie>();
         pie.pbase = "Default";
@@ -54,16 +71,16 @@ public class Cook : MonoBehaviour
         {
             if (meatCubes != null)
             {
-                Destroy(meatCubes);
+                meatCubes.gameObject.SetActive(false);
             }
 
             if (peas != null)
             {
-                Destroy(peas);
+                peas.gameObject.SetActive(false);
             }
             if (mushroom != null)
             {
-                Destroy(mushroom);
+                mushroom.gameObject.SetActive(false);
             }
             Destroy(currBase);
             Destroy(currFilling);
@@ -133,18 +150,15 @@ public class Cook : MonoBehaviour
                     currFilling.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
                     if (ingredient.name == "Beef Filling")
                     {
-                        meatCubes = Instantiate(meatCubes, fillingPos, Quaternion.identity);
-                        meatCubes.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
+                        meatCubes.gameObject.SetActive(true);
                     }
                     if (ingredient.name == "Peas")
                     {
-                        peas = Instantiate(peas, new Vector3(-66.4710007f, 3.06299996f, 3.41199994f), Quaternion.identity);
-                        peas.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
+                        peas.gameObject.SetActive(true);
                     }
                     if (ingredient.name == "Mushrooms")
                     {
-                        mushroom = Instantiate(mushroom, new Vector3(-66.4710007f, 3.06299996f, 3.41199994f), Quaternion.identity);
-                        mushroom.transform.localScale = new Vector3(0.375f, 0.375f, 0.375f);
+                        mushroom.gameObject.SetActive(true);
                     }
                 }
                 else

@@ -22,7 +22,7 @@ public class DialogueBox : MonoBehaviour
     void Update()
     {
         RectTransform rectTransform = GetComponent<RectTransform>();
-        if (manager.currentSection.GetSpeakerName() == "Player")
+        if (manager.nameText.text == ":")
         {
             rectTransform.localPosition = playerPos;
             gameObject.GetComponent<Image>().sprite = playerImage;

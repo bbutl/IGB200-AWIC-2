@@ -42,6 +42,7 @@ public class Weld : MonoBehaviour
             seat.GetComponent<BoxCollider>().enabled = false;
             Camera.main.transform.position = new Vector3(-66.677002f, 4.4000001f, 3.56999993f);
             Camera.main.transform.rotation = new Quaternion(0, 0.707106829f, 0, 0.707106829f);
+            welder.SetActive(false);
             weldFinish = true;
             tally.tally++;
             stepNumber++;
