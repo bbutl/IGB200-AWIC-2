@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     private float timerr = 0;
     private float maxTime = 5;
     public DialogueSection currentSection;
-    private string pName = ":";
+    public string pName = ":";
     [Header("Text Components")]
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI contentsText;
