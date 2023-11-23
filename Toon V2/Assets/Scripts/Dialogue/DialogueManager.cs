@@ -66,6 +66,8 @@ public class DialogueManager : MonoBehaviour
     public List<string> historyContent = new List<string>();
     [SerializeField] TextMeshProUGUI textSpeedText;
     [SerializeField] TextMeshProUGUI autoText;
+    [SerializeField] private Image backgroundColour;
+    [SerializeField] private Material[] backgroundColourOptions;
     private bool isTyping = false;
 
 
@@ -76,6 +78,7 @@ public class DialogueManager : MonoBehaviour
     // public Sprite otherImage;
     private void Start()
     {
+        pName = SaveFileManagement.saveFile.playerName + ":";
         InitalizePanel();
         minPitch = Random.Range(0.9f, 1f);
         maxPitch = Random.Range(1, 1.1f);
@@ -310,6 +313,7 @@ public class DialogueManager : MonoBehaviour
                 customers[0].StartTalking();
                 currentSection = currentSection.GetNextSection();
                 //customers[SaveFileManagement.saveDataList.currentCustomer].StartTalking();
+
                 DisplayDialogue();
             }
             else
@@ -357,6 +361,16 @@ public class DialogueManager : MonoBehaviour
         contentsArray = currentSection.GetSpeechContents().ToCharArray();
 
         historyContent.Add($"{currentSection.GetSpeechContents()}");
+
+        if (nameText.text == pName)
+        {
+            backgroundColour.color = backgroundColourOptions[SaveFileManagement.saveGame.otherOptions[1]].color;
+        }
+        else
+        {
+            backgroundColour.color = backgroundColourOptions[9].color;
+        }
+
 
 
     }

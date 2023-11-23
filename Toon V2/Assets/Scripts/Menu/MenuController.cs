@@ -89,7 +89,7 @@ public class MenuController : MonoBehaviour
 
     public void StartGame()
     {
-        //SaveFileManagement.saveFile.playerName = textinput.text;
+        SaveFileManagement.saveFile.playerName = textinput.text;
         SceneManager.LoadScene("URP");
     }
     public void Csutoemris()
